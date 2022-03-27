@@ -1,4 +1,4 @@
-Welcome to Pete's Pages's!
+Welcome to Pete's Pages!
 ========================================
 
 This is the documentation repository for my various projects.
