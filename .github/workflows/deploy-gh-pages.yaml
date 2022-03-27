@@ -1,0 +1,28 @@
+name: Docs
+
+on:
+  push:
+    branches: [ sphinx ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Requirements
+        run: |
+          pip3 install sphinx-rtd-theme==0.5.2
+          pip3 install sphinx-sitemap
+          pip3 install sphinxcontrib-spelling
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - name: Build docs
+        run: |
+          make html
+          touch docs/_build/html/.nojekyll
+      - name: Deploy
+        if: github.ref == 'refs/heads/sphinx'
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.PROJECT_AUTH }}
+          BRANCH: gh-pages  # The branch the action should deploy to.
+          FOLDER: docs/_build/html  # The folder the action should deploy.
