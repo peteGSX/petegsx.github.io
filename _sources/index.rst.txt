@@ -8,3 +8,5 @@ This is the documentation repository for my various projects.
   :maxdepth: 4
 
   turntable-controller/index
+  rokuhan-turnout-control/index
+  

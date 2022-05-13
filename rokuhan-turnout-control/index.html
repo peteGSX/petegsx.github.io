@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Overview &mdash; Pete&#39;s Pages  documentation</title>
+  <title>Rokuhan DCC Turnout Controller &mdash; Pete&#39;s Pages  documentation</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Hardware components" href="hardware.html" />
-    <link rel="prev" title="Programmable DCC Turntable Controller" href="index.html" /> 
+    <link rel="next" title="Overview" href="overview.html" />
+    <link rel="prev" title="Programming" href="../turntable-controller/programming.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -88,14 +88,11 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programmable DCC Turntable Controller</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hardware.html">Hardware components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html">Software and Logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programming.html">Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../turntable-controller/index.html">Programmable DCC Turntable Controller</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Rokuhan DCC Turnout Controller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../rokuhan-turnout-control/index.html">Rokuhan DCC Turnout Controller</a></li>
 </ul>
 
             
@@ -144,15 +141,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="index.html">Programmable DCC Turntable Controller</a> &raquo;</li>
-        
-      <li>Overview</li>
+      <li>Rokuhan DCC Turnout Controller</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/turntable-controller/overview.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/rokuhan-turnout-control/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -165,13 +160,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<p>A turntable was always going to be a central feature of my layout, and I specifically wanted one that was somewhat prototypical of what was (probably) in use at the time. I’m in Brisbane, Australia, and the local railroads here are narrow gauge, and therefore I needed a relatively small (60’) turntable which will have Z track on the bridge deck.</p>
-<p>Given my layout will be DCC controlled, obviously the turntable needs to be also, and I felt there was a need to have an easy way to update the various turntable positions with the turntable installed to make minor track alignment adjustments without having to connect to the programming circuit or having to plug in a serial cable, hence the desire for a turntable controller I could program “on the fly”.</p>
-<p>I happened to have an Arduino Uno R3 available along with some strip board, a voltage regulator, and a few other bits and pieces lying around, so making my own DCC decoder board was pretty straight forward with very few purchases, and the other components required were readily available locally.</p>
-<p>The code has taken some time to get my head around and the core is essentially a modified version of the “DCCInterface_TurntableControl” example by Alex Shepherd included with the NmraDCC library, so much credit to Alex and all the others who have contributed to that library as this wouldn’t be possible without it. Take note I am not a developer in any way shape or form, so there are likely inefficiencies and bugs hidden in there somewhere.</p>
-<p>Credit also to the guys on the DCC++ EX Discord server for input into making the code better as well.</p>
+  <div class="section" id="rokuhan-dcc-turnout-controller">
+<h1>Rokuhan DCC Turnout Controller<a class="headerlink" href="#rokuhan-dcc-turnout-controller" title="Permalink to this headline">¶</a></h1>
+<p>This is the documentation for my programmable DCC turntable controller.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+</ul>
+</div>
 </div>
 
 
@@ -180,8 +176,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="hardware.html" class="btn btn-neutral float-right" title="Hardware components" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="Programmable DCC Turntable Controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="overview.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../turntable-controller/programming.html" class="btn btn-neutral float-left" title="Programming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
