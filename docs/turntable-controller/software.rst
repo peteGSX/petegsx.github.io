@@ -6,6 +6,8 @@ As mentioned in the overview, this code is heavily based on the turntable exampl
 
 In addition, the AccelStepper library is used to provide acceleration and deceleration for the turntable for somewhat prototypical operation.
 
+You can find the code in my `GitHub repo <https://github.com/peteGSX-Projects/programmable-dcc-turntable>`_.
+
 Startup
 ========
 
