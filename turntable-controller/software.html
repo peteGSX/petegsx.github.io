@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Software and Logic &mdash; Pete&#39;s Pages  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Programming" href="programming.html" />
+    <link rel="prev" title="Hardware components" href="hardware.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Pete's Pages
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programmable DCC Turntable Controller</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">Hardware components</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Software and Logic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#startup">Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#in-action">In action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-checking">Error checking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#decoder-base-address">Decoder base address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#position-definitions">Position definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming.html">Programming</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Pete's Pages</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Programmable DCC Turntable Controller</a> &raquo;</li>
+        
+      <li>Software and Logic</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/turntable-controller/software.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="software-and-logic">
+<h1>Software and Logic<a class="headerlink" href="#software-and-logic" title="Permalink to this headline">¶</a></h1>
+<p>As mentioned in the overview, this code is heavily based on the turntable example provided with the NmraDcc Arduino library, and this library is what provides the DCC accessory decoder functionality.</p>
+<p>In addition, the AccelStepper library is used to provide acceleration and deceleration for the turntable for somewhat prototypical operation.</p>
+<div class="section" id="startup">
+<h2>Startup<a class="headerlink" href="#startup" title="Permalink to this headline">¶</a></h2>
+<p>On startup, the decoder address is read from the EEPROM along with the various position definitions that have been programmed, and these are all printed to the serial port.</p>
+<p>The DCC decoder object is initialised in order to respond to DCC packets received via the interrupt pin.</p>
+<p>The stepper motor is homed, then rotated to the defined position 1.</p>
+</div>
+<div class="section" id="in-action">
+<h2>In action<a class="headerlink" href="#in-action" title="Permalink to this headline">¶</a></h2>
+<p>Once startup is complete, both the DCC decoder and stepper motor objects are processed regularly to ensure correct operation.</p>
+<p>The DCC decoder object will respond to all DCC accessory notifications as such:</p>
+<p>When a notification is received, compare the provided address with the defined number of positions in CV 513.
+If it’s one of the defined positions, is different to the last position moved to, and the stepper is not still moving, proceed.
+Read the position definitions as stored in the appropriate CVs for the number of steps to move to, and the polarity.
+Calculate the steps required to move to the new position from the last position, including calculating the shortest direction to move.
+Start moving the stepper.
+Record the new position as the last position ready for the next move.</p>
+</div>
+<div class="section" id="error-checking">
+<h2>Error checking<a class="headerlink" href="#error-checking" title="Permalink to this headline">¶</a></h2>
+<p>Error checking is pretty basic, and there’s nothing stopping invalid values being programmed into the various CVs in use, however the validity of the CV values is checked prior to performing any actual stepper moves.</p>
+<p>Any errors are printed to the serial port.</p>
+</div>
+<div class="section" id="decoder-base-address">
+<h2>Decoder base address<a class="headerlink" href="#decoder-base-address" title="Permalink to this headline">¶</a></h2>
+<p>The validity of the stored decoder base address (CVs 1 and 9) is checked on start up, and if invalid, the default accessory address of 1 is used instead.</p>
+</div>
+<div class="section" id="position-definitions">
+<h2>Position definitions<a class="headerlink" href="#position-definitions" title="Permalink to this headline">¶</a></h2>
+<p>The validity of the stored position definitions are checked both on startup, as well as every time an accessory packet is received to be acted upon.</p>
+<p>If any part of a postion definition is invalid, it is effectively ignored in order to prevent attempting to move the stepper motor an invalid number of steps, or to attempt to send anything other than a 0 or 1 to the relay inputs.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="programming.html" class="btn btn-neutral float-right" title="Programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="hardware.html" class="btn btn-neutral float-left" title="Hardware components" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, peteGSX.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
