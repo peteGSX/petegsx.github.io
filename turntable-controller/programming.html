@@ -1,73 +1,34 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>Programming &mdash; Pete&#39;s Pages  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Rokuhan DCC Turnout Controller" href="../rokuhan-turnout-control/index.html" />
     <link rel="prev" title="Software and Logic" href="software.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../index.html" class="icon icon-home"> Pete's Pages
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -75,18 +36,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Programmable DCC Turntable Controller</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
@@ -104,86 +54,44 @@
 <li class="toctree-l1"><a class="reference internal" href="../rokuhan-turnout-control/index.html">Rokuhan DCC Turnout Controller</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Pete's Pages</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="index.html">Programmable DCC Turntable Controller</a> &raquo;</li>
-        
       <li>Programming</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../_sources/turntable-controller/programming.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="programming">
-<h1>Programming<a class="headerlink" href="#programming" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="programming">
+<h1>Programming<a class="headerlink" href="#programming" title="Permalink to this headline"></a></h1>
 <p>The turntable will require programming of both the base decoder address to respond to as well as the turntable positions.</p>
-<div class="section" id="base-decoder-address">
-<h2>Base decoder address<a class="headerlink" href="#base-decoder-address" title="Permalink to this headline">¶</a></h2>
+<section id="base-decoder-address">
+<h2>Base decoder address<a class="headerlink" href="#base-decoder-address" title="Permalink to this headline"></a></h2>
 <p>The base decoder address is made up of the 6 least significant bits in CV 1 (cvLSB), and the 3 least significant bits in CV 9 (cvMSB).</p>
 <p>I happen to run my turntable with a base address of 201, which requires CV 1 to be set to 51 and CV 9 to be set to 0.</p>
 <p>The formula to calculate this is: (((cvMSB * 64) + cvLSB - 1) * 4) + 1</p>
 <p>In my case, this translates to: (((0 * 64) + 51 - 1) * 4) + 1 = 201</p>
 <p>This formula originates from having a DCC accessory board being capable of driving four outputs.</p>
-</div>
-<div class="section" id="turntable-positions">
-<h2>Turntable positions<a class="headerlink" href="#turntable-positions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="turntable-positions">
+<h2>Turntable positions<a class="headerlink" href="#turntable-positions" title="Permalink to this headline"></a></h2>
 <p>The turntable positions are defined in the manufacturer reserved CVs starting at 513 as per the NMRA standard.</p>
 <p>CV 513 contains the number of positions being defined, with a valid maximum of 50 positions available.</p>
 <p>Each position definition requires three CVs to be programmed starting at CV 514:</p>
@@ -279,68 +187,51 @@ The code performs an 8 bit left shift on the MSB before adding the LSB to determ
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="service-mode-programming">
-<h2>Service mode programming<a class="headerlink" href="#service-mode-programming" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="service-mode-programming">
+<h2>Service mode programming<a class="headerlink" href="#service-mode-programming" title="Permalink to this headline"></a></h2>
 <p>The typical way of programming decoders is to connect them to a programming track which allows for service mode programming.</p>
 <p>The NmraDcc library enables this functionality, so programming in service mode is as straight forward as connecting to the programming track and performing the programming activities.</p>
 <p>I use the JMRI single CV programmer for these activities.</p>
 <p>I’d recommend using service mode programming to set both the decoder base address and the ops mode address. Defining the turntable positions can be done in either service mode or ops mode once these are set.</p>
-</div>
-<div class="section" id="ops-mode-programming-program-on-main-pom">
-<h2>Ops mode programming (Program on Main/POM)<a class="headerlink" href="#ops-mode-programming-program-on-main-pom" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="ops-mode-programming-program-on-main-pom">
+<h2>Ops mode programming (Program on Main/POM)<a class="headerlink" href="#ops-mode-programming-program-on-main-pom" title="Permalink to this headline"></a></h2>
 <p>I found it important to incorporate the ability to perform ops mode programming once the turntable is permanently in place to have a simple method of making adjustments to the defined positions in order to get track alignment for each position as accurate as possible and to allow for any variations once the home sensor is mounted permanently.</p>
 <p>In order to enable ops mode programming, the DCC library needs to have a CV provided that contains the DCC decoder address to respond to for programming commands.</p>
 <p>To facilitate this, the manufacturer reserved CV 112 is used to contain the DCC decoder address, and I simply program CV 112 with the same address as the base address for the turntable (201 in my case).</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../rokuhan-turnout-control/index.html" class="btn btn-neutral float-right" title="Rokuhan DCC Turnout Controller" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="software.html" class="btn btn-neutral float-left" title="Software and Logic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../rokuhan-turnout-control/index.html" class="btn btn-neutral float-right" title="Rokuhan DCC Turnout Controller" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2022, peteGSX.
-
-    </p>
+    <p>&#169; Copyright 2022, peteGSX.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

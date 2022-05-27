@@ -1,73 +1,34 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>Hardware components &mdash; Pete&#39;s Pages  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Software and Logic" href="software.html" />
     <link rel="prev" title="Overview" href="overview.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../index.html" class="icon icon-home"> Pete's Pages
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -75,18 +36,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Programmable DCC Turntable Controller</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
@@ -107,161 +57,102 @@
 <li class="toctree-l1"><a class="reference internal" href="../rokuhan-turnout-control/index.html">Rokuhan DCC Turnout Controller</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Pete's Pages</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="index.html">Programmable DCC Turntable Controller</a> &raquo;</li>
-        
       <li>Hardware components</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../_sources/turntable-controller/hardware.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="hardware-components">
-<h1>Hardware components<a class="headerlink" href="#hardware-components" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="arduino-uno">
-<h2>Arduino Uno<a class="headerlink" href="#arduino-uno" title="Permalink to this headline">¶</a></h2>
+             
+  <section id="hardware-components">
+<h1>Hardware components<a class="headerlink" href="#hardware-components" title="Permalink to this headline"></a></h1>
+<section id="arduino-uno">
+<h2>Arduino Uno<a class="headerlink" href="#arduino-uno" title="Permalink to this headline"></a></h2>
 <p>I’m using a generic Arduino Uno R3 to drive the turntable which is a Duinotech brand sourced locally here as part of a starter kit. There’s no reason I can think of, however, that a Nano, Mega, or any others would work providing they provide sufficient digital inputs and outputs and have sufficient memory.</p>
 <p>The code requires 2 digital inputs (one must be interrupt driven) and 7 digital outputs. Incidentally, the only reason I use A1 for the DCC ACK signal is because I blew the output of my Uno’s pin 3.</p>
 <p>At the time of writing, when compiled, the sketch uses 15986 bytes of program storage space, and global variables use 1023 bytes of dynamic memory.</p>
-</div>
-<div class="section" id="uln2003-28byj-48-stepper-driver-and-motor">
-<h2>ULN2003/28BYJ-48 stepper driver and motor<a class="headerlink" href="#uln2003-28byj-48-stepper-driver-and-motor" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="uln2003-28byj-48-stepper-driver-and-motor">
+<h2>ULN2003/28BYJ-48 stepper driver and motor<a class="headerlink" href="#uln2003-28byj-48-stepper-driver-and-motor" title="Permalink to this headline"></a></h2>
 <p>The 28BYJ-48 is an inexpensive unipolar stepper motor used in many consumer devices and is an ideal candidate for a small scale turntable. The motor is driven by the ULN2003 driver using 4 pins as outputs from the Arduino in full step mode. The datasheet for the stepper indicates it takes 2048 steps for a full revolution in full step mode, or 4096 steps in half step mode.</p>
 <p>While I haven’t used the stepper in anger on a fully functioning layout yet, turning an N scale loco on my partially complete bridge deck works well, so I’m confident it will suit at least smaller scale layouts. My aim is to have the bridge deck on wheels running on the pit rail to support the weight, so the stepper will only have rotational forces to work against.</p>
 <p>I simply stuck with the pin connections as defined in the datasheet for the specific ULN2003 I purchased, which uses pins 8 through 11.</p>
 <p>The important thing to note when initiating the stepper motor object is that the pins aren’t referred to linearly from 8 to 11, but rather have a specific order they need to be defined in. I’ve provided two alternatives in the code depending if you prefer the default direction to be clockwise or anti-clockwise.</p>
-</div>
-<div class="section" id="hall-effect-sensor">
-<h2>Hall effect sensor<a class="headerlink" href="#hall-effect-sensor" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="hall-effect-sensor">
+<h2>Hall effect sensor<a class="headerlink" href="#hall-effect-sensor" title="Permalink to this headline"></a></h2>
 <p>Ready made Arduino compatible hall effect sensors are readily available (and cheap) and I simply connect one of these to pin 3, which sends the input LOW when activated. Note that some appear to have a HIGH active state instead, so the “#define HOME_SENSOR_ACTIVE_STATE LOW” line in the sketch will need to be adjusted to “#define HOME_SENSOR_ACTIVE_STATE HIGH” in order for these to work correctly.</p>
 <p>Aside from the input pin, these simply require a 5V and ground connection.</p>
-</div>
-<div class="section" id="dual-relay-board">
-<h2>Dual relay board<a class="headerlink" href="#dual-relay-board" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="dual-relay-board">
+<h2>Dual relay board<a class="headerlink" href="#dual-relay-board" title="Permalink to this headline"></a></h2>
 <p>I’ve chosen to use a dual relay board to control the polarity of the bridge deck track as it was simple enough to incorporate into the code with a simple polarity flag, and I don’t have a short-circuit detection type auto reverser to perform that function.</p>
-</div>
-<div class="section" id="prototype-shield">
-<h2>Prototype shield<a class="headerlink" href="#prototype-shield" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="prototype-shield">
+<h2>Prototype shield<a class="headerlink" href="#prototype-shield" title="Permalink to this headline"></a></h2>
 <p>The simplest and neatest way to be able to run a 5V regulator and the opto isolator circuit for the DCC decoder was to obtain an Uno footprint prototype shield. There is more than enough room for the components, and the Uno shield form factor means it’s a neat fit.</p>
-</div>
-<div class="section" id="power-supply-voltage-regulator">
-<h2>Power supply/voltage regulator<a class="headerlink" href="#power-supply-voltage-regulator" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="power-supply-voltage-regulator">
+<h2>Power supply/voltage regulator<a class="headerlink" href="#power-supply-voltage-regulator" title="Permalink to this headline"></a></h2>
 <p>All components in use require 5V DC to operate, and the recommendation for the stepper motor and driver combination is to use an external 5V supply as the current requirements may exceed what the built-in Uno 5V regulator can supply.</p>
 <p>I had an LM7805, a 220nF polyester film, and 0.1uF ceramic capacitor on hand so chose to make my own voltage regulator circuit as the power supply for all components using the prototype shield.</p>
 <p>My input voltage is 8.5V DC, which seems odd but turns out to have been the perfect voltage to drive my Rokuhan turnouts reliably while still staying below the recommended 9V DC maximum input for Arduinos.</p>
-</div>
-<div class="section" id="dcc-decoder-circuit">
-<h2>DCC Decoder circuit<a class="headerlink" href="#dcc-decoder-circuit" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="dcc-decoder-circuit">
+<h2>DCC Decoder circuit<a class="headerlink" href="#dcc-decoder-circuit" title="Permalink to this headline"></a></h2>
 <p>This is where full credit goes to the team at <a class="reference external" href="https://mrrwa.org/">https://mrrwa.org/</a> for making all the DCC decoder information for Arduinos readily accessible. There are three designs referred to on their DCC interface page: <a class="reference external" href="https://mrrwa.org/dcc-decoder-interface/">https://mrrwa.org/dcc-decoder-interface/</a></p>
 <p>I made my own decoder circuit using Wolfgang Kuffer’s design on the prototype shield as I had most components already on hand except for the two optocoupler (which is dirt cheap). Note, I didn’t bother with the ACK circuit as most of the programming will be in ops mode (program on main), and the ACK isn’t required or functional as a result.</p>
 <p>The DCC signal is connected to pin 2 on the Uno as it’s an interrupt pin. Note that despite the ACK circuit not being used by me, the code is still present should you wish to use it.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="software.html" class="btn btn-neutral float-right" title="Software and Logic" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="software.html" class="btn btn-neutral float-right" title="Software and Logic" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2022, peteGSX.
-
-    </p>
+    <p>&#169; Copyright 2022, peteGSX.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
