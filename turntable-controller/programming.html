@@ -14,6 +14,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -80,10 +81,10 @@
            <div itemprop="articleBody">
              
   <section id="programming">
-<h1>Programming<a class="headerlink" href="#programming" title="Permalink to this headline"></a></h1>
+<h1>Programming<a class="headerlink" href="#programming" title="Permalink to this heading"></a></h1>
 <p>The turntable will require programming of both the base decoder address to respond to as well as the turntable positions.</p>
 <section id="base-decoder-address">
-<h2>Base decoder address<a class="headerlink" href="#base-decoder-address" title="Permalink to this headline"></a></h2>
+<h2>Base decoder address<a class="headerlink" href="#base-decoder-address" title="Permalink to this heading"></a></h2>
 <p>The base decoder address is made up of the 6 least significant bits in CV 1 (cvLSB), and the 3 least significant bits in CV 9 (cvMSB).</p>
 <p>I happen to run my turntable with a base address of 201, which requires CV 1 to be set to 51 and CV 9 to be set to 0.</p>
 <p>The formula to calculate this is: (((cvMSB * 64) + cvLSB - 1) * 4) + 1</p>
@@ -91,7 +92,7 @@
 <p>This formula originates from having a DCC accessory board being capable of driving four outputs.</p>
 </section>
 <section id="turntable-positions">
-<h2>Turntable positions<a class="headerlink" href="#turntable-positions" title="Permalink to this headline"></a></h2>
+<h2>Turntable positions<a class="headerlink" href="#turntable-positions" title="Permalink to this heading"></a></h2>
 <p>The turntable positions are defined in the manufacturer reserved CVs starting at 513 as per the NMRA standard.</p>
 <p>CV 513 contains the number of positions being defined, with a valid maximum of 50 positions available.</p>
 <p>Each position definition requires three CVs to be programmed starting at CV 514:</p>
@@ -189,14 +190,14 @@ The code performs an 8 bit left shift on the MSB before adding the LSB to determ
 </table>
 </section>
 <section id="service-mode-programming">
-<h2>Service mode programming<a class="headerlink" href="#service-mode-programming" title="Permalink to this headline"></a></h2>
+<h2>Service mode programming<a class="headerlink" href="#service-mode-programming" title="Permalink to this heading"></a></h2>
 <p>The typical way of programming decoders is to connect them to a programming track which allows for service mode programming.</p>
 <p>The NmraDcc library enables this functionality, so programming in service mode is as straight forward as connecting to the programming track and performing the programming activities.</p>
 <p>I use the JMRI single CV programmer for these activities.</p>
 <p>I’d recommend using service mode programming to set both the decoder base address and the ops mode address. Defining the turntable positions can be done in either service mode or ops mode once these are set.</p>
 </section>
 <section id="ops-mode-programming-program-on-main-pom">
-<h2>Ops mode programming (Program on Main/POM)<a class="headerlink" href="#ops-mode-programming-program-on-main-pom" title="Permalink to this headline"></a></h2>
+<h2>Ops mode programming (Program on Main/POM)<a class="headerlink" href="#ops-mode-programming-program-on-main-pom" title="Permalink to this heading"></a></h2>
 <p>I found it important to incorporate the ability to perform ops mode programming once the turntable is permanently in place to have a simple method of making adjustments to the defined positions in order to get track alignment for each position as accurate as possible and to allow for any variations once the home sensor is mounted permanently.</p>
 <p>In order to enable ops mode programming, the DCC library needs to have a CV provided that contains the DCC decoder address to respond to for programming commands.</p>
 <p>To facilitate this, the manufacturer reserved CV 112 is used to contain the DCC decoder address, and I simply program CV 112 with the same address as the base address for the turntable (201 in my case).</p>

@@ -14,6 +14,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -81,28 +82,28 @@
            <div itemprop="articleBody">
              
   <section id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h1>
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://github.com/peteGSX-Projects/rokuhan-dcc-point-control">This repository</a> contains the code for an Arduino based controller capable of switching either two or four Rokuhan brand electronic turnouts using DCC for digital control.</p>
 <p>This uses either two L293D motor controller ICs or an L298 based motor shield to control the turnouts.</p>
 <p>The code complies with the NMRA standard setting direction 1 for Closed, and 0 for Thrown.</p>
 <section id="instructions">
-<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline"></a></h2>
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading"></a></h2>
 <p>Rokuhan turnouts require a very brief pulse to switch the direction only, and continuous current will burn the motor out. This code has been written to cater for this.</p>
 <p>I have found an input voltage of 8.5V to be reliable, meaning the same power source can be used to power both the Arduino itself as well as providing the switching voltage to the turnouts.</p>
 <p>Digital Command Control (DCC) is used to trigger the turnout changes by inverting the direction, then setting the speed to max momentarily to trigger the change in direction.</p>
 </section>
 <section id="arduino-pins">
-<h2>Arduino pins<a class="headerlink" href="#arduino-pins" title="Permalink to this headline"></a></h2>
+<h2>Arduino pins<a class="headerlink" href="#arduino-pins" title="Permalink to this heading"></a></h2>
 <p>The code uses the pins below for the various functions:</p>
 <section id="dcc-pins">
-<h3>DCC pins<a class="headerlink" href="#dcc-pins" title="Permalink to this headline"></a></h3>
+<h3>DCC pins<a class="headerlink" href="#dcc-pins" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>D2 - Interrupt pin used for DCC decoding</p></li>
 <li><p>D3 - Used for the DCC ACK signal</p></li>
 </ul>
 </section>
 <section id="turnout-1-pins-connect-to-first-l293d">
-<h3>Turnout 1 pins - connect to first L293D<a class="headerlink" href="#turnout-1-pins-connect-to-first-l293d" title="Permalink to this headline"></a></h3>
+<h3>Turnout 1 pins - connect to first L293D<a class="headerlink" href="#turnout-1-pins-connect-to-first-l293d" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>A4 - L293D input 1 - HIGH for through, LOW for branch</p></li>
 <li><p>A5 - L293D input 2 - LOW for through, HIGH for branch</p></li>
@@ -110,7 +111,7 @@
 </ul>
 </section>
 <section id="point-2-pins-connect-to-first-l293d">
-<h3>Point 2 pins - connect to first L293D<a class="headerlink" href="#point-2-pins-connect-to-first-l293d" title="Permalink to this headline"></a></h3>
+<h3>Point 2 pins - connect to first L293D<a class="headerlink" href="#point-2-pins-connect-to-first-l293d" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>D4 - L293D input 3 - HIGH for through, LOW for branch</p></li>
 <li><p>D7 - L293D input 4 - LOW for through, HIGH for branch</p></li>
@@ -118,7 +119,7 @@
 </ul>
 </section>
 <section id="point-3-pins-connect-to-second-l293d">
-<h3>Point 3 pins - connect to second L293D<a class="headerlink" href="#point-3-pins-connect-to-second-l293d" title="Permalink to this headline"></a></h3>
+<h3>Point 3 pins - connect to second L293D<a class="headerlink" href="#point-3-pins-connect-to-second-l293d" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>D8 - L293D input 1 - HIGH for through, LOW for branch</p></li>
 <li><p>D11 - L293D input 2 - LOW for through, HIGH for branch</p></li>
@@ -126,7 +127,7 @@
 </ul>
 </section>
 <section id="point-4-pins-connect-to-second-l293d">
-<h3>Point 4 pins - connect to second L293D<a class="headerlink" href="#point-4-pins-connect-to-second-l293d" title="Permalink to this headline"></a></h3>
+<h3>Point 4 pins - connect to second L293D<a class="headerlink" href="#point-4-pins-connect-to-second-l293d" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>D12 - L293D input 3 - HIGH for through, LOW for branch</p></li>
 <li><p>D13 - L293D input 4 - LOW for through, HIGH for branch</p></li>
