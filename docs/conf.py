@@ -52,11 +52,11 @@ html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 
 html_theme_options = {
-    'style_nav_header_background': 'white',
+    # 'style_nav_header_background': 'white',
     'logo_only': True,
     # Toc options
     'includehidden': True,
-    'titles_only': True,
+    # 'titles_only': True,
     'collapse_navigation': False,
     'navigation_depth': -1 
 }
