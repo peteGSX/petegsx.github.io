@@ -27,7 +27,7 @@
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search"  style="background: white" >
+        <div class="wy-side-nav-search" >
             <a href="../index.html" class="icon icon-home"> Pete's Pages
           </a>
 <div role="search">
@@ -41,13 +41,46 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Programmable DCC Turntable Controller</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Hardware components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html">Software and Logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programming.html">Programming</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Hardware components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#arduino-uno">Arduino Uno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uln2003-28byj-48-stepper-driver-and-motor">ULN2003/28BYJ-48 stepper driver and motor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hall-effect-sensor">Hall effect sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dual-relay-board">Dual relay board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prototype-shield">Prototype shield</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#power-supply-voltage-regulator">Power supply/voltage regulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dcc-decoder-circuit">DCC Decoder circuit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="software.html">Software and Logic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="software.html#startup">Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="software.html#in-action">In action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="software.html#error-checking">Error checking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="software.html#decoder-base-address">Decoder base address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="software.html#position-definitions">Position definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming.html">Programming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#base-decoder-address">Base decoder address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#turntable-positions">Turntable positions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#service-mode-programming">Service mode programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#ops-mode-programming-program-on-main-pom">Ops mode programming (Program on Main/POM)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rokuhan-turnout-control/index.html">Rokuhan DCC Turnout Controller</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../rokuhan-turnout-control/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rokuhan-turnout-control/overview.html">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rokuhan-turnout-control/overview.html#instructions">Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rokuhan-turnout-control/overview.html#arduino-pins">Arduino pins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../rokuhan-turnout-control/overview.html#dcc-pins">DCC pins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rokuhan-turnout-control/overview.html#turnout-1-pins-connect-to-first-l293d">Turnout 1 pins - connect to first L293D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rokuhan-turnout-control/overview.html#point-2-pins-connect-to-first-l293d">Point 2 pins - connect to first L293D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rokuhan-turnout-control/overview.html#point-3-pins-connect-to-second-l293d">Point 3 pins - connect to second L293D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rokuhan-turnout-control/overview.html#point-4-pins-connect-to-second-l293d">Point 4 pins - connect to second L293D</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -56,7 +89,7 @@
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Pete's Pages</a>
       </nav>
