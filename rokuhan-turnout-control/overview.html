@@ -40,39 +40,15 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../turntable-controller/index.html">Programmable DCC Turntable Controller</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../turntable-controller/overview.html">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/hardware.html">Hardware components</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../turntable-controller/hardware.html#arduino-uno">Arduino Uno</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../turntable-controller/hardware.html#uln2003-28byj-48-stepper-driver-and-motor">ULN2003/28BYJ-48 stepper driver and motor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../turntable-controller/hardware.html#hall-effect-sensor">Hall effect sensor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../turntable-controller/hardware.html#dual-relay-board">Dual relay board</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../turntable-controller/hardware.html#prototype-shield">Prototype shield</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../turntable-controller/hardware.html#power-supply-voltage-regulator">Power supply/voltage regulator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../turntable-controller/hardware.html#dcc-decoder-circuit">DCC Decoder circuit</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/software.html">Software and Logic</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../turntable-controller/software.html#startup">Startup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../turntable-controller/software.html#in-action">In action</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../turntable-controller/software.html#error-checking">Error checking</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../turntable-controller/software.html#decoder-base-address">Decoder base address</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../turntable-controller/software.html#position-definitions">Position definitions</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/programming.html">Programming</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../turntable-controller/programming.html#base-decoder-address">Base decoder address</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../turntable-controller/programming.html#turntable-positions">Turntable positions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../turntable-controller/programming.html#service-mode-programming">Service mode programming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../turntable-controller/programming.html#ops-mode-programming-program-on-main-pom">Ops mode programming (Program on Main/POM)</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/hardware.html">Hardware components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/software.html">Software and Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/programming.html">Programming</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Rokuhan DCC Turnout Controller</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#instructions">Instructions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#arduino-pins">Arduino pins</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instructions">Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arduino-pins">Arduino pins</a></li>
 </ul>
 </li>
 </ul>
@@ -107,24 +83,25 @@
 <p><a class="reference external" href="https://github.com/peteGSX-Projects/rokuhan-dcc-point-control">This repository</a> contains the code for an Arduino based controller capable of switching either two or four Rokuhan brand electronic turnouts using DCC for digital control.</p>
 <p>This uses either two L293D motor controller ICs or an L298 based motor shield to control the turnouts.</p>
 <p>The code complies with the NMRA standard setting direction 1 for Closed, and 0 for Thrown.</p>
+</section>
 <section id="instructions">
-<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading"></a></h2>
+<h1>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading"></a></h1>
 <p>Rokuhan turnouts require a very brief pulse to switch the direction only, and continuous current will burn the motor out. This code has been written to cater for this.</p>
 <p>I have found an input voltage of 8.5V to be reliable, meaning the same power source can be used to power both the Arduino itself as well as providing the switching voltage to the turnouts.</p>
 <p>Digital Command Control (DCC) is used to trigger the turnout changes by inverting the direction, then setting the speed to max momentarily to trigger the change in direction.</p>
 </section>
 <section id="arduino-pins">
-<h2>Arduino pins<a class="headerlink" href="#arduino-pins" title="Permalink to this heading"></a></h2>
+<h1>Arduino pins<a class="headerlink" href="#arduino-pins" title="Permalink to this heading"></a></h1>
 <p>The code uses the pins below for the various functions:</p>
 <section id="dcc-pins">
-<h3>DCC pins<a class="headerlink" href="#dcc-pins" title="Permalink to this heading"></a></h3>
+<h2>DCC pins<a class="headerlink" href="#dcc-pins" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>D2 - Interrupt pin used for DCC decoding</p></li>
 <li><p>D3 - Used for the DCC ACK signal</p></li>
 </ul>
 </section>
 <section id="turnout-1-pins-connect-to-first-l293d">
-<h3>Turnout 1 pins - connect to first L293D<a class="headerlink" href="#turnout-1-pins-connect-to-first-l293d" title="Permalink to this heading"></a></h3>
+<h2>Turnout 1 pins - connect to first L293D<a class="headerlink" href="#turnout-1-pins-connect-to-first-l293d" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>A4 - L293D input 1 - HIGH for through, LOW for branch</p></li>
 <li><p>A5 - L293D input 2 - LOW for through, HIGH for branch</p></li>
@@ -132,7 +109,7 @@
 </ul>
 </section>
 <section id="point-2-pins-connect-to-first-l293d">
-<h3>Point 2 pins - connect to first L293D<a class="headerlink" href="#point-2-pins-connect-to-first-l293d" title="Permalink to this heading"></a></h3>
+<h2>Point 2 pins - connect to first L293D<a class="headerlink" href="#point-2-pins-connect-to-first-l293d" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>D4 - L293D input 3 - HIGH for through, LOW for branch</p></li>
 <li><p>D7 - L293D input 4 - LOW for through, HIGH for branch</p></li>
@@ -140,7 +117,7 @@
 </ul>
 </section>
 <section id="point-3-pins-connect-to-second-l293d">
-<h3>Point 3 pins - connect to second L293D<a class="headerlink" href="#point-3-pins-connect-to-second-l293d" title="Permalink to this heading"></a></h3>
+<h2>Point 3 pins - connect to second L293D<a class="headerlink" href="#point-3-pins-connect-to-second-l293d" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>D8 - L293D input 1 - HIGH for through, LOW for branch</p></li>
 <li><p>D11 - L293D input 2 - LOW for through, HIGH for branch</p></li>
@@ -148,13 +125,12 @@
 </ul>
 </section>
 <section id="point-4-pins-connect-to-second-l293d">
-<h3>Point 4 pins - connect to second L293D<a class="headerlink" href="#point-4-pins-connect-to-second-l293d" title="Permalink to this heading"></a></h3>
+<h2>Point 4 pins - connect to second L293D<a class="headerlink" href="#point-4-pins-connect-to-second-l293d" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>D12 - L293D input 3 - HIGH for through, LOW for branch</p></li>
 <li><p>D13 - L293D input 4 - LOW for through, HIGH for branch</p></li>
 <li><p>D10 - L293D enable 2 - set to max speed PWM 255 for 25ms to switch</p></li>
 </ul>
-</section>
 </section>
 </section>
 
