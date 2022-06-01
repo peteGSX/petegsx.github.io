@@ -56,7 +56,7 @@ html_theme_options = {
     'logo_only': True,
     # Toc options
     'includehidden': True,
-    'titles_only': False,
+    'titles_only': True,
     'collapse_navigation': False,
-    'navigation_depth': 3
+    'navigation_depth': -1
 }
