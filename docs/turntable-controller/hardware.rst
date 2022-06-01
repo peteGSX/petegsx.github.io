@@ -2,12 +2,6 @@
 Hardware components
 ********************
 
-.. sidebar:: On this page
-
-  .. contents:: 
-    :depth: 3
-    :local:
-
 Arduino Uno
 ============
 
