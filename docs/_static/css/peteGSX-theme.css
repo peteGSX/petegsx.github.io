@@ -9,3 +9,8 @@
 .wy-side-nav-search>a img.logo {
   width: 60%;
 }
+
+svg {
+  width: 40%;
+  height: 40%;
+}
