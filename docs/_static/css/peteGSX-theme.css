@@ -1,0 +1,11 @@
+.clearer {
+  clear: both;
+}
+
+.wy-nav-content {
+  max-width: none
+}
+
+.wy-side-nav-search>a img.logo {
+  width: 60%;
+}

@@ -14,12 +14,13 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
 project = "Pete's Pages"
-copyright = '2022, peteGSX'
-author = 'peteGSX'
+copyright = '2022, Peter Cole'
+author = 'Peter Cole'
 
 
 # -- General configuration ---------------------------------------------------
@@ -28,7 +29,18 @@ author = 'peteGSX'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.autosectionlabel',
+    'sphinxcontrib.spelling',
+    'sphinx.ext.todo',
+    'sphinx_sitemap',
 ]
+
+autosectionlabel_prefix_document = True
+
+spelling_lang = 'en_AU'
+tokenizer_lang = 'en_AU'
+spelling_word_list_filename = ['spelling_wordlist.txt']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -56,7 +68,20 @@ html_theme_options = {
     'logo_only': True,
     # Toc options
     'includehidden': True,
-    'titles_only': False,
+    'titles_only': True,
     'collapse_navigation': False,
-    'navigation_depth': 3
+    'navigation_depth': 3,
 }
+
+html_context = {
+    'display_github': True,
+    'github_user': 'peteGSX-Projects',
+    'github_repo': 'petegsx-projects.github.io',
+    'github_version': 'sphinx/docs/',
+}
+
+html_css_files = [
+    'css/peteGSX-theme.css',
+]
+
+html_js_files = []
