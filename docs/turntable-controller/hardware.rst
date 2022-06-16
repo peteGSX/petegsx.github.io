@@ -2,8 +2,10 @@
 Hardware components
 ********************
 
-.. raw:: html
-  :file: ../_static/images/turntable-controller/turntable-controller-fritzing.svg
+.. sidebar:: Connection diagram
+
+  .. raw:: html
+    :file: ../_static/images/turntable-controller/turntable-controller-fritzing.svg
 
 Arduino Uno
 ============
