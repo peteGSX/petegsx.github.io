@@ -7,6 +7,7 @@
   <title>Hardware components &mdash; Pete&#39;s Pages  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/peteGSX-theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -41,39 +42,13 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Programmable DCC Turntable Controller</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Hardware components</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#arduino-uno">Arduino Uno</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#uln2003-28byj-48-stepper-driver-and-motor">ULN2003/28BYJ-48 stepper driver and motor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#hall-effect-sensor">Hall effect sensor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dual-relay-board">Dual relay board</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#prototype-shield">Prototype shield</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#power-supply-voltage-regulator">Power supply/voltage regulator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dcc-decoder-circuit">DCC Decoder circuit</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="software.html">Software and Logic</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="software.html#startup">Startup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="software.html#in-action">In action</a></li>
-<li class="toctree-l3"><a class="reference internal" href="software.html#error-checking">Error checking</a></li>
-<li class="toctree-l3"><a class="reference internal" href="software.html#decoder-base-address">Decoder base address</a></li>
-<li class="toctree-l3"><a class="reference internal" href="software.html#position-definitions">Position definitions</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="programming.html">Programming</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="programming.html#base-decoder-address">Base decoder address</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming.html#turntable-positions">Turntable positions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming.html#service-mode-programming">Service mode programming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming.html#ops-mode-programming-program-on-main-pom">Ops mode programming (Program on Main/POM)</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Hardware components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html">Software and Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming.html">Programming</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rokuhan-turnout-control/index.html">Rokuhan DCC Turnout Controller</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../rokuhan-turnout-control/overview.html">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../rokuhan-turnout-control/overview.html#instructions">Instructions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../rokuhan-turnout-control/overview.html#arduino-pins">Arduino pins</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../rokuhan-turnout-control/overview.html">Overview</a></li>
 </ul>
 </li>
 </ul>
@@ -95,7 +70,7 @@
           <li><a href="index.html">Programmable DCC Turntable Controller</a> &raquo;</li>
       <li>Hardware components</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/turntable-controller/hardware.rst.txt" rel="nofollow"> View page source</a>
+              <a href="https://github.com/peteGSX-Projects/petegsx-projects.github.io/blob/sphinx/docs/turntable-controller/hardware.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -105,6 +80,13 @@
              
   <section id="hardware-components">
 <h1>Hardware components<a class="headerlink" href="#hardware-components" title="Permalink to this heading"></a></h1>
+<div class="twocol docutils container">
+<div class="leftside docutils container">
+<a class="reference internal image-reference" href="../_images/turntable-controller-fritzing.png"><img alt="Turntable controller Fritzing" src="../_images/turntable-controller-fritzing.png" style="width: 445.20000000000005px; height: 761.6px;" /></a>
+</div>
+<div class="rightside docutils container">
+<object data="../_static/images/turntable-controller/turntable-controller-fritzing.png" type="image/svg+xml"></object></div>
+</div>
 <section id="arduino-uno">
 <h2>Arduino Uno<a class="headerlink" href="#arduino-uno" title="Permalink to this heading"></a></h2>
 <p>I’m using a generic Arduino Uno R3 to drive the turntable which is a Duinotech brand sourced locally here as part of a starter kit. There’s no reason I can think of, however, that a Nano, Mega, or any others would work providing they provide sufficient digital inputs and outputs and have sufficient memory.</p>
@@ -156,7 +138,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, peteGSX.</p>
+    <p>&#169; Copyright 2022, Peter Cole.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

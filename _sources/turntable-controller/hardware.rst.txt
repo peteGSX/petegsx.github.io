@@ -2,6 +2,20 @@
 Hardware components
 ********************
 
+.. container:: twocol
+
+  .. container:: leftside
+
+    .. image:: ../_static/images/turntable-controller/turntable-controller-fritzing.png
+      :alt: Turntable controller Fritzing
+      :scale: 10%
+
+  .. container:: rightside
+
+    .. raw:: html
+
+      <object data="../_static/images/turntable-controller/turntable-controller-fritzing.png" type="image/svg+xml"></object>
+
 Arduino Uno
 ============
 
