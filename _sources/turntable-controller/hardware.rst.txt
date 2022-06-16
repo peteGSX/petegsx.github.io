@@ -2,11 +2,8 @@
 Hardware components
 ********************
 
-.. container:: right
-
-  .. raw:: html
-
-    <object data="../_static/images/turntable-controller/turntable-controller-fritzing.svg" type="image/svg+xml"></object>
+.. raw:: html
+  :file: ../_static/images/turntable-controller/turntable-controller-fritzing.svg
 
 Arduino Uno
 ============

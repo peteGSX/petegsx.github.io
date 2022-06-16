@@ -53,7 +53,7 @@
      inkscape:label="Link Layer">
     <a
        id="a1697"
-       xlink:href="https://petegsx-projects.github.io/turntable-controller/hardware.html#dual-relay-board"
+       xlink:href="#dual-relay-board"
        inkscape:label="a1697"
        target="">
       <rect
@@ -67,7 +67,7 @@
     </a>
     <a
        id="a1726"
-       xlink:href="https://petegsx-projects.github.io/turntable-controller/hardware.html#uln2003-28byj-48-stepper-driver-and-motor"
+       xlink:href="#uln2003-28byj-48-stepper-driver-and-motor"
        target="">
       <rect
          style="fill:#000000;fill-opacity:0"
@@ -80,7 +80,7 @@
     </a>
     <a
        id="a1761"
-       xlink:href="https://petegsx-projects.github.io/turntable-controller/hardware.html#hall-effect-sensor"
+       xlink:href="#hall-effect-sensor"
        target="">
       <rect
          style="fill:#000000;fill-opacity:0"
@@ -93,7 +93,7 @@
     </a>
     <a
        id="a1766"
-       xlink:href="https://petegsx-projects.github.io/turntable-controller/hardware.html#arduino-uno"
+       xlink:href="#arduino-uno"
        inkscape:label="a1766"
        target="">
       <rect
