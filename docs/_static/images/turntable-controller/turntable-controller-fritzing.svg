@@ -53,50 +53,57 @@
      inkscape:label="Link Layer">
     <a
        id="a1697"
-       xlink:href="turntable-controller/hardware.html#dual-relay-board"
+       xlink:href="https://petegsx-projects.github.io/turntable-controller/hardware.html#dual-relay-board"
        inkscape:label="a1697"
-       target="">
+       target="_documentation">
       <rect
          style="fill:#000000;fill-opacity:0"
          id="rect957"
          width="147.2197"
          height="191.05476"
          x="223.31076"
-         y="213.38585" />
+         y="213.38585"
+         inkscape:label="dual-relay" />
     </a>
     <a
        id="a1726"
-       xlink:href="turntable-controller/hardware.html#uln2003-28byj-48-stepper-driver-and-motor"
-       target="">
+       xlink:href="https://petegsx-projects.github.io/turntable-controller/hardware.html#uln2003-28byj-48-stepper-driver-and-motor"
+       target="_documentation">
       <rect
          style="fill:#000000;fill-opacity:0"
          id="rect1723"
          width="181.95692"
          height="403.61353"
          x="5.7895384"
-         y="4.9624615" />
+         y="4.9624615"
+         inkscape:label="stepper" />
     </a>
     <a
        id="a1761"
-       xlink:href="turntable-controller/hardware.html#hall-effect-sensor">
+       xlink:href="https://petegsx-projects.github.io/turntable-controller/hardware.html#hall-effect-sensor"
+       target="_documentation">
       <rect
          style="fill:#000000;fill-opacity:0"
          id="rect1758"
          width="88.497231"
          height="60.376614"
          x="445.79446"
-         y="408.57599" />
+         y="408.57599"
+         inkscape:label="hall effect" />
     </a>
     <a
        id="a1766"
-       xlink:href="turntable-controller/hardware.html#arduino-uno">
+       xlink:href="https://petegsx-projects.github.io/turntable-controller/hardware.html#arduino-uno"
+       inkscape:label="a1766"
+       target="_documentation">
       <rect
          style="fill:#000000;fill-opacity:0"
          id="rect1763"
          width="256.39383"
          height="201.80676"
          x="68.647385"
-         y="515.26892" />
+         y="515.26892"
+         inkscape:label="uno" />
     </a>
   </g>
 </svg>
