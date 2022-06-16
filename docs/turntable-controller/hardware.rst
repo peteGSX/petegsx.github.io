@@ -3,6 +3,7 @@ Hardware components
 ********************
 
 .. sidebar:: Connection diagram
+  :class: hardware-sidebar
 
   .. raw:: html
     :file: ../_static/images/turntable-controller/turntable-controller-fritzing.svg

@@ -10,6 +10,12 @@
   width: 60%;
 }
 
+.hardware-sidebar {
+  overflow: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+}
+
 .hardware-fritzing {
   width: 30%;
   height: 30%;
