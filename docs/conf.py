@@ -34,7 +34,12 @@ extensions = [
     'sphinxcontrib.spelling',
     'sphinx.ext.todo',
     'sphinx_sitemap',
+    'sphinxcontrib.googleanalytics',
 ]
+
+# Enable Google analytics:
+googleanalytics_id = 'G-HBTV6STT77'
+googleanalytics_enabled = True
 
 autosectionlabel_prefix_document = True
 

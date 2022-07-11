@@ -13,6 +13,7 @@ jobs:
           pip3 install sphinx-rtd-theme==1.0.0
           pip3 install sphinx-sitemap
           pip3 install sphinxcontrib-spelling
+          pip3 install sphinxcontrib-googleanalytics
       - name: Checkout repo
         uses: actions/checkout@v3
       - name: Build docs
