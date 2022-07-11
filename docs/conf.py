@@ -15,9 +15,6 @@
 # sys.path.insert(0, os.path.abspath('.'))
 
 import sphinx_rtd_theme
-import sphinx.application
-import sphinx.errors
-sphinx.application.ExtensionError = sphinx.errors.ExtensionError
 
 # -- Project information -----------------------------------------------------
 
@@ -37,12 +34,7 @@ extensions = [
     'sphinxcontrib.spelling',
     'sphinx.ext.todo',
     'sphinx_sitemap',
-    'sphinxcontrib.googleanalytics',
 ]
-
-# Enable Google analytics:
-googleanalytics_id = 'G-HBTV6STT77'
-googleanalytics_enabled = True
 
 autosectionlabel_prefix_document = True
 
@@ -79,6 +71,8 @@ html_theme_options = {
     'titles_only': True,
     'collapse_navigation': False,
     'navigation_depth': 3,
+    'analytics_id': 'G-HBTV6STT77',
+    'analytics_anonymize_ip': False,
 }
 
 html_context = {
