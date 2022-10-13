@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HC-05/06 Bluetooth Programmer &mdash; Pete&#39;s Pages  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/peteGSX-theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Overview" href="../rokuhan-turnout-control/overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Pete's Pages
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../turntable-controller/index.html">Programmable DCC Turntable Controller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/hardware.html">Hardware components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/software.html">Software and Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/programming.html">Programming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rokuhan-turnout-control/index.html">Rokuhan DCC Turnout Controller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rokuhan-turnout-control/overview.html">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">HC-05/06 Bluetooth Programmer</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Pete's Pages</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>HC-05/06 Bluetooth Programmer</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/peteGSX-Projects/petegsx-projects.github.io/blob/sphinx/docs/bluetooth-programmer/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="hc-05-06-bluetooth-programmer">
+<h1>HC-05/06 Bluetooth Programmer<a class="headerlink" href="#hc-05-06-bluetooth-programmer" title="Permalink to this heading"></a></h1>
+<p>I’ve compiled a bunch of information generally available on the Internet including a basic Arduino sketch to facilitate programming the ubiquitous HC-05/06 Bluetooth modules.</p>
+<p>This sketch can be used with an Arduino such as an Uno or Nano to program the HC-05/06 modules via their respective “AT” commands.</p>
+<p>Note that the HC-06 module does not have a “State” or “Key” pin, and the “Key” pin connection can simply be disregarded for these modules.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>The HC-05/06 modules use 3.3V logic, so you must ensure that you use either a resistor divider or level shifter when connecting the Rx pin of the device you’re using to program it. Note the use of these in the connection diagram below.</p>
+</div>
+<a class="reference internal image-reference" href="../_images/nano-bluetooth-programmer.png"><img alt="Bluetooth Programmer" src="../_images/nano-bluetooth-programmer.png" style="width: 378.9px; height: 181.79999999999998px;" /></a>
+<section id="hc-05-vs-hc-06">
+<h2>HC-05 vs. HC-06<a class="headerlink" href="#hc-05-vs-hc-06" title="Permalink to this heading"></a></h2>
+<p>The HC-05 and HC-06 modules are visually almost identical, however the HC-05 has 6 pins and is capable of being both a master and slave Bluetooth device, whereas the HC-06 has 4 pins and can only be a slave device. The HC-05 has an extensive AT command set for programming, whereas the HC-06 is very limited, allowing changes only to the baud rate, name, and PIN.</p>
+<p>The HC-05 has a dedicated mode to send the AT commands to program it, while the HC-06 can be programmed via AT commands any time it is not paired.</p>
+</section>
+<section id="programming-the-modules">
+<h2>Programming the modules<a class="headerlink" href="#programming-the-modules" title="Permalink to this heading"></a></h2>
+<p>The Arduino IDE’s Serial Monitor can be used to program either module successfully providing it is configured correctly for the specified module in the relevant section below.</p>
+<p>The default settings for each module are likely to be:</p>
+<ul class="simple">
+<li><p>Device name: HC-05 or HC-06</p></li>
+<li><p>Pin: 0000 or 1234</p></li>
+<li><p>Baud rate: 9600</p></li>
+</ul>
+<section id="interactive-programming-sketch">
+<h3>Interactive programming sketch<a class="headerlink" href="#interactive-programming-sketch" title="Permalink to this heading"></a></h3>
+<p>The programming sketch can be found in my <a class="reference external" href="https://github.com/peteGSX-Projects/bluetooth-hc-programmer">bluetooth-hc-programmer</a> repository.</p>
+</section>
+<section id="hc-05-programming">
+<h3>HC-05 programming<a class="headerlink" href="#hc-05-programming" title="Permalink to this heading"></a></h3>
+<p>To program the HC-05 successfully, it needs to be powered on with the “Key” pin set high to enter the “AT” command mode.</p>
+<p>The programming sketch in the previous section should place the HC-05 into “AT” command mode successfully, provided it is connected correctly, and your device has the “Key” pin available.</p>
+<p>When the HC-05 is in “AT” command mode, the blue and red LEDs should blink slowly, around 2 seconds on/off. When not in this mode, the blue and red LEDs will blink rapidly.</p>
+<p>If the HC-05 does not enter the “AT” command mode, ensure the “Key” pin is connected correctly, and try holding the button while powering on in case the “Key” pin is not connected internally within the module.</p>
+<p>To send the required “AT” commands to the module, the Arduino IDE’s serial monitor must have the new line option set to “Both NL &amp; CR”, and the baud rate set to “38400”.</p>
+<p>To verify the device is ready and in “AT” command mode, enter “AT” and click “Send” (or press the &lt;Enter&gt; key), and the response “OK” should appear in the serial monitor.</p>
+<p>Providing this has been successful, enter the following commands one at a time to configure the various options, and each one should return “OK” to confirm the command was received successfully:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AT</span><span class="o">+</span><span class="n">NAME</span><span class="o">=&lt;</span><span class="n">DEVICENAME</span><span class="o">&gt;</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">PSWD</span><span class="o">=&lt;</span><span class="n">PASSWORD</span><span class="o">&gt;</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">ROLE</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">UART</span><span class="o">=</span><span class="mi">115200</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>You may set &lt;DEVICENAME&gt; to be anything you wish (up to 31 characters), and &lt;PASSWORD&gt; can be up to a 16 character alpha-numeric password. The “AT+ROLE” command sets the HC-05 to “Slave” mode, and the “AT+UART” command sets the baud rate to 115200.</p>
+<p>For example, to set the device name to “MyHC-05” and the password to “secret12345”, the entire command list to send would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AT</span><span class="o">+</span><span class="n">NAME</span><span class="o">=</span><span class="n">MyHC</span><span class="o">-</span><span class="mi">05</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">PSWD</span><span class="o">=</span><span class="n">secret12345</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">ROLE</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">UART</span><span class="o">=</span><span class="mi">115200</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>Once you have completed programming the device, it will need to be power cycled, with the “Key” pin left low in order for the settings to take affect, and to exit the “AT” command mode.</p>
+<p>You should then be able to pair to the device using the updated PIN.</p>
+</section>
+<section id="hc-06-programming">
+<h3>HC-06 programming<a class="headerlink" href="#hc-06-programming" title="Permalink to this heading"></a></h3>
+<p>Unlike the HC-05, the HC-06 module has no specific “AT” command mode, and can be programmed at any time it is not paired with another Bluetooth device. The HC-06 can only ever operate in “Slave” mode.</p>
+<p>The programming commands must also be entered within a 1 second duration. This means the only effective way to send them is by using a serial console that lets you enter the complete command string in one go, and the Arduino IDE can be used for this.</p>
+<p>To send the required “AT” commands to the module, the Arduino IDE’s serial monitor must have the new line option set to “No line ending”, and the baud rate set to “9600”.</p>
+<p>Note that these settings take effect immediately, and therefore you should send the baud rate command last, otherwise you will effectively be disconnected from the HC-06 module.</p>
+<p>To verify the device is ready and in “AT” command mode, enter “AT” and click “Send” (or press the &lt;Enter&gt; key), and the response “OK” should appear in the serial monitor.</p>
+<p>Providing this has been successful, enter the following commands one at a time to configure the various options:, and each one should return “OK” to confirm the command was received successfully. Note that unlike the HC-05, the return text is slightly different for each command as noted:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AT</span><span class="o">+</span><span class="n">NAME</span><span class="o">&lt;</span><span class="n">DEVICENAME</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">returns</span> <span class="n">OKsetname</span><span class="p">)</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">PSWD</span><span class="o">=&lt;</span><span class="n">PIN</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">returns</span> <span class="n">OKsetPIN</span><span class="p">)</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">BAUD8</span> <span class="p">(</span><span class="n">returns</span> <span class="n">OK115200</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You may set &lt;DEVICENAME&gt; to be anything you wish, whereas &lt;PIN&gt; must be a 4 digit number. The “AT+BAUD8” command sets the baud rate to 115200.</p>
+<p>For example, to set the device name to “MyHC-06” and the PIN to “5432”, the entire command list to send would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AT</span><span class="o">+</span><span class="n">NAME</span><span class="o">=</span><span class="n">MyHC</span><span class="o">-</span><span class="mi">06</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">PSWD</span><span class="o">=</span><span class="mi">5432</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">ROLE</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">UART</span><span class="o">=</span><span class="mi">115200</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>You should now be able to pair to the device using the updated PIN.</p>
+</section>
+</section>
+<section id="how-to-pair-a-hc-05-with-another-hc-05-06">
+<h2>How to pair a HC-05 with another HC-05/06<a class="headerlink" href="#how-to-pair-a-hc-05-with-another-hc-05-06" title="Permalink to this heading"></a></h2>
+<p>This outlines how to pair a HC-05 as a master device with another HC-05 in slave mode, or a HC-06.</p>
+<p>You need to configure your slave device first as per the relevant section above.</p>
+<p>Once done, validate your slave device is available with <code class="docutils literal notranslate"><span class="pre">AT+INQ</span></code> and note the address (eg. 00:02:72:0A:3C:7F). When specifying this device address in the “AT” commands below, it needs to be in “NAP,UAP,LAP” format, resulting in this example address becoming “0002,72,0A3C7F”.</p>
+<p>These are the “AT” commands you will need to execute to configure your HC-05 to automatically pair with your slave HC-05/06 device:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AT</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">MODE</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">NAME</span><span class="o">=&lt;</span><span class="n">DEVICENAME</span><span class="o">&gt;</span>          <span class="o">&lt;&lt;--</span> <span class="n">Set</span> <span class="k">as</span> <span class="n">desired</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">UART</span><span class="o">=&lt;</span><span class="n">BAUD</span><span class="o">&gt;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>            <span class="o">&lt;&lt;--</span> <span class="n">Set</span> <span class="k">as</span> <span class="n">required</span> <span class="n">by</span> <span class="n">your</span> <span class="n">throttle</span><span class="o">/</span><span class="n">controller</span><span class="s1">&#39;s serial port baud rate</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">PSWD</span><span class="o">=&lt;</span><span class="n">PASSWORD</span><span class="o">|</span><span class="n">PIN</span><span class="o">&gt;</span>        <span class="o">&lt;&lt;--</span> <span class="n">Set</span> <span class="n">to</span> <span class="n">your</span> <span class="n">slave</span> <span class="n">device</span><span class="s1">&#39;s password or PIN</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">CMODE</span><span class="o">=</span><span class="mi">1</span>                    <span class="o">&lt;&lt;--</span> <span class="n">Set</span> <span class="n">to</span> <span class="n">pair</span> <span class="k">with</span> <span class="nb">any</span> <span class="n">device</span>
+<span class="o">&lt;</span><span class="n">Something</span> <span class="n">here</span> <span class="n">to</span> <span class="n">pair</span> <span class="k">with</span> <span class="n">slave</span> <span class="n">device</span><span class="o">&gt;</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">CMODE</span><span class="o">=</span><span class="mi">0</span>                    <span class="o">&lt;&lt;--</span> <span class="n">Set</span> <span class="n">to</span> <span class="n">pair</span> <span class="k">with</span> <span class="n">the</span> <span class="n">slave</span> <span class="n">device</span> <span class="n">only</span>
+</pre></div>
+</div>
+<p>In order, these commands will:</p>
+<ol class="arabic simple">
+<li><p>Validate ready for programming</p></li>
+<li><p>Set master mode</p></li>
+<li><p>Set the device name</p></li>
+<li><p>Set the baud rate to match the throttle/controller baud rate</p></li>
+<li><p>Set the password to match the slave device’s password (HC-05) or PIN (HC-06)</p></li>
+<li><p>Set the device to pair with any Bluetooth device</p></li>
+<li><p>&lt;Pair with the slave device somehow, need to figure this bit out&gt;</p></li>
+<li><p>Set the device to pair with the slave device only</p></li>
+</ol>
+<p>An example set of commands using HC-05 devices as both the master and slave:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Slave</span> <span class="n">commands</span><span class="o">&gt;</span>
+<span class="n">AT</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">NAME</span><span class="o">=</span><span class="n">MySlaveDevice</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">PSWD</span><span class="o">=</span><span class="n">MySecret12345</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">UART</span><span class="o">=</span><span class="mi">115200</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+
+<span class="o">&lt;</span><span class="n">Master</span> <span class="n">commands</span><span class="o">&gt;</span>
+<span class="n">AT</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">MODE</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">NAME</span><span class="o">=</span><span class="n">MyMasterDevice</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">UART</span><span class="o">=</span><span class="mi">115200</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">PSWD</span><span class="o">=</span><span class="n">MySecret12345</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">CMODE</span><span class="o">=</span><span class="mi">1</span>
+<span class="o">&lt;</span><span class="n">Pairing</span> <span class="n">command</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span>
+<span class="n">AT</span><span class="o">+</span><span class="n">CMODE</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../rokuhan-turnout-control/overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Peter Cole.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HBTV6STT77"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-HBTV6STT77', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>
