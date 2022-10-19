@@ -2,6 +2,12 @@
 Overview
 *********
 
+.. note:: 
+
+  Since writing this initial software, I've changed tact for my layout and will be using a DCC-EX integrated turntable using the `EX-Turntable <https://dcc-ex.com/ex-turntable/index.html>`_ software instead.
+
+  The code for this programmable DCC turntable is still available if it's of use for anyone, but unlikely to undergo any further development.
+
 A turntable was always going to be a central feature of my layout, and I specifically wanted one that was somewhat prototypical of what was (probably) in use at the time. I'm in Brisbane, Australia, and the local railroads here are narrow gauge, and therefore I needed a relatively small (60') turntable which will have Z track on the bridge deck.
 
 Given my layout will be DCC controlled, obviously the turntable needs to be also, and I felt there was a need to have an easy way to update the various turntable positions with the turntable installed to make minor track alignment adjustments without having to connect to the programming circuit or having to plug in a serial cable, hence the desire for a turntable controller I could program "on the fly".
