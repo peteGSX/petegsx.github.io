@@ -9,5 +9,7 @@ This is the documentation repository for my various projects.
 
   turntable-controller/index
   rokuhan-turnout-control/index
+  serial-throttle/index
   bluetooth-programmer/index
+  contact
   
