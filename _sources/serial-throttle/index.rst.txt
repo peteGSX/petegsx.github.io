@@ -2,6 +2,12 @@
 Mimic panel serial throttle
 ***************************
 
+.. sidebar::
+
+  .. contents:: On this page
+      :depth: 2
+      :local:
+
 I've decided to build a mimic panel for my layout which would need to include a throttle capable of controlling multiple trains concurrently.
 
 After seeing various different throttle projects and ideas shared in the DCC-EX team's Discord server, and building one of the team's hand held WiFi/WiThrottle based controllers, I decided to go with some slide potentiometers for throttle control, a standard 4 x 3 keypad for input duties, and a 1.3" SPI OLED display for output, and that it will connect to my EX-CommandStation via serial cable as it will be fixed to the side of my layout.
@@ -27,7 +33,17 @@ For the display, I'm also using a `Duinotech brand 1.3" 128 x 64 monochrome SPI 
 
 The `4x3 kepad <https://www.jaycar.com.au/12-key-numeric-keypad/p/SP0770?pos=2&queryId=b8b9b8588af031e994c61d38f57ccc50&sort=relevance>`_ is also (surprisingly) sourced from Jaycar Electronics. I much prefer the feel of these keypads over the membrane type, however any 4 x 3 keypad should suffice.
 
-<A Fritzing diagram will go here>
+This diagram outlines the connections between the devices and Arduino Nano when using an SPI OLED.
+
+.. image:: /_static/images/serial-throttle/serial-throttle-spi-oled.png
+  :alt: Fritzing diagram
+  :scale: 30%
+
+This diagram outlines the connections between the devices and Arduino Nano when using an I2C OLED.
+
+.. image:: /_static/images/serial-throttle/serial-throttle-i2c-oled.png
+  :alt: Fritzing diagram
+  :scale: 30%
 
 Panel design
 ============
