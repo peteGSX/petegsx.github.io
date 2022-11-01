@@ -26,10 +26,14 @@ Hardware requirements
 
 This requires an AVR based Arduino (tested on a Nano), a rotary encoder (tested with a KY-040), and (optionally but recommended), an SPI connected OLED display.
 
+.. image:: /_static/images/rotary-encoder/rotary-encoder.png
+  :alt: Rotary Encoder Fritzing
+  :scale: 40%
+
 Installation and configuration
 ==============================
 
-The provided config.example.h should help identify the correct pins to connect the encoder and OLED to.
+The provided config.example.h in addition to the Fritzing diagram above should help identify the correct pins to connect the encoder and OLED to.
 
 The default I2C address for this code is 0x80, and you will need to enable the device driver via myHal.cpp.
 
