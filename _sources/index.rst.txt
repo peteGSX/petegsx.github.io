@@ -12,5 +12,6 @@ This is the documentation repository for my various projects.
   serial-throttle/index
   bluetooth-programmer/index
   manage-github-labels/index
+  rotary-encoder/index
   contact
   
