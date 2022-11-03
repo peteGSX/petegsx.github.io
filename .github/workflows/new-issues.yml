@@ -1,0 +1,91 @@
+name: Add Issue or Pull Request to Project
+
+env:
+  REPO_LABEL: ${{ secrets.PROJECT_STREAM_LABEL }}
+  PROJECT_NUMBER: 1
+  ORG: peteGSX-Projects
+
+on:
+  issues:
+    types:
+      - opened
+  pull_request:
+    types:
+      - ready_for_review
+      - opened
+      - review_requested
+
+jobs:
+  add_to_project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add labels
+        uses: andymckay/labeler@master
+        with:
+          add-labels: ${{ env.REPO_LABEL }}
+      
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@36464acb844fc53b9b8b2401da68844f6b05ebb0
+        with:
+          app_id: ${{ secrets.PROJECT_APP_ID }}
+          private_key: ${{ secrets. PROJECT_APP_KEY }}
+
+      - name: Get project data
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+        run: |
+          gh api graphql -f query='
+            query($org: String!, $number: Int!) {
+              organization(login: $org){
+                projectNext(number: $number) {
+                  id
+                  fields(first:20) {
+                    nodes {
+                      id
+                      name
+                      settings
+                    }
+                  }
+                }
+              }
+            }' -f org=$ORG -F number=$PROJECT_NUMBER > project_data.json
+
+          echo 'PROJECT_ID='$(jq '.data.organization.projectNext.id' project_data.json) >> $GITHUB_ENV
+          echo 'STATUS_FIELD_ID='$(jq '.data.organization.projectNext.fields.nodes[] | select(.name== "Status") | .id' project_data.json) >> $GITHUB_ENV
+          echo 'BACKLOG_OPTION_ID='$(jq '.data.organization.projectNext.fields.nodes[] | select(.name== "Status") |.settings | fromjson.options[] | select(.name=="Backlog") |.id' project_data.json) >> $GITHUB_ENV
+          echo 'TO_DO_OPTION_ID='$(jq '.data.organization.projectNext.fields.nodes[] | select(.name== "Status") |.settings | fromjson.options[] | select(.name=="To Do") |.id' project_data.json) >> $GITHUB_ENV
+          echo 'NEEDS_REVIEW_OPTION_ID='$(jq '.data.organization.projectNext.fields.nodes[] | select(.name== "Status") |.settings | fromjson.options[] | select(.name=="Needs Review") |.id' project_data.json) >> $GITHUB_ENV
+          echo 'IN_PROGRESS_OPTION_ID='$(jq '.data.organization.projectNext.fields.nodes[] | select(.name== "Status") |.settings | fromjson.options[] | select(.name=="In Progress") |.id' project_data.json) >> $GITHUB_ENV
+ 
+      - name: Add issue to project
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+          ITEM_ID: ${{ github.event.issue.node_id }}
+        if: github.event_name == 'issues'
+        run: |
+          project_item_id="$( gh api graphql -f query='
+            mutation($project:ID!, $item:ID!) {
+              addProjectNextItem(input: {projectId: $project, contentId: $item}) {
+                projectNextItem {
+                  id
+                }
+              }
+            }' -f project=$PROJECT_ID -f item=$ITEM_ID --jq '.data.addProjectNextItem.projectNextItem.id')"
+          echo 'PROJECT_ITEM_ID='$project_item_id >> $GITHUB_ENV
+
+      - name: Add PR to project
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+          ITEM_ID: ${{ github.event.pull_request.node_id }}
+        if: github.event_name == 'pull_request'
+        run: |
+          project_item_id="$( gh api graphql -f query='
+            mutation($project:ID!, $item:ID!) {
+              addProjectNextItem(input: {projectId: $project, contentId: $item}) {
+                projectNextItem {
+                  id
+                }
+              }
+            }' -f project=$PROJECT_ID -f item=$ITEM_ID --jq '.data.addProjectNextItem.projectNextItem.id')"
+          echo 'PROJECT_ITEM_ID='$project_item_id >> $GITHUB_ENV
