@@ -1,60 +1,6 @@
-*********************
-DCC-EX Rotary Encoder
-*********************
-
-# DCC-EX Rotary Encoder
-
-.. note:: 
-
-  This code is very much in Alpha testing, documentation is almost non-existant, and much testing is needed
-
-This software has been written to enable an Arduino with a rotary encoder connected to it to be integrated with a DCC-EX CommandStation.
-
-The primary purpose is to select a position for a turntable via EX-RAIL automation, however it could be used for other purposes.
-
-Initial rudimentary support for an SPI connected OLED is included.
-
-Software requirements
-=====================
-
-In order to use this with a DCC-EX CommandStation, it must be running the "rotary-encoder" branch which is based on the current  development branch.
-
-`EX-CommandStation rotary-encoder branch <https://github.com/DCC-EX/CommandStation-EX/tree/rotary-encoder>`_
-
-Hardware requirements
-=====================
-
-This requires an AVR based Arduino (tested on a Nano), a rotary encoder (tested with a KY-040), and (optionally but recommended), an SPI connected OLED display.
-
-.. image:: /_static/images/rotary-encoder/rotary-encoder.png
-  :alt: Rotary Encoder Fritzing
-  :scale: 40%
-
-Installation and configuration
-==============================
-
-The provided config.example.h in addition to the Fritzing diagram above should help identify the correct pins to connect the encoder and OLED to.
-
-The default I2C address for this code is 0x80, and you will need to enable the device driver via myHal.cpp.
-
-Example:
-
-.. code-block:: cpp
-  
-  #include "IO_RotaryEncoder.h"
-
-  void halSetup() {
-    RotaryEncoder::create(700, 1, 0x80);
-  }
-
-Usage
-=====
-
-Once up and running, simply rotate the encoder to the appropriate position desired, and a push of the button will send that position to the CommandStation.
-
-If there is a need to re-select the 0 or home position of the encoder, hold the button down for a second then release it, and the OLED display should indicate it can now be re-homed. Simply rotate the encoder to the desired home or 0 position, then press the button once to confirm.
-
-If using an OLED, it will display the position last selected by a button press, and will also display the position reflected by the current position.
+*******************
+EX-RAIL Integration
+*******************
 
 EX-RAIL automation
 ==================
