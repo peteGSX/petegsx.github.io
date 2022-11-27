@@ -6,7 +6,7 @@ In the generic control knob mode, an OLED displays both the last position sent t
 
 A single button press will send the current knob position to the EX-CommandStation.
 
-Valid positions are from -127 to 127 as a single byte is used to send this value over I2C.
+Valid positions are from -127 to 127, as a single byte is used to send this value over I2C.
 
 Hardware details
 ================

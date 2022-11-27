@@ -8,12 +8,12 @@ DCC-EX Rotary Encoder
 
 This software has been written to enable an Arduino with a rotary encoder connected to it to be integrated with a DCC-EX CommandStation.
 
-The primary purpose is to select a position for a turntable via EX-RAIL automation, however it could be used for other purposes.
+The primary purpose is to select a position to control EX-Turntable via EX-RAIL automation, however it could be used for other purposes.
 
-There are currently two different ways that this encoder can be used, with either option being suitable for use in a mimic panel:
+There are currently two different modes for the encoder, with either option being suitable for use in a mimic panel:
 
 1. As a generic control knob with a standard, SPI connected monochrome OLED display to select a position between -127 and 127.
-2. As a specific turntable controller utilising an SPI connected GC9A01 round colour LCD display to select predefined positions.
+2. As a turntable controller utilising an SPI connected GC9A01 round colour LCD display to select predefined positions.
 
 .. note:: 
 
@@ -30,9 +30,11 @@ There are currently two different ways that this encoder can be used, with eithe
 Software requirements
 =====================
 
-In order to use this with a DCC-EX CommandStation, it must be running the "rotary-encoder" branch of EX-CommandStation which is based on the current development branch:
+In order to use this with a DCC-EX CommandStation, the CommandStation must be running the "rotary-encoder" branch of EX-CommandStation which is based on the current development branch:
 
 `EX-CommandStation rotary-encoder branch <https://github.com/DCC-EX/CommandStation-EX/tree/rotary-encoder>`_
+
+Refer to :doc:`/rotary-encoder/ex-rail-integration` and the `DCC-EX documentation <https://dcc-ex.com/ex-turntable/test-and-tune.html#controlling-ex-turntable-with-a-rotary-encoder>`_ for further information on how this interacts with an EX-CommandStation.
 
 Hardware requirements
 =====================
@@ -41,14 +43,14 @@ This requires an AVR based Arduino (tested on a Nano), a rotary encoder (tested 
 
 See the relevant :doc:`/rotary-encoder/control-knob` or :doc:`/rotary-encoder/turntable-controller` page for hardware and connection details.
 
-Obviously, a suitable DCC-EX EX-CommandStation must be available, with the rotary encoder Arduino connected to it via I2C.
+Also, a suitable DCC-EX EX-CommandStation must be available, with the rotary encoder Arduino connected to it via I2C.
 
 Refer to the `DCC-EX documentation <https://dcc-ex.com>`_ for further information on EX-CommandStation.
 
 Installation and configuration
 ==============================
 
-The provided config.example.h in addition to the Fritzing diagrams included on the relevant pages should help identify the correct pins to connect the encoder and display to.
+The provided "config.example.h" file in addition to the Fritzing diagrams included on the relevant pages should help identify the correct pins to connect the encoder and display to.
 
 Refer to the relevant pages for the various configuration options available.
 
@@ -64,6 +66,8 @@ Example:
     RotaryEncoder::create(700, 1, 0x80);
   }
 
+Refer to :doc:`/rotary-encoder/ex-rail-integration` and the `DCC-EX documentation <https://dcc-ex.com/ex-turntable/test-and-tune.html#controlling-ex-turntable-with-a-rotary-encoder>`_ for further information on how this interacts with an EX-CommandStation.
+
 Usage
 =====
 
@@ -71,6 +75,6 @@ Once the software has been configured and uploaded to the rotary encoder Arduino
 
 In the generic control knob mode, it will send a position between -127 and 127. The OLED will display the last selected position in addition to the position reflected by the current knob position.
 
-In turntable controller mode, the knob rotates a representative turntable on the GC9A01 round LCD, and will send the predefined position number when pushing the encoder button. Pushing the button with the representative turntable in any other position will not update the EX-CommandStation. 
+In turntable controller mode, the knob rotates a representative turntable on the GC9A01 round LCD, and will send the predefined position number when the representative turntable is aligned with a position, and the encoder button is pushed. 
 
 As per the introductory note at the top of this page, functionality has been retained to rotate the knob back to a "home" position. This is accomplished by holding the button down for a second then releasing it, resulting in the OLED display indicating it can now be re-homed. Simply rotate the encoder to the desired home or 0 position, then press the button once to confirm. Normal functionality will then resume. While this functionality still operates in turntable controller mode, there is no visual indication on the GC9A01 round LCD.
