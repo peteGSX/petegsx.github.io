@@ -1,5 +1,5 @@
 Welcome to Pete's Pages!
-========================================
+========================
 
 This is the documentation repository for my various projects.
 
@@ -7,11 +7,11 @@ This is the documentation repository for my various projects.
   :hidden:
   :maxdepth: 4
 
+  rotary-encoder/overview
   turntable-controller/index
   rokuhan-turnout-control/index
   serial-throttle/index
   bluetooth-programmer/index
   manage-github-labels/index
-  rotary-encoder/index
   contact
   
