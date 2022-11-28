@@ -1,12 +1,12 @@
-********************
-Generic Control Knob
-********************
+*****************
+Control Knob Mode
+*****************
 
-In the generic control knob mode, an OLED displays both the last position sent to the EX-CommandStation in addition to the currently selected knob position.
+In the control knob mode, an OLED displays both the last position sent to the EX-CommandStation in addition to the currently selected rotary encoder position.
 
-A single button press will send the current knob position to the EX-CommandStation.
+A single button press will send the current rotary encoder position to the EX-CommandStation.
 
-Valid positions are from -127 to 127, as a single byte is used to send this value over I2C.
+Valid positions are from -127 to 127, as a single byte is used to send this value over I2C, with rotation in a clockwise direction incrementing from 0 to 127, and counter-clockwise decrementing to -127. The direction can be reversed via configuration option.
 
 Hardware details
 ================
@@ -20,12 +20,40 @@ A suitable rotary encoder (tested on KY-040) and SPI OLED connected to a suitabl
 Configuration options
 =====================
 
+Various configuration options can be edit in the file "config.h". By default, this file does not exist, and an example file "config.example.h" with the various options has been provided. It is recommended to copy the example file to your own "config.h", as the example file will be overwritten by any future changes to the software.
+
 General options
 ---------------
 
-I2C Address - default 0x80
-Mode - default TURNTABLE_MODE
-Diagnostics - default commented out
+.. list-table:: 
+  :widths: auto
+  :header-rows: 1
+
+  * - Option
+    - Default
+    - Details
+  * - I2C_ADDRESS
+    - 0x80
+    - Can be any valid and available I2C address
+  * - MODE
+    - TURNTABLE
+    - Select either KNOB or TURNTABLE, defines the operating mode
+  * - DIAG
+    - Commented out
+    - Uncomment for continuous output of encoder position to the serial console
+
+.. code-block:: cpp
+
+  /////////////////////////////////////////////////////////////////////////////////////
+  //  START: General configuration options.
+  /////////////////////////////////////////////////////////////////////////////////////
+  #define I2C_ADDRESS 0x80  // Default 0x80, can be any valid, available I2C address
+  #define MODE TURNTABLE    // Default TURNTABLE
+  // #define MODE KNOB
+  // #define DIAG           // Uncomment to enable continous output of encoder position
+  /////////////////////////////////////////////////////////////////////////////////////
+  //  END: General configuration options.
+  /////////////////////////////////////////////////////////////////////////////////////
 
 Rotary encoder options
 ----------------------
