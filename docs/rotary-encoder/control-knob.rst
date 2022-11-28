@@ -2,6 +2,12 @@
 Control Knob Mode
 *****************
 
+.. sidebar::
+
+  .. contents:: On this page
+    :depth: 2
+    :local:
+
 In the control knob mode, an OLED displays both the last position sent to the EX-CommandStation in addition to the currently selected rotary encoder position.
 
 A single button press will send the current rotary encoder position to the EX-CommandStation.
@@ -20,10 +26,14 @@ A suitable rotary encoder (tested on KY-040) and SPI OLED connected to a suitabl
 Configuration options
 =====================
 
-Various configuration options can be edit in the file "config.h". By default, this file does not exist, and an example file "config.example.h" with the various options has been provided. It is recommended to copy the example file to your own "config.h", as the example file will be overwritten by any future changes to the software.
+Various configuration options can be edited in the file "config.h". By default, this file does not exist, and an example file "config.example.h" with the various options has been provided. It is recommended to copy the example file to your own "config.h", as the example file will be overwritten by any future changes to the software.
 
-General options
----------------
+For general configuration options, refer to :ref:`rotary-encoder/overview:general configuration options`.
+
+Knob mode configuration options
+-------------------------------
+
+The only configuration options required in control knob mode are for the OLED connections.
 
 .. list-table:: 
   :widths: auto
@@ -31,36 +41,21 @@ General options
 
   * - Option
     - Default
-    - Details
-  * - I2C_ADDRESS
-    - 0x80
-    - Can be any valid and available I2C address
-  * - MODE
-    - TURNTABLE
-    - Select either KNOB or TURNTABLE, defines the operating mode
-  * - DIAG
-    - Commented out
-    - Uncomment for continuous output of encoder position to the serial console
+    - Details and options
+  * - OLED_CS
+    - 7
+    - OLED CS/chip select pin
+  * - OLED_DC
+    - 9
+    - OLED DC pin
 
 .. code-block:: cpp
 
   /////////////////////////////////////////////////////////////////////////////////////
-  //  START: General configuration options.
+  //  START: KNOB mode configuration options.
   /////////////////////////////////////////////////////////////////////////////////////
-  #define I2C_ADDRESS 0x80  // Default 0x80, can be any valid, available I2C address
-  #define MODE TURNTABLE    // Default TURNTABLE
-  // #define MODE KNOB
-  // #define DIAG           // Uncomment to enable continous output of encoder position
+  #define OLED_CS  7        // Define OLED CS/chip select pin
+  #define OLED_DC  9        // Define OLED DC pin
   /////////////////////////////////////////////////////////////////////////////////////
-  //  END: General configuration options.
+  //  END: KNOB mode configuration options.
   /////////////////////////////////////////////////////////////////////////////////////
-
-Rotary encoder options
-----------------------
-
-HALF_STEP
-
-
-Display options
----------------
-

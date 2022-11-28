@@ -6,6 +6,12 @@ DCC-EX Rotary Encoder
 
   This code is very much in Alpha testing, functionality may change at any time, and much testing is needed. For bugs or feedback, refer to :doc:`/contact`.
 
+.. sidebar::
+
+  .. contents:: On this page
+    :depth: 2
+    :local:
+
 This software has been written to enable an Arduino with a rotary encoder connected to it to be integrated with a DCC-EX CommandStation.
 
 The primary purpose is to select a position to control EX-Turntable via EX-RAIL automation, however it could be used for other purposes.
@@ -34,7 +40,11 @@ In order to use this with a DCC-EX CommandStation, the CommandStation must be ru
 
 `EX-CommandStation rotary-encoder branch <https://github.com/DCC-EX/CommandStation-EX/tree/rotary-encoder>`_
 
-Refer to :doc:`/rotary-encoder/ex-rail-integration` and the `DCC-EX documentation <https://dcc-ex.com/ex-turntable/test-and-tune.html#controlling-ex-turntable-with-a-rotary-encoder>`_ for further information on how this interacts with an EX-CommandStation.
+Refer to :doc:`/rotary-encoder/ex-rail-integration` and the `DCC-EX EX-Turntable documentation <https://dcc-ex.com/ex-turntable/test-and-tune.html#controlling-ex-turntable-with-a-rotary-encoder>`_ for further information on how this interacts with an EX-CommandStation.
+
+.. note:: 
+
+  For convenience, all required libraries have been included in the repository with the software to ensure there are no issues with different versions etc.
 
 Hardware requirements
 =====================
@@ -52,21 +62,114 @@ Installation and configuration
 
 The provided "config.example.h" file in addition to the Fritzing diagrams included on the relevant pages should help identify the correct pins to connect the encoder and display to.
 
-Refer to the relevant pages for the various configuration options available.
+Various configuration options can be edited in the file "config.h". By default, this file does not exist, and an example file "config.example.h" with the various options has been provided. It is recommended to copy the example file to your own "config.h", as the example file will be overwritten by any future changes to the software.
 
-The default I2C address for this device is 0x80, and you will need to enable the device driver via myHal.cpp.
+General configuration options
+-----------------------------
 
-Example:
+.. list-table:: 
+  :widths: auto
+  :header-rows: 1
+
+  * - Option
+    - Default
+    - Details and options
+  * - I2C_ADDRESS
+    - 0x80
+    - Can be any valid and available I2C address
+  * - MODE
+    - TURNTABLE
+    - Select either KNOB or TURNTABLE, defines the operating mode
+  * - DIAG
+    - Commented out/disabled
+    - Uncomment for continuous output of encoder position to the serial console
 
 .. code-block:: cpp
-  
-  #include "IO_RotaryEncoder.h"
 
-  void halSetup() {
-    RotaryEncoder::create(700, 1, 0x80);
-  }
+  /////////////////////////////////////////////////////////////////////////////////////
+  //  START: General configuration options.
+  /////////////////////////////////////////////////////////////////////////////////////
+  #define I2C_ADDRESS 0x80  // Default 0x80, can be any valid, available I2C address
+  #define MODE TURNTABLE    // Default TURNTABLE
+  // #define MODE KNOB
+  // #define DIAG           // Uncomment to enable continous output of encoder position
+  /////////////////////////////////////////////////////////////////////////////////////
+  //  END: General configuration options.
+  /////////////////////////////////////////////////////////////////////////////////////
 
-Refer to :doc:`/rotary-encoder/ex-rail-integration` and the `DCC-EX documentation <https://dcc-ex.com/ex-turntable/test-and-tune.html#controlling-ex-turntable-with-a-rotary-encoder>`_ for further information on how this interacts with an EX-CommandStation.
+Rotary encoder options
+----------------------
+
+.. list-table:: 
+  :widths: auto
+  :header-rows: 1
+
+  * - Option
+    - Default
+    - Details and options
+  * - HALF_STEP
+    - Uncommented/enabled
+    - Comment out this line to enter into full step mode
+  * - POLARITY
+    - 0
+    - Set to 0 for clockwise to increment, counter-clockwise to decrement, set to 1 to reverse direction
+  * - DEBOUNCE
+    - 50
+    - Debounce delay in milliseconds, increase or decrease as necessary to reduce false button presses
+  * - LONG_PRESS
+    - 1000
+    - Time in milliseconds to detect a long press of the button
+  * - ENABLE_PULLUPS
+    - Uncommented/enabled
+    - Comment out if your encoder button does not require pullups enabled
+  * - ROTARY_BTN
+    - 2
+    - Pin the encoder button connects to
+  * - ROTARY_DT
+    - 5
+    - Pin the encoder DT pin connects to
+  * - ROTARY_CLK
+    - 6
+    - Pin the encoder clock/CLK pin connects to
+  * - DIR_NONE
+    - 0x0
+    - Hex value returned by the rotary encoder process command when no change detected
+  * - DIR_CW
+    - 0x10
+    - Hex value returned by the rotary encoder process command when a clockwise change is detected
+  * - DIR_CCW
+    - 0x20
+    - Hex value returned by the rotary encoder process command when a counter-clockwise change is detected
+
+.. code-block:: cpp
+
+  /////////////////////////////////////////////////////////////////////////////////////
+  //  START: Rotary encoder configuration options.
+  /////////////////////////////////////////////////////////////////////////////////////
+  #define HALF_STEP         // Comment out to use full step mode
+  #define POLARITY 0        // Set to 1 to reverse rotation direction
+  #define DEBOUNCE 50       // Adjust if necessary to prevent false button presses
+  #define LONG_PRESS 1000   // Adjust if necessary for long press detection
+  #define ENABLE_PULLUPS    // Comment out if input does not require pull up
+  #define ROTARY_BTN 2      // Define encoder button pin
+  #define ROTARY_DT 5       // Define encoder DT pin
+  #define ROTARY_CLK 6      // Define encoder clock pin
+
+  // Values returned by 'process', these should not need modification.
+  // No complete step yet.
+  #define DIR_NONE 0x0
+  // Clockwise step.
+  #define DIR_CW 0x10
+  // Anti-clockwise step.
+  #define DIR_CCW 0x20
+  /////////////////////////////////////////////////////////////////////////////////////
+  //  END: Rotary encoder configuration options.
+  /////////////////////////////////////////////////////////////////////////////////////
+
+Display options
+---------------
+
+For the OLED configuration options avaiable in control knob mode, refer to :ref:`rotary-encoder/control-knob:knob mode configuration options`, and for the GC9A01 round LCD configuration options available in turntable mode, refer to :ref:`rotary-encoder/turntable-controller:turntable mode configuration options`.
 
 Usage
 =====
