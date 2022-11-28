@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DCC-EX Rotary Encoder &mdash; Pete&#39;s Pages  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/peteGSX-theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Control Knob Mode" href="control-knob.html" />
+    <link rel="prev" title="Welcome to Pete’s Pages!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Pete's Pages
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DCC-EX Rotary Encoder</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="control-knob.html">Control Knob Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="turntable-controller.html">Turntable Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ex-rail-integration.html">Device Driver and EX-RAIL Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../turntable-controller/index.html">Programmable DCC Turntable Controller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/hardware.html">Hardware components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/software.html">Software and Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/programming.html">Programming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rokuhan-turnout-control/index.html">Rokuhan DCC Turnout Controller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rokuhan-turnout-control/overview.html">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../serial-throttle/index.html">Mimic panel serial throttle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bluetooth-programmer/index.html">HC-05/06 Bluetooth Programmer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manage-github-labels/index.html">Managing GitHub labels with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">How to contact me</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Pete's Pages</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>DCC-EX Rotary Encoder</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/peteGSX-Projects/petegsx-projects.github.io/blob/sphinx/docs/rotary-encoder/overview.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dcc-ex-rotary-encoder">
+<h1>DCC-EX Rotary Encoder<a class="headerlink" href="#dcc-ex-rotary-encoder" title="Permalink to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This code is very much in Alpha testing, functionality may change at any time, and much testing is needed. For bugs or feedback, refer to <a class="reference internal" href="../contact.html"><span class="doc">How to contact me</span></a>.</p>
+</div>
+<aside class="sidebar">
+<div class="contents local topic" id="on-this-page">
+<p class="topic-title">On this page</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#software-requirements" id="id1">Software requirements</a></p></li>
+<li><p><a class="reference internal" href="#hardware-requirements" id="id2">Hardware requirements</a></p></li>
+<li><p><a class="reference internal" href="#installation-and-configuration" id="id3">Installation and configuration</a></p>
+<ul>
+<li><p><a class="reference internal" href="#general-configuration-options" id="id4">General configuration options</a></p></li>
+<li><p><a class="reference internal" href="#rotary-encoder-options" id="id5">Rotary encoder options</a></p></li>
+<li><p><a class="reference internal" href="#display-options" id="id6">Display options</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#usage" id="id7">Usage</a></p></li>
+</ul>
+</div>
+</aside>
+<p>This software has been written to enable an Arduino with a rotary encoder connected to it to be integrated with a DCC-EX CommandStation.</p>
+<p>The primary purpose is to select a position to control EX-Turntable via EX-RAIL automation, however it could be used for other purposes.</p>
+<p>There are currently two different modes for the encoder, with either option being suitable for use in a mimic panel:</p>
+<ol class="arabic simple">
+<li><p>As a generic control knob with a standard, SPI connected monochrome OLED display to select a position between -127 and 127.</p></li>
+<li><p>As a turntable controller utilising an SPI connected GC9A01 round colour LCD display to select predefined positions.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>One other option tested was to use the rotary encoder with a pointer type knob (without a display) to select positions printed directly on a mimic panel. However, rotating the knob to specific positions has proven unreliable and this idea has been abandoned. It’s possible that it relates to the quality of rotary encoder used or the way the software has been written, so if anyone else is interested in testing/implementing this feature then you are more than welcome to do so, and if you wish, you can <a class="reference external" href="contact">get in contact with me</a>. I have left the code intact that allows re-aligning the encoder with a specific “home” position (see <a class="reference internal" href="#usage"><span class="std std-ref">Usage</span></a> below).</p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<section id="software-requirements">
+<h2><a class="toc-backref" href="#id1">Software requirements</a><a class="headerlink" href="#software-requirements" title="Permalink to this heading"></a></h2>
+<p>In order to use this with a DCC-EX CommandStation, the CommandStation must be running the “rotary-encoder” branch of EX-CommandStation which is based on the current development branch:</p>
+<p><a class="reference external" href="https://github.com/DCC-EX/CommandStation-EX/tree/rotary-encoder">EX-CommandStation rotary-encoder branch</a></p>
+<p>Refer to <a class="reference internal" href="ex-rail-integration.html"><span class="doc">Device Driver and EX-RAIL Integration</span></a> and the <a class="reference external" href="https://dcc-ex.com/ex-turntable/test-and-tune.html#controlling-ex-turntable-with-a-rotary-encoder">DCC-EX EX-Turntable documentation</a> for further information on how this interacts with an EX-CommandStation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For convenience, all required libraries have been included in the repository with the software to ensure there are no issues with different versions etc.</p>
+</div>
+</section>
+<section id="hardware-requirements">
+<h2><a class="toc-backref" href="#id2">Hardware requirements</a><a class="headerlink" href="#hardware-requirements" title="Permalink to this heading"></a></h2>
+<p>This requires an AVR based Arduino (tested on a Nano), a rotary encoder (tested with a KY-040), and an SPI connected OLED or GC9A01 round LCD display.</p>
+<p>See the relevant <a class="reference internal" href="control-knob.html"><span class="doc">Control Knob Mode</span></a> or <a class="reference internal" href="turntable-controller.html"><span class="doc">Turntable Controller</span></a> page for hardware and connection details.</p>
+<p>Also, a suitable DCC-EX EX-CommandStation must be available, with the rotary encoder Arduino connected to it via I2C.</p>
+<p>Refer to the <a class="reference external" href="https://dcc-ex.com">DCC-EX documentation</a> for further information on EX-CommandStation.</p>
+</section>
+<section id="installation-and-configuration">
+<h2><a class="toc-backref" href="#id3">Installation and configuration</a><a class="headerlink" href="#installation-and-configuration" title="Permalink to this heading"></a></h2>
+<p>The provided “config.example.h” file in addition to the Fritzing diagrams included on the relevant pages should help identify the correct pins to connect the encoder and display to.</p>
+<p>Various configuration options can be edited in the file “config.h”. By default, this file does not exist, and an example file “config.example.h” with the various options has been provided. It is recommended to copy the example file to your own “config.h”, as the example file will be overwritten by any future changes to the software.</p>
+<section id="general-configuration-options">
+<h3><a class="toc-backref" href="#id4">General configuration options</a><a class="headerlink" href="#general-configuration-options" title="Permalink to this heading"></a></h3>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Details and options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>I2C_ADDRESS</p></td>
+<td><p>0x80</p></td>
+<td><p>Can be any valid and available I2C address</p></td>
+</tr>
+<tr class="row-odd"><td><p>MODE</p></td>
+<td><p>TURNTABLE</p></td>
+<td><p>Select either KNOB or TURNTABLE, defines the operating mode</p></td>
+</tr>
+<tr class="row-even"><td><p>DIAG</p></td>
+<td><p>Commented out/disabled</p></td>
+<td><p>Uncomment for continuous output of encoder position to the serial console</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//  START: General configuration options.</span>
+<span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="cp">#define I2C_ADDRESS 0x80  </span><span class="c1">// Default 0x80, can be any valid, available I2C address</span>
+<span class="cp">#define MODE TURNTABLE    </span><span class="c1">// Default TURNTABLE</span>
+<span class="c1">// #define MODE KNOB</span>
+<span class="c1">// #define DIAG           // Uncomment to enable continous output of encoder position</span>
+<span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//  END: General configuration options.</span>
+<span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>
+</pre></div>
+</div>
+</section>
+<section id="rotary-encoder-options">
+<h3><a class="toc-backref" href="#id5">Rotary encoder options</a><a class="headerlink" href="#rotary-encoder-options" title="Permalink to this heading"></a></h3>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Details and options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HALF_STEP</p></td>
+<td><p>Uncommented/enabled</p></td>
+<td><p>Comment out this line to enter into full step mode</p></td>
+</tr>
+<tr class="row-odd"><td><p>POLARITY</p></td>
+<td><p>0</p></td>
+<td><p>Set to 0 for clockwise to increment, counter-clockwise to decrement, set to 1 to reverse direction</p></td>
+</tr>
+<tr class="row-even"><td><p>DEBOUNCE</p></td>
+<td><p>50</p></td>
+<td><p>Debounce delay in milliseconds, increase or decrease as necessary to reduce false button presses</p></td>
+</tr>
+<tr class="row-odd"><td><p>LONG_PRESS</p></td>
+<td><p>1000</p></td>
+<td><p>Time in milliseconds to detect a long press of the button</p></td>
+</tr>
+<tr class="row-even"><td><p>ENABLE_PULLUPS</p></td>
+<td><p>Uncommented/enabled</p></td>
+<td><p>Comment out if your encoder button does not require pullups enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p>ROTARY_BTN</p></td>
+<td><p>2</p></td>
+<td><p>Pin the encoder button connects to</p></td>
+</tr>
+<tr class="row-even"><td><p>ROTARY_DT</p></td>
+<td><p>5</p></td>
+<td><p>Pin the encoder DT pin connects to</p></td>
+</tr>
+<tr class="row-odd"><td><p>ROTARY_CLK</p></td>
+<td><p>6</p></td>
+<td><p>Pin the encoder clock/CLK pin connects to</p></td>
+</tr>
+<tr class="row-even"><td><p>DIR_NONE</p></td>
+<td><p>0x0</p></td>
+<td><p>Hex value returned by the rotary encoder process command when no change detected</p></td>
+</tr>
+<tr class="row-odd"><td><p>DIR_CW</p></td>
+<td><p>0x10</p></td>
+<td><p>Hex value returned by the rotary encoder process command when a clockwise change is detected</p></td>
+</tr>
+<tr class="row-even"><td><p>DIR_CCW</p></td>
+<td><p>0x20</p></td>
+<td><p>Hex value returned by the rotary encoder process command when a counter-clockwise change is detected</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//  START: Rotary encoder configuration options.</span>
+<span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="cp">#define HALF_STEP         </span><span class="c1">// Comment out to use full step mode</span>
+<span class="cp">#define POLARITY 0        </span><span class="c1">// Set to 1 to reverse rotation direction</span>
+<span class="cp">#define DEBOUNCE 50       </span><span class="c1">// Adjust if necessary to prevent false button presses</span>
+<span class="cp">#define LONG_PRESS 1000   </span><span class="c1">// Adjust if necessary for long press detection</span>
+<span class="cp">#define ENABLE_PULLUPS    </span><span class="c1">// Comment out if input does not require pull up</span>
+<span class="cp">#define ROTARY_BTN 2      </span><span class="c1">// Define encoder button pin</span>
+<span class="cp">#define ROTARY_DT 5       </span><span class="c1">// Define encoder DT pin</span>
+<span class="cp">#define ROTARY_CLK 6      </span><span class="c1">// Define encoder clock pin</span>
+
+<span class="c1">// Values returned by &#39;process&#39;, these should not need modification.</span>
+<span class="c1">// No complete step yet.</span>
+<span class="cp">#define DIR_NONE 0x0</span>
+<span class="c1">// Clockwise step.</span>
+<span class="cp">#define DIR_CW 0x10</span>
+<span class="c1">// Anti-clockwise step.</span>
+<span class="cp">#define DIR_CCW 0x20</span>
+<span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//  END: Rotary encoder configuration options.</span>
+<span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>
+</pre></div>
+</div>
+</section>
+<section id="display-options">
+<h3><a class="toc-backref" href="#id6">Display options</a><a class="headerlink" href="#display-options" title="Permalink to this heading"></a></h3>
+<p>For the OLED configuration options avaiable in control knob mode, refer to <a class="reference internal" href="control-knob.html#knob-mode-configuration-options"><span class="std std-ref">Knob mode configuration options</span></a>, and for the GC9A01 round LCD configuration options available in turntable mode, refer to <a class="reference internal" href="turntable-controller.html#turntable-mode-configuration-options"><span class="std std-ref">Turntable mode configuration options</span></a>.</p>
+</section>
+</section>
+<section id="usage">
+<h2><a class="toc-backref" href="#id7">Usage</a><a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
+<p>Once the software has been configured and uploaded to the rotary encoder Arduino, and your EX-CommandStation has been configured to support it with the updated software uploaded, you can simply rotate the encoder to the appropriate position desired, and a push of the button will send that position to the EX-CommandStation.</p>
+<p>In the generic control knob mode, it will send a position between -127 and 127. The OLED will display the last selected position in addition to the position reflected by the current knob position.</p>
+<p>In turntable controller mode, the knob rotates a representative turntable on the GC9A01 round LCD, and will send the predefined position number when the representative turntable is aligned with a position, and the encoder button is pushed.</p>
+<p>As per the introductory note at the top of this page, functionality has been retained to rotate the knob back to a “home” position. This is accomplished by holding the button down for a second then releasing it, resulting in the OLED display indicating it can now be re-homed. Simply rotate the encoder to the desired home or 0 position, then press the button once to confirm. Normal functionality will then resume. While this functionality still operates in turntable controller mode, there is no visual indication on the GC9A01 round LCD.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Pete’s Pages!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="control-knob.html" class="btn btn-neutral float-right" title="Control Knob Mode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Peter Cole.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HBTV6STT77"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-HBTV6STT77', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>
