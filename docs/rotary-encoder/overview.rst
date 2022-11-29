@@ -21,6 +21,8 @@ There are currently two different modes for the encoder, with either option bein
 1. As a generic control knob with a standard, SPI connected monochrome OLED display to select a position between -127 and 127.
 2. As a turntable controller utilising an SPI connected GC9A01 round colour LCD display to select predefined positions.
 
+Further to this, the EX-CommandStation device driver has the capability of sending feedback to the Arduino when a turntable move has been completed. See :ref:`rotary-encoder/ex-rail-integration:receiving feedback from the ex-commandstation` for details.
+
 .. note:: 
 
   One other option tested was to use the rotary encoder with a pointer type knob (without a display) to select positions printed directly on a mimic panel. However, rotating the knob to specific positions has proven unreliable and this idea has been abandoned. It's possible that it relates to the quality of rotary encoder used or the way the software has been written, so if anyone else is interested in testing/implementing this feature then you are more than welcome to do so, and if you wish, you can `get in contact with me <contact>`_. I have left the code intact that allows re-aligning the encoder with a specific "home" position (see :ref:`rotary-encoder/overview:usage` below).
@@ -83,6 +85,9 @@ General configuration options
   * - DIAG
     - Commented out/disabled
     - Uncomment for continuous output of encoder position to the serial console
+  * - FEEDBACK
+    - Uncommented/enabled
+    - Comment out to disable receiving feedback from the EX-CommandStation device driver
 
 .. code-block:: cpp
 
@@ -93,6 +98,7 @@ General configuration options
   #define MODE TURNTABLE    // Default TURNTABLE
   // #define MODE KNOB
   // #define DIAG           // Uncomment to enable continous output of encoder position
+  #define FEEDBACK          // Comment out to disable feedback from CommandStation
   /////////////////////////////////////////////////////////////////////////////////////
   //  END: General configuration options.
   /////////////////////////////////////////////////////////////////////////////////////
