@@ -16,6 +16,13 @@ When the representative turntable's home end aligns with either the home positio
 
 When aligned in this manner, a single button press will send the predefined position's ID to the EX-CommandStation.
 
+Clicking on the image below will take you to a short video of this mode in action.
+
+.. image:: /_static/images/rotary-encoder/turntable-controller.jpg
+  :alt: Rotary Encoder - Turntable Mode
+  :scale: 30%
+  :target: https://youtu.be/ZWiGnvN81XI
+
 Hardware details
 ================
 
