@@ -98,16 +98,16 @@
 <div class="contents local topic" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#software-requirements" id="id1">Software requirements</a></p></li>
-<li><p><a class="reference internal" href="#hardware-requirements" id="id2">Hardware requirements</a></p></li>
-<li><p><a class="reference internal" href="#installation-and-configuration" id="id3">Installation and configuration</a></p>
+<li><p><a class="reference internal" href="#software-requirements" id="id2">Software requirements</a></p></li>
+<li><p><a class="reference internal" href="#hardware-requirements" id="id3">Hardware requirements</a></p></li>
+<li><p><a class="reference internal" href="#installation-and-configuration" id="id4">Installation and configuration</a></p>
 <ul>
-<li><p><a class="reference internal" href="#general-configuration-options" id="id4">General configuration options</a></p></li>
-<li><p><a class="reference internal" href="#rotary-encoder-options" id="id5">Rotary encoder options</a></p></li>
-<li><p><a class="reference internal" href="#display-options" id="id6">Display options</a></p></li>
+<li><p><a class="reference internal" href="#general-configuration-options" id="id5">General configuration options</a></p></li>
+<li><p><a class="reference internal" href="#rotary-encoder-options" id="id6">Rotary encoder options</a></p></li>
+<li><p><a class="reference internal" href="#display-options" id="id7">Display options</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#usage" id="id7">Usage</a></p></li>
+<li><p><a class="reference internal" href="#usage" id="id8">Usage</a></p></li>
 </ul>
 </div>
 </aside>
@@ -118,6 +118,7 @@
 <li><p>As a generic control knob with a standard, SPI connected monochrome OLED display to select a position between -127 and 127.</p></li>
 <li><p>As a turntable controller utilising an SPI connected GC9A01 round colour LCD display to select predefined positions.</p></li>
 </ol>
+<p>Further to this, the EX-CommandStation device driver has the capability of sending feedback to the Arduino when a turntable move has been completed. See <a class="reference internal" href="ex-rail-integration.html#receiving-feedback-from-the-ex-commandstation"><span class="std std-ref">Receiving feedback from the EX-CommandStation</span></a> for details.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>One other option tested was to use the rotary encoder with a pointer type knob (without a display) to select positions printed directly on a mimic panel. However, rotating the knob to specific positions has proven unreliable and this idea has been abandoned. It’s possible that it relates to the quality of rotary encoder used or the way the software has been written, so if anyone else is interested in testing/implementing this feature then you are more than welcome to do so, and if you wish, you can <a class="reference external" href="contact">get in contact with me</a>. I have left the code intact that allows re-aligning the encoder with a specific “home” position (see <a class="reference internal" href="#usage"><span class="std std-ref">Usage</span></a> below).</p>
@@ -125,9 +126,10 @@
 <div class="toctree-wrapper compound">
 </div>
 <section id="software-requirements">
-<h2><a class="toc-backref" href="#id1">Software requirements</a><a class="headerlink" href="#software-requirements" title="Permalink to this heading"></a></h2>
-<p>In order to use this with a DCC-EX CommandStation, the CommandStation must be running the “rotary-encoder” branch of EX-CommandStation which is based on the current development branch:</p>
-<p><a class="reference external" href="https://github.com/DCC-EX/CommandStation-EX/tree/rotary-encoder">EX-CommandStation rotary-encoder branch</a></p>
+<h2><a class="toc-backref" href="#id2">Software requirements</a><a class="headerlink" href="#software-requirements" title="Permalink to this heading"></a></h2>
+<p>To utilise the rotary encoder, you must be running the latest unreleased Development version of EX-CommandStation.</p>
+<p>Refer to <a class="reference external" href="https://dcc-ex.com/download/ex-commandstation.html#latest-ex-commandstation-unreleased-development-version">Latest EX-CommandStation Unreleased Development Version</a> in the official DCC-EX documentation on how to obtain this.</p>
+<p>The latest version of the rotary encoder software is available in my <a class="reference external" href="https://github.com/peteGSX-Projects/dcc-ex-rotary-encoder">DCC-EX Rotary Encoder</a> repository.</p>
 <p>Refer to <a class="reference internal" href="ex-rail-integration.html"><span class="doc">Device Driver and EX-RAIL Integration</span></a> and the <a class="reference external" href="https://dcc-ex.com/ex-turntable/test-and-tune.html#controlling-ex-turntable-with-a-rotary-encoder">DCC-EX EX-Turntable documentation</a> for further information on how this interacts with an EX-CommandStation.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -135,18 +137,18 @@
 </div>
 </section>
 <section id="hardware-requirements">
-<h2><a class="toc-backref" href="#id2">Hardware requirements</a><a class="headerlink" href="#hardware-requirements" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id3">Hardware requirements</a><a class="headerlink" href="#hardware-requirements" title="Permalink to this heading"></a></h2>
 <p>This requires an AVR based Arduino (tested on a Nano), a rotary encoder (tested with a KY-040), and an SPI connected OLED or GC9A01 round LCD display.</p>
 <p>See the relevant <a class="reference internal" href="control-knob.html"><span class="doc">Control Knob Mode</span></a> or <a class="reference internal" href="turntable-controller.html"><span class="doc">Turntable Controller</span></a> page for hardware and connection details.</p>
 <p>Also, a suitable DCC-EX EX-CommandStation must be available, with the rotary encoder Arduino connected to it via I2C.</p>
 <p>Refer to the <a class="reference external" href="https://dcc-ex.com">DCC-EX documentation</a> for further information on EX-CommandStation.</p>
 </section>
 <section id="installation-and-configuration">
-<h2><a class="toc-backref" href="#id3">Installation and configuration</a><a class="headerlink" href="#installation-and-configuration" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id4">Installation and configuration</a><a class="headerlink" href="#installation-and-configuration" title="Permalink to this heading"></a></h2>
 <p>The provided “config.example.h” file in addition to the Fritzing diagrams included on the relevant pages should help identify the correct pins to connect the encoder and display to.</p>
 <p>Various configuration options can be edited in the file “config.h”. By default, this file does not exist, and an example file “config.example.h” with the various options has been provided. It is recommended to copy the example file to your own “config.h”, as the example file will be overwritten by any future changes to the software.</p>
 <section id="general-configuration-options">
-<h3><a class="toc-backref" href="#id4">General configuration options</a><a class="headerlink" href="#general-configuration-options" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id5">General configuration options</a><a class="headerlink" href="#general-configuration-options" title="Permalink to this heading"></a></h3>
 <table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Option</p></th>
@@ -167,6 +169,10 @@
 <td><p>Commented out/disabled</p></td>
 <td><p>Uncomment for continuous output of encoder position to the serial console</p></td>
 </tr>
+<tr class="row-odd"><td><p>FEEDBACK</p></td>
+<td><p>Uncommented/enabled</p></td>
+<td><p>Comment out to disable receiving feedback from the EX-CommandStation device driver</p></td>
+</tr>
 </tbody>
 </table>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>
@@ -176,6 +182,7 @@
 <span class="cp">#define MODE TURNTABLE    </span><span class="c1">// Default TURNTABLE</span>
 <span class="c1">// #define MODE KNOB</span>
 <span class="c1">// #define DIAG           // Uncomment to enable continous output of encoder position</span>
+<span class="cp">#define FEEDBACK          </span><span class="c1">// Comment out to disable feedback from CommandStation</span>
 <span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>
 <span class="c1">//  END: General configuration options.</span>
 <span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>
@@ -183,7 +190,7 @@
 </div>
 </section>
 <section id="rotary-encoder-options">
-<h3><a class="toc-backref" href="#id5">Rotary encoder options</a><a class="headerlink" href="#rotary-encoder-options" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id6">Rotary encoder options</a><a class="headerlink" href="#rotary-encoder-options" title="Permalink to this heading"></a></h3>
 <table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Option</p></th>
@@ -264,12 +271,12 @@
 </div>
 </section>
 <section id="display-options">
-<h3><a class="toc-backref" href="#id6">Display options</a><a class="headerlink" href="#display-options" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id7">Display options</a><a class="headerlink" href="#display-options" title="Permalink to this heading"></a></h3>
 <p>For the OLED configuration options avaiable in control knob mode, refer to <a class="reference internal" href="control-knob.html#knob-mode-configuration-options"><span class="std std-ref">Knob mode configuration options</span></a>, and for the GC9A01 round LCD configuration options available in turntable mode, refer to <a class="reference internal" href="turntable-controller.html#turntable-mode-configuration-options"><span class="std std-ref">Turntable mode configuration options</span></a>.</p>
 </section>
 </section>
 <section id="usage">
-<h2><a class="toc-backref" href="#id7">Usage</a><a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id8">Usage</a><a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
 <p>Once the software has been configured and uploaded to the rotary encoder Arduino, and your EX-CommandStation has been configured to support it with the updated software uploaded, you can simply rotate the encoder to the appropriate position desired, and a push of the button will send that position to the EX-CommandStation.</p>
 <p>In the generic control knob mode, it will send a position between -127 and 127. The OLED will display the last selected position in addition to the position reflected by the current knob position.</p>
 <p>In turntable controller mode, the knob rotates a representative turntable on the GC9A01 round LCD, and will send the predefined position number when the representative turntable is aligned with a position, and the encoder button is pushed.</p>
