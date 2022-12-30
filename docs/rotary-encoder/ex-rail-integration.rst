@@ -11,9 +11,9 @@ Device Driver and EX-RAIL Integration
 Enable the EX-CommandStation device driver
 ==========================================
 
-To integrate the rotary encoder with your EX-CommandStation, ensure you are running the `EX-CommandStation rotary-encoder branch <https://github.com/DCC-EX/CommandStation-EX/tree/rotary-encoder>`_, which includes both the "IO_RotaryEncoder.h" device driver and EX-RAIL commands required.
+To integrate the rotary encoder with your EX-CommandStation, ensure you are running the `Latest EX-CommandStation Unreleased Development Version <https://dcc-ex.com/download/ex-commandstation.html#latest-ex-commandstation-unreleased-development-version>`_ , which includes both the "IO_RotaryEncoder.h" device driver and EX-RAIL commands required.
 
-The default I2C address for this device is 0x80, and you will need to enable the device driver via myHal.cpp:
+The default I2C address for this device is 0x70, and you will need to enable the device driver via myHal.cpp:
 
 Example:
 
@@ -22,7 +22,7 @@ Example:
   #include "IO_RotaryEncoder.h"
 
   void halSetup() {
-    RotaryEncoder::create(700, 1, 0x80);
+    RotaryEncoder::create(700, 1, 0x70);
   }
 
 Refer to :doc:`/rotary-encoder/ex-rail-integration` and the `DCC-EX documentation <https://dcc-ex.com/ex-turntable/test-and-tune.html#controlling-ex-turntable-with-a-rotary-encoder>`_ for further information on how this interacts with an EX-CommandStation.
@@ -30,25 +30,23 @@ Refer to :doc:`/rotary-encoder/ex-rail-integration` and the `DCC-EX documentatio
 Receiving feedback from the EX-CommandStation
 ---------------------------------------------
 
-The device driver included with EX-CommandStation is capable of sending feedback to this rotary encoder software to indicate whether a turntable is still moving (0), or if the move has completed (1).
+The device driver included with EX-CommandStation is capable of sending feedback to this rotary encoder software to indicate whether a turntable is moving (1), or if the move has completed (0).
 
-In control knob mode, the display will indicate moving has started by... and has completed by...
-
-In turntable controller mode, the display will indicate moving has started by flashing the position text, and has completed by...
+In turntable controller mode, the display will indicate the turntable is moving by blinking the representative turntable on and off, and will stop blinking when it is no longer moving.
 
 Enabling feedback in the device driver
 --------------------------------------
 
-To enable feedback in the device driver, you simply need to specify to use tw VPins rather than one, and sending a ``RESET(vpin)`` or ``SET(vpin)`` will tell the device driver moving has started or completed.
+To enable feedback in the device driver, you simply need to specify to use two Vpins rather than one, and sending a ``SET(vpin)`` (moving started) or ``RESET(vpin)`` (moving complete) via your EX-RAIL automation will tell the device driver moving has started or completed. See :ref:`rotary-encoder/ex-rail-integration:turntable controller example with feedback` for an example of how this can be implemented.
 
 .. code-block:: cpp
 
   void halSetup() {
-    RotaryEncoder::create(700, 1, 0x80);       // Defining 1 VPin disables feedback
+    RotaryEncoder::create(700, 1, 0x70);       // Defining 1 Vpin disables feedback
   }
 
   void halSetup() {
-    RotaryEncoder::create(700, 2, 0x80);      // Defining 2 VPins enables feedback
+    RotaryEncoder::create(700, 2, 0x70);      // Defining 2 Vpins enables feedback
   }
 
 EX-RAIL automation
@@ -199,7 +197,7 @@ Turntable controller example with feedback
 
 This is a brief example of how to use the encoder in turntable controller mode to select some turntable positions, based on the myEX-Turntable.example.h file included with the CommandStation code.
 
-Note the addition of the parameter "feedback_vpin" in the "EX_TURNTABLE" macro defining the second VPin for the rotary encoder, where the ``RESET(feedback_vpin)`` sends feedback that the move has started, and the ``SET(feedback_vpin)`` sends feedback that the move has complete.
+Note the addition of the parameter "feedback_vpin" in the "EX_TURNTABLE" macro defining the second VPin for the rotary encoder, where the ``SET(feedback_vpin)`` sends feedback that the move has started, and the ``RESET(feedback_vpin)`` sends feedback that the move has completed.
 
 .. code-block:: 
 
@@ -208,9 +206,9 @@ Note the addition of the parameter "feedback_vpin" in the "EX_TURNTABLE" macro d
     ROUTE(route_id, desc) \
       RESERVE(reserve_id) \
       MOVETT(vpin, steps, activity) \
-      RESET(feedback_vpin) \
-      WAITFOR(vpin) \
       SET(feedback_vpin) \
+      WAITFOR(vpin) \
+      RESET(feedback_vpin) \
       FREE(reserve_id) \
       DONE
 

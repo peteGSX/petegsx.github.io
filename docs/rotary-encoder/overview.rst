@@ -38,9 +38,11 @@ Further to this, the EX-CommandStation device driver has the capability of sendi
 Software requirements
 =====================
 
-In order to use this with a DCC-EX CommandStation, the CommandStation must be running the "rotary-encoder" branch of EX-CommandStation which is based on the current development branch:
+To utilise the rotary encoder, you must be running the latest unreleased Development version of EX-CommandStation.
 
-`EX-CommandStation rotary-encoder branch <https://github.com/DCC-EX/CommandStation-EX/tree/rotary-encoder>`_
+Refer to `Latest EX-CommandStation Unreleased Development Version <https://dcc-ex.com/download/ex-commandstation.html#latest-ex-commandstation-unreleased-development-version>`_ in the official DCC-EX documentation on how to obtain this.
+
+The latest version of the rotary encoder software is available in my `DCC-EX Rotary Encoder <https://github.com/peteGSX-Projects/dcc-ex-rotary-encoder>`_ repository.
 
 Refer to :doc:`/rotary-encoder/ex-rail-integration` and the `DCC-EX EX-Turntable documentation <https://dcc-ex.com/ex-turntable/test-and-tune.html#controlling-ex-turntable-with-a-rotary-encoder>`_ for further information on how this interacts with an EX-CommandStation.
 
