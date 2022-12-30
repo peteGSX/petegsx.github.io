@@ -16,6 +16,10 @@ When the representative turntable's home end aligns with either the home positio
 
 When aligned in this manner, a single button press will send the predefined position's ID to the EX-CommandStation.
 
+The device driver also has the ability to send feedback to the rotary encoder software to indicate when a turntable is moving or stationary. This allows for a visual indication of when the turntable is in motion by blinking the representative turntable on the display until the move has completed.
+
+Refer to 
+
 Clicking on the image below will take you to a short video of this mode in action.
 
 .. image:: /_static/images/rotary-encoder/turntable-controller.jpg

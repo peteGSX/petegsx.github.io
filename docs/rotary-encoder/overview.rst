@@ -21,6 +21,8 @@ There are currently two different modes for the encoder, with either option bein
 1. As a generic control knob with a standard, SPI connected monochrome OLED display to select a position between -127 and 127.
 2. As a turntable controller utilising an SPI connected GC9A01 round colour LCD display to select predefined positions.
 
+Further to this, the EX-CommandStation device driver has the capability of sending feedback to the Arduino when a turntable move has been completed. See :ref:`rotary-encoder/ex-rail-integration:receiving feedback from the ex-commandstation` for details.
+
 .. note:: 
 
   One other option tested was to use the rotary encoder with a pointer type knob (without a display) to select positions printed directly on a mimic panel. However, rotating the knob to specific positions has proven unreliable and this idea has been abandoned. It's possible that it relates to the quality of rotary encoder used or the way the software has been written, so if anyone else is interested in testing/implementing this feature then you are more than welcome to do so, and if you wish, you can `get in contact with me <contact>`_. I have left the code intact that allows re-aligning the encoder with a specific "home" position (see :ref:`rotary-encoder/overview:usage` below).
@@ -36,9 +38,11 @@ There are currently two different modes for the encoder, with either option bein
 Software requirements
 =====================
 
-In order to use this with a DCC-EX CommandStation, the CommandStation must be running the "rotary-encoder" branch of EX-CommandStation which is based on the current development branch:
+To utilise the rotary encoder, you must be running the latest unreleased Development version of EX-CommandStation.
 
-`EX-CommandStation rotary-encoder branch <https://github.com/DCC-EX/CommandStation-EX/tree/rotary-encoder>`_
+Refer to `Latest EX-CommandStation Unreleased Development Version <https://dcc-ex.com/download/ex-commandstation.html#latest-ex-commandstation-unreleased-development-version>`_ in the official DCC-EX documentation on how to obtain this.
+
+The latest version of the rotary encoder software is available in my `DCC-EX Rotary Encoder <https://github.com/peteGSX-Projects/dcc-ex-rotary-encoder>`_ repository.
 
 Refer to :doc:`/rotary-encoder/ex-rail-integration` and the `DCC-EX EX-Turntable documentation <https://dcc-ex.com/ex-turntable/test-and-tune.html#controlling-ex-turntable-with-a-rotary-encoder>`_ for further information on how this interacts with an EX-CommandStation.
 
@@ -83,6 +87,9 @@ General configuration options
   * - DIAG
     - Commented out/disabled
     - Uncomment for continuous output of encoder position to the serial console
+  * - FEEDBACK
+    - Uncommented/enabled
+    - Comment out to disable receiving feedback from the EX-CommandStation device driver
 
 .. code-block:: cpp
 
@@ -93,6 +100,7 @@ General configuration options
   #define MODE TURNTABLE    // Default TURNTABLE
   // #define MODE KNOB
   // #define DIAG           // Uncomment to enable continous output of encoder position
+  #define FEEDBACK          // Comment out to disable feedback from CommandStation
   /////////////////////////////////////////////////////////////////////////////////////
   //  END: General configuration options.
   /////////////////////////////////////////////////////////////////////////////////////
