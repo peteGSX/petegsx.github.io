@@ -2,6 +2,9 @@ name: Website Test
 
 on: [page_build, workflow_dispatch]
 
+permissions:
+  pages: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
