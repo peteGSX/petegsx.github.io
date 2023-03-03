@@ -11,7 +11,7 @@ jobs:
         with:
           website_url: 'https://petegsx-projects.github.io/'
           exclude_url_prefix: 'mailto:'
-          verbose: 'true'
+          verbose: 'false'
           max_retry_time: 30
           max_retries: 5
           max_depth: 10
