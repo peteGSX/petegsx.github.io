@@ -2,8 +2,6 @@ name: Website Test
 
 on:
   workflow_dispatch:
-  page_build
-    
 
 jobs:
   test:
