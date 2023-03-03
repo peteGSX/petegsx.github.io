@@ -1,7 +1,6 @@
 name: Website Test
 
-on:
-  workflow_dispatch:
+on: [page_build, workflow_dispatch]
 
 jobs:
   test:

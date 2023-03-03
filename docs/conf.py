@@ -19,7 +19,7 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = "Pete's Pages"
-copyright = '2022, Peter Cole'
+copyright = '2023, Peter Cole'
 author = 'Peter Cole'
 
 
