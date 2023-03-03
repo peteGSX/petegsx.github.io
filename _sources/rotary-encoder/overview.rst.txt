@@ -25,7 +25,7 @@ Further to this, the EX-CommandStation device driver has the capability of sendi
 
 .. note:: 
 
-  One other option tested was to use the rotary encoder with a pointer type knob (without a display) to select positions printed directly on a mimic panel. However, rotating the knob to specific positions has proven unreliable and this idea has been abandoned. It's possible that it relates to the quality of rotary encoder used or the way the software has been written, so if anyone else is interested in testing/implementing this feature then you are more than welcome to do so, and if you wish, you can `get in contact with me <contact>`_. I have left the code intact that allows re-aligning the encoder with a specific "home" position (see :ref:`rotary-encoder/overview:usage` below).
+  One other option tested was to use the rotary encoder with a pointer type knob (without a display) to select positions printed directly on a mimic panel. However, rotating the knob to specific positions has proven unreliable and this idea has been abandoned. It's possible that it relates to the quality of rotary encoder used or the way the software has been written, so if anyone else is interested in testing/implementing this feature then you are more than welcome to do so, and if you wish, you can get in contact with me (see :doc:`/contact`). I have left the code intact that allows re-aligning the encoder with a specific "home" position (see :ref:`rotary-encoder/overview:usage` below).
 
 .. toctree:: 
   :hidden:
