@@ -1,7 +1,7 @@
 name: Website Test
 
 on:
-  page_build:
+  page_build
 
 jobs:
   test:
