@@ -1,0 +1,15 @@
+name: Website Test
+
+on:
+  page_build
+
+jobs:
+  test:
+    uses: ScholliYT/Broken-Links-Crawler-Action@v3
+      with:
+        website_url: 'https://petegsx-projects.github.io/'
+        exclude_url_prefix: 'mailto:'
+        verbose: 'true'
+        max_retry_time: 30
+        max_retries: 5
+        max_depth: 1
