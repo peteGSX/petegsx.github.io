@@ -2,8 +2,7 @@ name: Website Test
 
 on: [page_build, workflow_dispatch]
 
-permissions:
-  pages: read
+permissions: read-all
 
 jobs:
   test:
