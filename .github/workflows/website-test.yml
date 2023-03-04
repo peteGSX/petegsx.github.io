@@ -2,7 +2,8 @@ name: Website Test
 
 on: [page_build, workflow_dispatch]
 
-permissions: read-all
+permissions:
+  pages: read
 
 jobs:
   test:
@@ -10,6 +11,7 @@ jobs:
     steps:
       - uses: ScholliYT/Broken-Links-Crawler-Action@v3
         with:
+          GITHUB_TOKEN: ${{ secrets.WEBSITE_TEST_PAT }}
           website_url: 'https://petegsx-projects.github.io/'
           exclude_url_prefix: 'mailto:'
           verbose: 'error'

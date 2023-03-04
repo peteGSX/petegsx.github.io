@@ -12,8 +12,6 @@ DCC-EX Rotary Encoder
     :depth: 2
     :local:
 
-Force page deploy
-
 This software has been written to enable an Arduino with a rotary encoder connected to it to be integrated with a DCC-EX CommandStation.
 
 The primary purpose is to select a position to control EX-Turntable via EX-RAIL automation, however it could be used for other purposes.
