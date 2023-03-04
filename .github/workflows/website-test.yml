@@ -1,17 +1,17 @@
 name: Website Test
 
-on: [page_build, workflow_dispatch]
+on: deployment_status
 
 permissions:
   pages: read
 
 jobs:
   test:
+    if: github.event.deployment_status == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: ScholliYT/Broken-Links-Crawler-Action@v3
         with:
-          GITHUB_TOKEN: ${{ secrets.WEBSITE_TEST_PAT }}
           website_url: 'https://petegsx-projects.github.io/'
           exclude_url_prefix: 'mailto:'
           verbose: 'error'
