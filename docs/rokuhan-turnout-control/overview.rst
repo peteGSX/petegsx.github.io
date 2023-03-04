@@ -13,7 +13,9 @@ Instructions
 
 Rokuhan turnouts require a very brief pulse to switch the direction only, and continuous current will burn the motor out. This code has been written to cater for this.
 
-I have found an input voltage of 8.5V to be reliable, meaning the same power source can be used to power both the Arduino itself as well as providing the switching voltage to the turnouts.
+I have found an input voltage of 9V to be reliable, meaning the same power source can be used to power both the Arduino itself as well as providing the switching voltage to the turnouts.
+
+Note that with Rokuhan Shorty (45mm radius) type turnouts, I have had to increase the voltage to 10V for reliable switching.
 
 Digital Command Control (DCC) is used to trigger the turnout changes by inverting the direction, then setting the speed to max momentarily to trigger the change in direction.
 
