@@ -8,6 +8,8 @@ This uses either two L293D motor controller ICs or an L298 based motor shield to
 
 The code complies with the NMRA standard setting direction 1 for Closed, and 0 for Thrown.
 
+.. index:: turnout, point, switch
+
 Instructions
 =============
 
