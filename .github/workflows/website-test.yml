@@ -1,13 +1,12 @@
 name: Website Test
 
-on: deployment_status
+on: [page_build, workflow_dispatch]
 
 permissions:
   pages: read
 
 jobs:
   test:
-    if: github.event.deployment_status == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: ScholliYT/Broken-Links-Crawler-Action@v3
