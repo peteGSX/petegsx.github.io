@@ -1,0 +1,12 @@
+:blogpost: true
+:date: 4 March, 2023
+:author: peteGSX
+:category: Blog, Test
+:tags: blog, test, ablog
+
+This is my second test blog entry
+=================================
+
+This is the second post in my test blog.
+
+Also a second sentence for this entry.

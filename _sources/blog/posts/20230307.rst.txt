@@ -1,0 +1,12 @@
+:blogpost: true
+:date: 7 March, 2023
+:author: peteGSX
+:category: Blog, Test
+:tags: blog, test, ablog
+
+Yet another entry
+===============================
+
+Adding an addition entry to see how it works.
+
+This takes us beyond the number of posts to list on the first page sidebar.
