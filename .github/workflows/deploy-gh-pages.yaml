@@ -17,8 +17,8 @@ jobs:
         run: |
           make html
           touch docs/_build/html/.nojekyll
-          mkdir -p docs/_build/html/.github/workflows
-          cp .github/workflows/website-test.yml docs/_build/html/.github/workflows/website-test.yml
+          mkdir -v -p docs/_build/html/.github/workflows
+          cp -v .github/workflows/website-test.yml docs/_build/html/.github/workflows/website-test.yml
       - name: Deploy
         if: github.ref == 'refs/heads/sphinx'
         uses: JamesIves/github-pages-deploy-action@releases/v3
