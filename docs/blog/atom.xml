@@ -1,9 +1,27 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-  <id>https://petegsx-projects.github.io/blog</id>
+  <id>https://petegsx-projects.github.io/blog/</id>
   <title>Pete's Pages Blog</title>
-  <updated>2023-03-06T02:46:54.900487+00:00</updated>
-  <link href="https://petegsx-projects.github.io/blog"/>
+  <updated>2023-03-06T04:59:19.218877+00:00</updated>
+  <link href="https://petegsx-projects.github.io/blog/"/>
   <link href="https://petegsx-projects.github.io/blog/docs/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33.post1">ABlog</generator>
+  <entry>
+    <id>https://petegsx-projects.github.io/blog/blog/entry-2023030601.html</id>
+    <title>First Blog entry</title>
+    <updated>2023-03-06T00:00:00+00:00</updated>
+    <author>
+      <name>peteGSX</name>
+    </author>
+    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+&lt;p&gt;Testing blog capability with my first entry.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+    <link href="https://petegsx-projects.github.io/blog/blog/entry-2023030601.html" rel="alternate"/>
+    <summary>Testing blog capability with my first entry.</summary>
+    <category term="blog" label="blog"/>
+    <category term="news" label="news"/>
+    <category term="test" label="test"/>
+    <published>2023-03-06T00:00:00+00:00</published>
+  </entry>
 </feed>
