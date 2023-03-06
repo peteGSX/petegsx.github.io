@@ -92,10 +92,13 @@ html_js_files = []
 
 # Sphinx sitemap
 html_baseurl = 'https://petegsx-projects.github.io/'
-html_extra_path = ['robots.txt']
+html_extra_path = [
+  'robots.txt',
+  '.github/workflows/website-test.yml',
+  ]
 
 # ABlog options here
-blog_path = 'docs/blog/'
+blog_path = 'blog/'
 blog_title = 'Pete\'s Pages Blog'
 blog_baseurl = 'https://petegsx-projects.github.io/blog/'
 post_auto_image = 1
