@@ -99,3 +99,7 @@ blog_path = 'docs/blog/'
 blog_title = 'Pete\'s Pages Blog'
 blog_baseurl = 'https://petegsx-projects.github.io/blog/'
 post_auto_image = 1
+
+html_sidebars = {
+  '**': ['recentposts.html',]
+}
