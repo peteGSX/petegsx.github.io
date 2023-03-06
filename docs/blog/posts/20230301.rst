@@ -1,0 +1,14 @@
+:blogpost: true
+:date: 1 March, 2023
+:author: peteGSX
+:category: Blog, Test
+:tags: blog, test, ablog
+
+This is my new blog for testing
+===============================
+
+It's time to test some more functionality with Sphinx and the Read the Docs theme, so here is a new blog setup using "Ablog" to test this out.
+
+I need more than one sentence and paragraph for these posts.
+
+Therefore, there are three paragraphs now...

@@ -3,13 +3,14 @@ Welcome to Pete's Pages!
 
 This is the documentation repository for my various projects.
 
-.. postlist:: 5
-  :format: {date} - {title}
-  :date: %Y-%m-%d
-  :list-style: none
-  :excerpts:
-  :sort:
-  :expand: Continue reading...
+.. sidebar:: Pete's Pages Blog
+
+  .. postlist:: 3
+    :format: {date} - {title}
+    :date: %Y-%m-%d
+    :list-style: none
+    :excerpts:
+    :expand: Continue reading...
 
 .. toctree:: 
   :hidden:
@@ -22,4 +23,4 @@ This is the documentation repository for my various projects.
   bluetooth-programmer/index
   manage-github-labels/index
   contact
-  
+  blog/index

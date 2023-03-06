@@ -67,7 +67,7 @@ html_static_path = ['_static']
 
 html_theme_options = {
     # 'style_nav_header_background': 'white',
-    'logo_only': True,
+    'logo_only': False,
     # Toc options
     'includehidden': True,
     'titles_only': True,
@@ -75,6 +75,7 @@ html_theme_options = {
     'navigation_depth': 3,
     'analytics_id': 'G-HBTV6STT77',
     'analytics_anonymize_ip': False,
+    'prev_next_buttons_location': 'both',
 }
 
 html_context = {
@@ -100,9 +101,6 @@ html_extra_path = [
 # ABlog options here
 blog_path = 'blog/'
 blog_title = 'Pete\'s Pages Blog'
-blog_baseurl = 'https://petegsx-projects.github.io/blog/'
+blog_baseurl = 'https://petegsx-projects.github.io/'
+post_auto_excerpt = 1
 post_auto_image = 1
-
-html_sidebars = {
-  '**': ['recentposts.html',]
-}
