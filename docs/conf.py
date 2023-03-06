@@ -97,6 +97,5 @@ html_extra_path = ['robots.txt']
 # ABlog options here
 blog_path = 'docs/blog/'
 blog_title = 'Pete\'s Pages Blog'
-blog_baseurl = 'https://petegsx-projects.github.io/blog'
+blog_baseurl = 'https://petegsx-projects.github.io/blog/'
 post_auto_image = 1
-blog_post_pattern = "docs/blog/*.rst"
