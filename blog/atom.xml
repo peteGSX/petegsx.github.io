@@ -2,9 +2,9 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://petegsx-projects.github.io/blog/</id>
   <title>Pete's Pages Blog</title>
-  <updated>2023-03-06T09:21:02.189459+00:00</updated>
+  <updated>2023-03-06T19:27:47.833856+00:00</updated>
   <link href="https://petegsx-projects.github.io/blog/"/>
-  <link href="https://petegsx-projects.github.io/blog/docs/blog/atom.xml" rel="self"/>
+  <link href="https://petegsx-projects.github.io/blog/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33.post1">ABlog</generator>
   <entry>
     <id>https://petegsx-projects.github.io/blog/blog/entry-2023030201.html</id>
