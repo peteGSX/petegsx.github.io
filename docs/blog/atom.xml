@@ -2,10 +2,44 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://petegsx-projects.github.io/blog/</id>
   <title>Pete's Pages Blog</title>
-  <updated>2023-03-06T04:59:19.218877+00:00</updated>
+  <updated>2023-03-06T09:21:02.189459+00:00</updated>
   <link href="https://petegsx-projects.github.io/blog/"/>
   <link href="https://petegsx-projects.github.io/blog/docs/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33.post1">ABlog</generator>
+  <entry>
+    <id>https://petegsx-projects.github.io/blog/blog/entry-2023030201.html</id>
+    <title>Third Blog entry</title>
+    <updated>2023-03-02T00:00:00+00:00</updated>
+    <author>
+      <name>peteGSX</name>
+    </author>
+    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+&lt;p&gt;Third blog entry.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+    <link href="https://petegsx-projects.github.io/blog/blog/entry-2023030201.html" rel="alternate"/>
+    <summary>Third blog entry.</summary>
+    <category term="blog" label="blog"/>
+    <category term="test" label="test"/>
+    <published>2023-03-02T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://petegsx-projects.github.io/blog/blog/entry-2023030501.html</id>
+    <title>Second blog entry</title>
+    <updated>2023-03-05T00:00:00+00:00</updated>
+    <author>
+      <name>peteGSX</name>
+    </author>
+    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+&lt;p&gt;This is a second blog entry.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+    <link href="https://petegsx-projects.github.io/blog/blog/entry-2023030501.html" rel="alternate"/>
+    <summary>This is a second blog entry.</summary>
+    <category term="blog" label="blog"/>
+    <category term="test" label="test"/>
+    <published>2023-03-05T00:00:00+00:00</published>
+  </entry>
   <entry>
     <id>https://petegsx-projects.github.io/blog/blog/entry-2023030601.html</id>
     <title>First Blog entry</title>

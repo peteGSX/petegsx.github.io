@@ -7,3 +7,5 @@ First Blog entry
   :tags: test, blog, news
 
 Testing blog capability with my first entry.
+
+This is the first entry of my fictional blog to test ABlog functionality with Sphinx.
