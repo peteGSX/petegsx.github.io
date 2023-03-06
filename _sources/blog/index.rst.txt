@@ -4,7 +4,7 @@ Pete's Pages Blog
 
 .. postlist::
   :format: {date} - {title}
-  :date: %Y-%m-%d
+  :date: %b %d %Y
   :list-style: none
   :excerpts:
   :expand: Continue reading...

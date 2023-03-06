@@ -7,7 +7,7 @@ This is the documentation repository for my various projects.
 
   .. postlist:: 3
     :format: {date} - {title}
-    :date: %Y-%m-%d
+    :date: %b %d %Y
     :list-style: none
     :excerpts:
     :expand: Continue reading...
