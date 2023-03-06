@@ -15,10 +15,10 @@ jobs:
         uses: actions/checkout@v3
       - name: Build docs
         run: |
-          make html
-          touch docs/_build/html/.nojekyll
           mkdir -v -p docs/_build/html/.github/workflows
           cp -v .github/workflows/website-test.yml docs/_build/html/.github/workflows/website-test.yml
+          make html
+          touch docs/_build/html/.nojekyll
       - name: Deploy
         if: github.ref == 'refs/heads/sphinx'
         uses: JamesIves/github-pages-deploy-action@releases/v3
