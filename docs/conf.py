@@ -95,7 +95,6 @@ html_js_files = []
 html_baseurl = 'https://petegsx-projects.github.io/'
 html_extra_path = [
   'robots.txt',
-  '.github/workflows/website-test.yml',
   ]
 
 # ABlog options here
