@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-  <id>https://petegsx-projects.github.io/</id>
+  <id>https://petegsx-projects.github.io</id>
   <title>Pete's Pages Blog</title>
-  <updated>2023-03-07T18:49:01.721190+00:00</updated>
-  <link href="https://petegsx-projects.github.io/"/>
+  <updated>2023-03-07T19:07:02.015982+00:00</updated>
+  <link href="https://petegsx-projects.github.io"/>
   <link href="https://petegsx-projects.github.io/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33.post1">ABlog</generator>
   <entry>
@@ -13,9 +13,12 @@
     <author>
       <name>peteGSX</name>
     </author>
-    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+    <content type="html">&lt;section id="this-is-my-new-blog-for-testing"&gt;
+
 &lt;p&gt;It’s time to test some more functionality with Sphinx and the Read the Docs theme, so here is a new blog setup using “Ablog” to test this out.&lt;/p&gt;
-&lt;/div&gt;
+&lt;p&gt;I need more than one sentence and paragraph for these posts.&lt;/p&gt;
+&lt;p&gt;Therefore, there are three paragraphs now…&lt;/p&gt;
+&lt;/section&gt;
 </content>
     <link href="https://petegsx-projects.github.io/blog/posts/20230301.html" rel="alternate"/>
     <summary>It’s time to test some more functionality with Sphinx and the Read the Docs theme, so here is a new blog setup using “Ablog” to test this out.</summary>
@@ -31,9 +34,11 @@
     <author>
       <name>peteGSX</name>
     </author>
-    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+    <content type="html">&lt;section id="this-is-my-second-test-blog-entry"&gt;
+
 &lt;p&gt;This is the second post in my test blog.&lt;/p&gt;
-&lt;/div&gt;
+&lt;p&gt;Also a second sentence for this entry.&lt;/p&gt;
+&lt;/section&gt;
 </content>
     <link href="https://petegsx-projects.github.io/blog/posts/20230304.html" rel="alternate"/>
     <summary>This is the second post in my test blog.</summary>
@@ -49,9 +54,11 @@
     <author>
       <name>peteGSX</name>
     </author>
-    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+    <content type="html">&lt;section id="this-is-a-third-entry"&gt;
+
 &lt;p&gt;Third test blog entry.&lt;/p&gt;
-&lt;/div&gt;
+&lt;p&gt;With a second sentence.&lt;/p&gt;
+&lt;/section&gt;
 </content>
     <link href="https://petegsx-projects.github.io/blog/posts/20230305.html" rel="alternate"/>
     <summary>Third test blog entry.</summary>
@@ -67,9 +74,11 @@
     <author>
       <name>peteGSX</name>
     </author>
-    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+    <content type="html">&lt;section id="another-test-blog-post"&gt;
+
 &lt;p&gt;This is an entry on the 6th March reportedly.&lt;/p&gt;
-&lt;/div&gt;
+&lt;p&gt;With more content.&lt;/p&gt;
+&lt;/section&gt;
 </content>
     <link href="https://petegsx-projects.github.io/blog/posts/20230306.html" rel="alternate"/>
     <summary>This is an entry on the 6th March reportedly.</summary>
@@ -85,9 +94,11 @@
     <author>
       <name>peteGSX</name>
     </author>
-    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+    <content type="html">&lt;section id="yet-another-entry"&gt;
+
 &lt;p&gt;Adding an addition entry to see how it works.&lt;/p&gt;
-&lt;/div&gt;
+&lt;p&gt;This takes us beyond the number of posts to list on the first page sidebar.&lt;/p&gt;
+&lt;/section&gt;
 </content>
     <link href="https://petegsx-projects.github.io/blog/posts/20230307.html" rel="alternate"/>
     <summary>Adding an addition entry to see how it works.</summary>
