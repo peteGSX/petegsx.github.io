@@ -1,0 +1,12 @@
+:blogpost: true
+:date: 8 March, 2023
+:author: peteGSX
+:category: Blog, Test
+:tags: blog, test, ablog
+
+Post number 6 of my blog
+===============================
+
+This is now a sixth post of this test blog on a new day.
+
+Will this render successfully?
