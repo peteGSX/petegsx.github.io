@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://petegsx-projects.github.io/</id>
   <title>Pete's Pages Blog</title>
-  <updated>2023-03-06T22:59:31.891892+00:00</updated>
+  <updated>2023-03-07T01:14:12.481649+00:00</updated>
   <link href="https://petegsx-projects.github.io/"/>
   <link href="https://petegsx-projects.github.io/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33.post1">ABlog</generator>
@@ -77,5 +77,23 @@
     <category term="blog" label="blog"/>
     <category term="test" label="test"/>
     <published>2023-03-06T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://petegsx-projects.github.io/blog/posts/20230307.html</id>
+    <title>Yet another entry</title>
+    <updated>2023-03-07T00:00:00+00:00</updated>
+    <author>
+      <name>peteGSX</name>
+    </author>
+    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+&lt;p&gt;Adding an addition entry to see how it works.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+    <link href="https://petegsx-projects.github.io/blog/posts/20230307.html" rel="alternate"/>
+    <summary>Adding an addition entry to see how it works.</summary>
+    <category term="ablog" label="ablog"/>
+    <category term="blog" label="blog"/>
+    <category term="test" label="test"/>
+    <published>2023-03-07T00:00:00+00:00</published>
   </entry>
 </feed>
