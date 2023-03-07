@@ -19,6 +19,8 @@ jobs:
           cp .github/workflows/website-test.yml docs/_build/html/.github/workflows/website-test.yml
           make html
           touch docs/_build/html/.nojekyll
+          ls -la docs/_build/html/
+          ls -la docs/_build/html/.github/workflows
       - name: Deploy
         if: github.ref == 'refs/heads/sphinx'
         uses: JamesIves/github-pages-deploy-action@releases/v3
