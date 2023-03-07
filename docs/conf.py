@@ -98,8 +98,11 @@ html_extra_path = [
   ]
 
 # ABlog options here
-blog_path = 'blog/'
+blog_path = 'blog'
 blog_title = 'Pete\'s Pages Blog'
-blog_baseurl = 'https://petegsx-projects.github.io/'
+blog_baseurl = 'https://petegsx-projects.github.io'
 post_auto_excerpt = 1
 post_auto_image = 1
+blog_post_pattern = "blog/posts/*"
+blog_feed_fulltext = True
+fontawesome_included = True
