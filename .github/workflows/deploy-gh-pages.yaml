@@ -16,7 +16,7 @@ jobs:
       - name: Build docs
         run: |
           mkdir -v -p docs/_build/html/.github/workflows
-          cp -v .github/workflows/website-test.yml docs/_build/html/.github/workflows/website-test.yml
+          cp .github/workflows/website-test.yml docs/_build/html/.github/workflows/website-test.yml
           make html
           touch docs/_build/html/.nojekyll
       - name: Deploy
