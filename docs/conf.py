@@ -106,3 +106,9 @@ post_auto_image = 1
 blog_post_pattern = "blog/posts/*"
 blog_feed_fulltext = True
 fontawesome_included = True
+
+html_sidebars = {
+  '**': ['postcard.html', 'recentposts.html',
+         'tagcloud.html', 'categories.html',
+         'archives.html',]
+}
