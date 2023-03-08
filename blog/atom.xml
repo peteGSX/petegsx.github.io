@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://petegsx-projects.github.io</id>
   <title>Pete's Pages Blog</title>
-  <updated>2023-03-07T22:54:19.989878+00:00</updated>
+  <updated>2023-03-08T01:31:10.194219+00:00</updated>
   <link href="https://petegsx-projects.github.io"/>
   <link href="https://petegsx-projects.github.io/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33.post1">ABlog</generator>
@@ -106,5 +106,25 @@
     <category term="blog" label="blog"/>
     <category term="test" label="test"/>
     <published>2023-03-07T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://petegsx-projects.github.io/blog/posts/20230308.html</id>
+    <title>Post number 6 of my blog</title>
+    <updated>2023-03-08T00:00:00+00:00</updated>
+    <author>
+      <name>peteGSX</name>
+    </author>
+    <content type="html">&lt;section id="post-number-6-of-my-blog"&gt;
+
+&lt;p&gt;This is now a sixth post of this test blog on a new day.&lt;/p&gt;
+&lt;p&gt;Will this render successfully?&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="https://petegsx-projects.github.io/blog/posts/20230308.html" rel="alternate"/>
+    <summary>This is now a sixth post of this test blog on a new day.</summary>
+    <category term="ablog" label="ablog"/>
+    <category term="blog" label="blog"/>
+    <category term="test" label="test"/>
+    <published>2023-03-08T00:00:00+00:00</published>
   </entry>
 </feed>
