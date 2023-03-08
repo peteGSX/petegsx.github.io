@@ -1,3 +1,3 @@
 User-agent: *
 
-Sitemap: https://my-site.com/docs/sitemap.xml
+Sitemap: https://petegsx-projects.github.io/sitemap.xml
