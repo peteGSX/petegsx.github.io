@@ -3,17 +3,6 @@ Welcome to Pete's Pages!
 
 This is the documentation repository for my various projects.
 
-.. sidebar:: Pete's Pages Blog
-
-  .. postlist:: 3
-    :format: {date} - {title}
-    :date: %b %d %Y
-    :list-style: none
-    :excerpts:
-    :expand: Continue reading...
-
-  You can view the whole blog `here <blog.html>`_.
-
 .. toctree:: 
   :hidden:
   :maxdepth: 4
