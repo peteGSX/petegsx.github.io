@@ -10,3 +10,9 @@ Post number 6 of my blog
 This is now a sixth post of this test blog on a new day.
 
 Will this render successfully?
+
+This is an updated sentence.
+
+.. update:: 8 March, 2023
+
+  Updated text
