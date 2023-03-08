@@ -12,6 +12,8 @@ This is the documentation repository for my various projects.
     :excerpts:
     :expand: Continue reading...
 
+  You can view the whole blog `here <blog.html>`_.
+
 .. toctree:: 
   :hidden:
   :maxdepth: 4
