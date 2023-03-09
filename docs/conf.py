@@ -36,6 +36,7 @@ extensions = [
     'sphinx_sitemap',
     'ablog',
     'sphinx.ext.intersphinx',
+    'sphinx_design',
 ]
 
 autosectionlabel_prefix_document = True
