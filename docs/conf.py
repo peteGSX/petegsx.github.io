@@ -34,8 +34,6 @@ extensions = [
     'sphinxcontrib.spelling',
     'sphinx.ext.todo',
     'sphinx_sitemap',
-    'ablog',
-    'sphinx.ext.intersphinx',
     'sphinx_design',
 ]
 
