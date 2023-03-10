@@ -5,6 +5,8 @@ This is the documentation repository for my various projects.
 
 .. grid:: 1 1 2 2
   :gutter: 1 2 3 4
+  :margin: 1
+  :padding: 1
 
   .. grid-item-card:: Model railway projects
 
