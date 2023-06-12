@@ -46,6 +46,8 @@ The latest version of the rotary encoder software is available in my `DCC-EX Rot
 
 Refer to :doc:`/rotary-encoder/ex-rail-integration` and the `DCC-EX EX-Turntable documentation <https://dcc-ex.com/ex-turntable/test-and-tune.html#controlling-ex-turntable-with-a-rotary-encoder>`_ for further information on how this interacts with an EX-CommandStation.
 
+In "Turntable Controller" mode, the GC9A01 round LCD requires the `Arduino_GFX library <https://github.com/moononournation/Arduino_GFX>`.
+
 .. note:: 
 
   For convenience, all required libraries have been included in the repository with the software to ensure there are no issues with different versions etc.
