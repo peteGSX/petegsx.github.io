@@ -40,15 +40,15 @@ In addition, it is also possible to have the EX-CommmandStation notify when a tu
 Software requirements
 =====================
 
-To utilise the rotary encoder, you must be running the latest unreleased Development version of EX-CommandStation.
+To utilise the rotary encoder, you must be running version 5.0.0 (or later) of EX-CommandStation.
 
-Refer to `Latest EX-CommandStation Unreleased Development Version <https://dcc-ex.com/download/ex-commandstation.html#latest-ex-commandstation-unreleased-development-version>`_ in the official DCC-EX documentation on how to obtain this.
+`Get it here <https://dcc-ex.com>`_.
 
 The latest version of the rotary encoder software is available in my `DCC-EX Rotary Encoder <https://github.com/peteGSX-Projects/dcc-ex-rotary-encoder>`_ repository.
 
 Refer to :doc:`/rotary-encoder/ex-rail-integration` and the `DCC-EX EX-Turntable documentation <https://dcc-ex.com/ex-turntable/test-and-tune.html#controlling-ex-turntable-with-a-rotary-encoder>`_ for further information on how this interacts with an EX-CommandStation.
 
-In "Turntable Controller" mode, the GC9A01 round LCD requires the `Arduino_GFX library <https://github.com/moononournation/Arduino_GFX>`.
+In "Turntable Controller" mode, the GC9A01 round LCD requires the `Arduino_GFX library <https://github.com/moononournation/Arduino_GFX>`_.
 
 .. note:: 
 
@@ -59,13 +59,25 @@ Hardware requirements
 
 This requires an AVR based Arduino (tested on a Nano), a rotary encoder (tested with a KY-040), and an SPI connected OLED or GC9A01 round LCD display.
 
+See the relevant :doc:`/rotary-encoder/control-knob` or :doc:`/rotary-encoder/turntable-controller` page for hardware and connection details.
+
 An ESP32 can also be used, but note that this has only been tested using a Wroom Dev Kit with GC9A01 round LCD.
 
-See the relevant :doc:`/rotary-encoder/control-knob` or :doc:`/rotary-encoder/turntable-controller` page for hardware and connection details.
+The STM32F411CEU6 Blackpill and STM32F103C8 Bluepill are also supported.
+
+Refer to the config.example.h file to see which pins are in use for the ESP32, Blackpill, and Bluepill devices.
 
 Also, a suitable DCC-EX EX-CommandStation must be available, with the rotary encoder Arduino connected to it via I2C.
 
 Refer to the `DCC-EX documentation <https://dcc-ex.com>`_ for further information on EX-CommandStation.
+
+.. warning:: 
+
+  For those wishing to use Blackpill and Bluepill, the included PlatformIO configuration relies on using an STLink device to upload the software, and enables the USB port for serial input/output and will not support uploading the software.
+
+  My recommendation is save your sanity and stick with STLink, I won't be supporting other methods with the software. In addition, Bluepill users may experience USB connectivity issues due to an incorrect resistor on clone boards. There is plenty of info on the Internet about this so I won't go into the details.
+
+  I would highly recommend spending the very small amount of extra money to stick with the Blackpill.
 
 Installation and configuration
 ==============================
@@ -85,7 +97,7 @@ General configuration options
     - Default
     - Details and options
   * - I2C_ADDRESS
-    - 0x80
+    - 0x70
     - Can be any valid and available I2C address
   * - MODE
     - TURNTABLE
