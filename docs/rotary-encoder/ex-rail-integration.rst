@@ -287,28 +287,37 @@ Turntable controller example with feedback and position updates
 
 This is a brief example of how to use the encoder in turntable controller mode to select some turntable positions, based on the myEX-Turntable.example.h file included with the CommandStation code.
 
-Note the addition of the parameter "feedback_vpin" in the "EX_TURNTABLE" macro defining the second VPin for the rotary encoder, where the ``SET(feedback_vpin)`` sends feedback that the move has started, and the ``RESET(feedback_vpin)`` sends feedback that the move has completed.
+Note the change from the "feedback_vpin" variable to the "encoder_vpin" variable compared with the feedback example above, and the addition of the "position" variable:
+
+- Provide the rotary encoder's Vpin once
+- The feedback Vpin is calculated in ``SET(1+encoder_vpin)`` and ``RESET(1+encoder_vpin)``
+- The postion update Vpin is calculated in ``SERVO(2+encoder_vpin, position, Instant)``
+- The position being moved to is also sent in this line
+- As we are using the EXRAIL ``SERVO()`` command, we must send a profile value, but which one you use is irrelevant as it has no effect
+
+Note the addition of the parameter "encoder_vpin" in the "EX_TURNTABLE" macro defining the Vpin for the rotary encoder, where the ``SET(feedback_vpin)`` sends feedback that the move has started, and the ``RESET(feedback_vpin)`` sends feedback that the move has completed.
 
 .. code-block:: 
 
   // EX-Turntable macro and route definitions
-  #define EX_TURNTABLE(route_id, reserve_id, vpin, steps, activity, desc, feedback_vpin) \
+  #define EX_TURNTABLE(route_id, reserve_id, vpin, steps, activity, desc, encoder_vpin, position) \
     ROUTE(route_id, desc) \
       RESERVE(reserve_id) \
+      SET(1+encoder_vpin) \
+      SERVO(2+encoder_vpin, position, Instant) \
       MOVETT(vpin, steps, activity) \
-      SET(feedback_vpin) \
       WAITFOR(vpin) \
-      RESET(feedback_vpin) \
+      RESET(1+encoder_vpin) \
       FREE(reserve_id) \
       DONE
 
-  EX_TURNTABLE(TTRoute1, Turntable, 600, 114, Turn, "Position 1", 701)
-  EX_TURNTABLE(TTRoute2, Turntable, 600, 227, Turn, "Position 2", 701)
-  EX_TURNTABLE(TTRoute3, Turntable, 600, 341, Turn, "Position 3", 701)
-  EX_TURNTABLE(TTRoute4, Turntable, 600, 2159, Turn, "Position 4", 701)
-  EX_TURNTABLE(TTRoute5, Turntable, 600, 2273, Turn, "Position 5", 701)
-  EX_TURNTABLE(TTRoute6, Turntable, 600, 2386, Turn, "Position 6", 701)
-  EX_TURNTABLE(TTRoute7, Turntable, 600, 0, Home, "Home turntable", 701)
+  EX_TURNTABLE(TTRoute1, Turntable, 600, 114, Turn, "Position 1", 700, 1)
+  EX_TURNTABLE(TTRoute2, Turntable, 600, 227, Turn, "Position 2", 700, 2)
+  EX_TURNTABLE(TTRoute3, Turntable, 600, 341, Turn, "Position 3", 700, 3)
+  EX_TURNTABLE(TTRoute4, Turntable, 600, 2159, Turn, "Position 4", 700, 4)
+  EX_TURNTABLE(TTRoute5, Turntable, 600, 2273, Turn, "Position 5", 700, 5)
+  EX_TURNTABLE(TTRoute6, Turntable, 600, 2386, Turn, "Position 6", 700, 6)
+  EX_TURNTABLE(TTRoute7, Turntable, 600, 0, Home, "Home turntable", 700, 0)
 
   // Rotary encoder event handler to select positions:
   ONCHANGE(700)
