@@ -112,15 +112,18 @@
 <ul>
 <li><p><a class="reference internal" href="#receiving-feedback-from-the-ex-commandstation" id="id2">Receiving feedback from the EX-CommandStation</a></p></li>
 <li><p><a class="reference internal" href="#enabling-feedback-in-the-device-driver" id="id3">Enabling feedback in the device driver</a></p></li>
+<li><p><a class="reference internal" href="#receiving-a-new-position-from-the-ex-commandstation" id="id4">Receiving a new position from the EX-CommandStation</a></p></li>
+<li><p><a class="reference internal" href="#enabling-receiving-positions-in-the-device-driver" id="id5">Enabling receiving positions in the device driver</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#ex-rail-automation" id="id4">EX-RAIL automation</a></p>
+<li><p><a class="reference internal" href="#ex-rail-automation" id="id6">EX-RAIL automation</a></p>
 <ul>
-<li><p><a class="reference internal" href="#onchange-event-handler" id="id5">ONCHANGE() Event Handler</a></p></li>
-<li><p><a class="reference internal" href="#ifre-test-statement" id="id6">IFRE() Test Statement</a></p></li>
-<li><p><a class="reference internal" href="#control-knob-example" id="id7">Control knob example</a></p></li>
-<li><p><a class="reference internal" href="#turntable-controller-example" id="id8">Turntable controller example</a></p></li>
-<li><p><a class="reference internal" href="#turntable-controller-example-with-feedback" id="id9">Turntable controller example with feedback</a></p></li>
+<li><p><a class="reference internal" href="#onchange-event-handler" id="id7">ONCHANGE() Event Handler</a></p></li>
+<li><p><a class="reference internal" href="#ifre-test-statement" id="id8">IFRE() Test Statement</a></p></li>
+<li><p><a class="reference internal" href="#control-knob-example" id="id9">Control knob example</a></p></li>
+<li><p><a class="reference internal" href="#turntable-controller-example" id="id10">Turntable controller example</a></p></li>
+<li><p><a class="reference internal" href="#turntable-controller-example-with-feedback" id="id11">Turntable controller example with feedback</a></p></li>
+<li><p><a class="reference internal" href="#turntable-controller-example-with-feedback-and-position-updates" id="id12">Turntable controller example with feedback and position updates</a></p></li>
 </ul>
 </li>
 </ul>
@@ -129,13 +132,15 @@
 <section id="enable-the-ex-commandstation-device-driver">
 <h2><a class="toc-backref" href="#id1" role="doc-backlink">Enable the EX-CommandStation device driver</a><a class="headerlink" href="#enable-the-ex-commandstation-device-driver" title="Permalink to this heading"></a></h2>
 <p>To integrate the rotary encoder with your EX-CommandStation, ensure you are running the <a class="reference external" href="https://dcc-ex.com/download/ex-commandstation.html#latest-ex-commandstation-unreleased-development-version">Latest EX-CommandStation Unreleased Development Version</a> , which includes both the “IO_RotaryEncoder.h” device driver and EX-RAIL commands required.</p>
-<p>The default I2C address for this device is 0x70, and you will need to enable the device driver via myHal.cpp:</p>
+<p>When release, the device driver will be included in version 5.</p>
+<p>As per the following sections, it is possible for the EX-CommandStation device driver to send feedback to the rotary encoder software to confirm when a move has started and completed, as well as receiving a position that some other automation has set a turntable to.</p>
+<p>The default I2C address for this device is 0x70, and you will need to enable the device driver via myAutomation.h:</p>
 <p>Example:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;IO_RotaryEncoder.h&quot;</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">halSetup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">RotaryEncoder</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="mi">700</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mh">0x70</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">HAL</span><span class="p">(</span><span class="n">RotaryEncoder</span><span class="p">,</span><span class="w"> </span><span class="mi">700</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mh">0x70</span><span class="p">)</span><span class="w">    </span><span class="c1">// Single Vpin at default address, receives no feedback</span>
+<span class="n">HAL</span><span class="p">(</span><span class="n">RotaryEncoder</span><span class="p">,</span><span class="w"> </span><span class="mi">710</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mh">0x71</span><span class="p">)</span><span class="w">    </span><span class="c1">// Two Vpins at next address, receives feedback from device driver</span>
+<span class="n">HAL</span><span class="p">(</span><span class="n">RotaryEncoder</span><span class="p">,</span><span class="w"> </span><span class="mi">720</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mh">0x72</span><span class="p">)</span><span class="w">    </span><span class="c1">// Three Vpins, receives feedback and position updates from device driver</span>
 </pre></div>
 </div>
 <p>Refer to <a class="reference internal" href="#"><span class="doc">Device Driver and EX-RAIL Integration</span></a> and the <a class="reference external" href="https://dcc-ex.com/ex-turntable/test-and-tune.html#controlling-ex-turntable-with-a-rotary-encoder">DCC-EX documentation</a> for further information on how this interacts with an EX-CommandStation.</p>
@@ -143,36 +148,48 @@
 <h3><a class="toc-backref" href="#id2" role="doc-backlink">Receiving feedback from the EX-CommandStation</a><a class="headerlink" href="#receiving-feedback-from-the-ex-commandstation" title="Permalink to this heading"></a></h3>
 <p>The device driver included with EX-CommandStation is capable of sending feedback to this rotary encoder software to indicate whether a turntable is moving (1), or if the move has completed (0).</p>
 <p>In turntable controller mode, the display will indicate the turntable is moving by blinking the representative turntable on and off, and will stop blinking when it is no longer moving.</p>
+<p>This must be matched by defining <cite>FEEDBACK</cite> appropriately in “config.h” as per <a class="reference internal" href="overview.html#general-configuration-options"><span class="std std-ref">General configuration options</span></a>.</p>
 </section>
 <section id="enabling-feedback-in-the-device-driver">
 <h3><a class="toc-backref" href="#id3" role="doc-backlink">Enabling feedback in the device driver</a><a class="headerlink" href="#enabling-feedback-in-the-device-driver" title="Permalink to this heading"></a></h3>
 <p>To enable feedback in the device driver, you simply need to specify to use two Vpins rather than one, and sending a <code class="docutils literal notranslate"><span class="pre">SET(vpin)</span></code> (moving started) or <code class="docutils literal notranslate"><span class="pre">RESET(vpin)</span></code> (moving complete) via your EX-RAIL automation will tell the device driver moving has started or completed. See <a class="reference internal" href="#turntable-controller-example-with-feedback"><span class="std std-ref">Turntable controller example with feedback</span></a> for an example of how this can be implemented.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">halSetup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">RotaryEncoder</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="mi">700</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mh">0x70</span><span class="p">);</span><span class="w">       </span><span class="c1">// Defining 1 Vpin disables feedback</span>
-<span class="p">}</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">HAL</span><span class="p">(</span><span class="n">RotaryEncoder</span><span class="p">,</span><span class="w"> </span><span class="mi">700</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mh">0x70</span><span class="p">)</span><span class="w">       </span><span class="c1">// Defining 1 Vpin disables feedback</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">halSetup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">RotaryEncoder</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="mi">700</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mh">0x70</span><span class="p">);</span><span class="w">      </span><span class="c1">// Defining 2 Vpins enables feedback</span>
-<span class="p">}</span>
+<span class="n">HAL</span><span class="p">(</span><span class="n">RotaryEncoder</span><span class="p">,</span><span class="w"> </span><span class="mi">700</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mh">0x70</span><span class="p">)</span><span class="w">       </span><span class="c1">// Defining 2 Vpins enables feedback</span>
+</pre></div>
+</div>
+</section>
+<section id="receiving-a-new-position-from-the-ex-commandstation">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Receiving a new position from the EX-CommandStation</a><a class="headerlink" href="#receiving-a-new-position-from-the-ex-commandstation" title="Permalink to this heading"></a></h3>
+<p>The device driver included with EX-CommandStation is also capable of sending the position a turntable has been set to from an EXRAIL automation sequence that was not initiated by this rotary encoder software.</p>
+<p>In turntable controller mode, the display will update the turntable position and indicate the turntable is moving by blinking the representative turntable on and off, and will stop blinking when it is no longer moving. Using both the feedback as above in addition to the position update must be used together to accomplish this.</p>
+<p>This must be matched by defining <cite>POSITION</cite> appropriately in “config.h” as per <a class="reference internal" href="overview.html#general-configuration-options"><span class="std std-ref">General configuration options</span></a>.</p>
+</section>
+<section id="enabling-receiving-positions-in-the-device-driver">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Enabling receiving positions in the device driver</a><a class="headerlink" href="#enabling-receiving-positions-in-the-device-driver" title="Permalink to this heading"></a></h3>
+<p>To enable receiving position updates in the device driver, you simply need to specify to use three Vpins rather than one or two, and sending a <code class="docutils literal notranslate"><span class="pre">SERVO(vpin,</span> <span class="pre">position,</span> <span class="pre">profile)</span></code> via your EX-RAIL automation will tell the device driver a new position is being moved to.</p>
+<p>This needs to be combined with <cite>SET(vpin)</cite> and <cite>RESET(vpin)</cite> to flag when moves have started and completed also.</p>
+<p>See <a class="reference internal" href="#turntable-controller-example-with-feedback-and-position-updates"><span class="std std-ref">Turntable controller example with feedback and position updates</span></a> for an example of how this can be implemented.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">HAL</span><span class="p">(</span><span class="n">RotaryEncoder</span><span class="p">,</span><span class="w"> </span><span class="mi">700</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mh">0x70</span><span class="p">)</span><span class="w">       </span><span class="c1">// Defining 3 Vpins enables feedback and position moves</span>
 </pre></div>
 </div>
 </section>
 </section>
 <section id="ex-rail-automation">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">EX-RAIL automation</a><a class="headerlink" href="#ex-rail-automation" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">EX-RAIL automation</a><a class="headerlink" href="#ex-rail-automation" title="Permalink to this heading"></a></h2>
 <p>Two EX-RAIL commands have been added to enable usage:</p>
 <section id="onchange-event-handler">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">ONCHANGE() Event Handler</a><a class="headerlink" href="#onchange-event-handler" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">ONCHANGE() Event Handler</a><a class="headerlink" href="#onchange-event-handler" title="Permalink to this heading"></a></h3>
 <p>An event handler has been added <code class="docutils literal notranslate"><span class="pre">ONCHANGE(vpin)</span></code> similar to the turnout and accessory event handlers.</p>
 <p>This enables any position change of the rotary encoder to be used to define an activity.</p>
 </section>
 <section id="ifre-test-statement">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">IFRE() Test Statement</a><a class="headerlink" href="#ifre-test-statement" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">IFRE() Test Statement</a><a class="headerlink" href="#ifre-test-statement" title="Permalink to this heading"></a></h3>
 <p>A test statement <code class="docutils literal notranslate"><span class="pre">IFRE(vpin,</span> <span class="pre">position)</span></code> has been added to check for the specific position selected by the encoder.</p>
 <p>Valid positions are from -127 to 127 in control knob mode, or 0 to 255 in turntable controller mode.</p>
 </section>
 <section id="control-knob-example">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink">Control knob example</a><a class="headerlink" href="#control-knob-example" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Control knob example</a><a class="headerlink" href="#control-knob-example" title="Permalink to this heading"></a></h3>
 <p>This is a brief example of how to use the encoder in control knob mode to select some turntable positions, based on the myEX-Turntable.example.h file included with the CommandStation code:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// EX-Turntable macro and route definitions
 #define EX_TURNTABLE(route_id, reserve_id, vpin, steps, activity, desc) \
@@ -232,7 +249,7 @@ ALIAS(TTRoute7)
 </div>
 </section>
 <section id="turntable-controller-example">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink">Turntable controller example</a><a class="headerlink" href="#turntable-controller-example" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Turntable controller example</a><a class="headerlink" href="#turntable-controller-example" title="Permalink to this heading"></a></h3>
 <p>This is a brief example of how to use the encoder in turntable controller mode to select some turntable positions, based on the myEX-Turntable.example.h file included with the CommandStation code:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// EX-Turntable macro and route definitions
 #define EX_TURNTABLE(route_id, reserve_id, vpin, steps, activity, desc) \
@@ -292,7 +309,7 @@ ALIAS(TTRoute7)
 </div>
 </section>
 <section id="turntable-controller-example-with-feedback">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink">Turntable controller example with feedback</a><a class="headerlink" href="#turntable-controller-example-with-feedback" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Turntable controller example with feedback</a><a class="headerlink" href="#turntable-controller-example-with-feedback" title="Permalink to this heading"></a></h3>
 <p>This is a brief example of how to use the encoder in turntable controller mode to select some turntable positions, based on the myEX-Turntable.example.h file included with the CommandStation code.</p>
 <p>Note the addition of the parameter “feedback_vpin” in the “EX_TURNTABLE” macro defining the second VPin for the rotary encoder, where the <code class="docutils literal notranslate"><span class="pre">SET(feedback_vpin)</span></code> sends feedback that the move has started, and the <code class="docutils literal notranslate"><span class="pre">RESET(feedback_vpin)</span></code> sends feedback that the move has completed.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// EX-Turntable macro and route definitions
@@ -313,6 +330,78 @@ EX_TURNTABLE(TTRoute4, Turntable, 600, 2159, Turn, &quot;Position 4&quot;, 701)
 EX_TURNTABLE(TTRoute5, Turntable, 600, 2273, Turn, &quot;Position 5&quot;, 701)
 EX_TURNTABLE(TTRoute6, Turntable, 600, 2386, Turn, &quot;Position 6&quot;, 701)
 EX_TURNTABLE(TTRoute7, Turntable, 600, 0, Home, &quot;Home turntable&quot;, 701)
+
+// Rotary encoder event handler to select positions:
+ONCHANGE(700)
+  IFRE(700, 1)
+    START(TTRoute1)
+  ENDIF
+  IFRE(700, 2)
+    START(TTRoute2)
+  ENDIF
+  IFRE(700, 3)
+    START(TTRoute3)
+  ENDIF
+  IFRE(700, 4)
+    START(TTRoute4)
+  ENDIF
+  IFRE(700, 5)
+    START(TTRoute5)
+  ENDIF
+  IFRE(700, 6)
+    START(TTRoute6)
+  ENDIF
+  IFRE(700, 0)
+    START(TTRoute7)
+  ENDIF
+DONE
+
+// Pre-defined aliases to ensure unique IDs are used.
+// Turntable reserve ID, valid is 0 - 255
+ALIAS(Turntable, 255)
+
+// Turntable ROUTE ID reservations, using &lt;? TTRouteX&gt; for uniqueness:
+ALIAS(TTRoute1)
+ALIAS(TTRoute2)
+ALIAS(TTRoute3)
+ALIAS(TTRoute4)
+ALIAS(TTRoute5)
+ALIAS(TTRoute6)
+ALIAS(TTRoute7)
+</pre></div>
+</div>
+</section>
+<section id="turntable-controller-example-with-feedback-and-position-updates">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Turntable controller example with feedback and position updates</a><a class="headerlink" href="#turntable-controller-example-with-feedback-and-position-updates" title="Permalink to this heading"></a></h3>
+<p>This is a brief example of how to use the encoder in turntable controller mode to select some turntable positions, based on the myEX-Turntable.example.h file included with the CommandStation code.</p>
+<p>Note the change from the “feedback_vpin” variable to the “encoder_vpin” variable compared with the feedback example above, and the addition of the “position” variable:</p>
+<ul class="simple">
+<li><p>Provide the rotary encoder’s Vpin once</p></li>
+<li><p>The feedback Vpin is calculated in <code class="docutils literal notranslate"><span class="pre">SET(1+encoder_vpin)</span></code> and <code class="docutils literal notranslate"><span class="pre">RESET(1+encoder_vpin)</span></code></p></li>
+<li><p>The postion update Vpin is calculated in <code class="docutils literal notranslate"><span class="pre">SERVO(2+encoder_vpin,</span> <span class="pre">position,</span> <span class="pre">Instant)</span></code></p></li>
+<li><p>The position being moved to is also sent in this line</p></li>
+<li><p>As we are using the EXRAIL <code class="docutils literal notranslate"><span class="pre">SERVO()</span></code> command, we must send a profile value, but which one you use is irrelevant as it has no effect</p></li>
+</ul>
+<p>Note the addition of the parameter “encoder_vpin” in the “EX_TURNTABLE” macro defining the Vpin for the rotary encoder, where the <code class="docutils literal notranslate"><span class="pre">SET(feedback_vpin)</span></code> sends feedback that the move has started, and the <code class="docutils literal notranslate"><span class="pre">RESET(feedback_vpin)</span></code> sends feedback that the move has completed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// EX-Turntable macro and route definitions
+#define EX_TURNTABLE(route_id, reserve_id, vpin, steps, activity, desc, encoder_vpin, position) \
+  ROUTE(route_id, desc) \
+    RESERVE(reserve_id) \
+    SET(1+encoder_vpin) \
+    SERVO(2+encoder_vpin, position, Instant) \
+    MOVETT(vpin, steps, activity) \
+    WAITFOR(vpin) \
+    RESET(1+encoder_vpin) \
+    FREE(reserve_id) \
+    DONE
+
+EX_TURNTABLE(TTRoute1, Turntable, 600, 114, Turn, &quot;Position 1&quot;, 700, 1)
+EX_TURNTABLE(TTRoute2, Turntable, 600, 227, Turn, &quot;Position 2&quot;, 700, 2)
+EX_TURNTABLE(TTRoute3, Turntable, 600, 341, Turn, &quot;Position 3&quot;, 700, 3)
+EX_TURNTABLE(TTRoute4, Turntable, 600, 2159, Turn, &quot;Position 4&quot;, 700, 4)
+EX_TURNTABLE(TTRoute5, Turntable, 600, 2273, Turn, &quot;Position 5&quot;, 700, 5)
+EX_TURNTABLE(TTRoute6, Turntable, 600, 2386, Turn, &quot;Position 6&quot;, 700, 6)
+EX_TURNTABLE(TTRoute7, Turntable, 600, 0, Home, &quot;Home turntable&quot;, 700, 0)
 
 // Rotary encoder event handler to select positions:
 ONCHANGE(700)

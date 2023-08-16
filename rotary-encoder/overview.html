@@ -131,7 +131,8 @@
 <li><p>As a generic control knob with a standard, SPI connected monochrome OLED display to select a position between -127 and 127.</p></li>
 <li><p>As a turntable controller utilising an SPI connected GC9A01 round colour LCD display to select predefined positions.</p></li>
 </ol>
-<p>Further to this, the EX-CommandStation device driver has the capability of sending feedback to the Arduino when a turntable move has been completed. See <a class="reference internal" href="ex-rail-integration.html#receiving-feedback-from-the-ex-commandstation"><span class="std std-ref">Receiving feedback from the EX-CommandStation</span></a> for details.</p>
+<p>The EX-CommandStation device driver has the capability of sending feedback to the Arduino when a turntable move has been completed. See <a class="reference internal" href="ex-rail-integration.html#receiving-feedback-from-the-ex-commandstation"><span class="std std-ref">Receiving feedback from the EX-CommandStation</span></a> for details.</p>
+<p>In addition, it is also possible to have the EX-CommmandStation notify when a turntable move has been initiated via an EXRAIL automation rather than directly by this rotary encoder software. See <a class="reference internal" href="ex-rail-integration.html#receiving-a-new-position-from-the-ex-commandstation"><span class="std std-ref">Receiving a new position from the EX-CommandStation</span></a> for details.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>One other option tested was to use the rotary encoder with a pointer type knob (without a display) to select positions printed directly on a mimic panel. However, rotating the knob to specific positions has proven unreliable and this idea has been abandoned. It’s possible that it relates to the quality of rotary encoder used or the way the software has been written, so if anyone else is interested in testing/implementing this feature then you are more than welcome to do so, and if you wish, you can get in contact with me (see <a class="reference internal" href="../contact.html"><span class="doc">How to contact me</span></a>). I have left the code intact that allows re-aligning the encoder with a specific “home” position (see <a class="reference internal" href="#usage"><span class="std std-ref">Usage</span></a> below).</p>
@@ -153,6 +154,7 @@
 <section id="hardware-requirements">
 <h2><a class="toc-backref" href="#id3" role="doc-backlink">Hardware requirements</a><a class="headerlink" href="#hardware-requirements" title="Permalink to this heading"></a></h2>
 <p>This requires an AVR based Arduino (tested on a Nano), a rotary encoder (tested with a KY-040), and an SPI connected OLED or GC9A01 round LCD display.</p>
+<p>An ESP32 can also be used, but note that this has only been tested using a Wroom Dev Kit with GC9A01 round LCD.</p>
 <p>See the relevant <a class="reference internal" href="control-knob.html"><span class="doc">Control Knob Mode</span></a> or <a class="reference internal" href="turntable-controller.html"><span class="doc">Turntable Controller</span></a> page for hardware and connection details.</p>
 <p>Also, a suitable DCC-EX EX-CommandStation must be available, with the rotary encoder Arduino connected to it via I2C.</p>
 <p>Refer to the <a class="reference external" href="https://dcc-ex.com">DCC-EX documentation</a> for further information on EX-CommandStation.</p>
@@ -187,16 +189,21 @@
 <td><p>Uncommented/enabled</p></td>
 <td><p>Comment out to disable receiving feedback from the EX-CommandStation device driver</p></td>
 </tr>
+<tr class="row-even"><td><p>POSITION</p></td>
+<td><p>Uncommented/enabled</p></td>
+<td><p>Comment out to disable receiving position updates from the EX-CommandStation device driver</p></td>
+</tr>
 </tbody>
 </table>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>
 <span class="c1">//  START: General configuration options.</span>
 <span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>
-<span class="cp">#define I2C_ADDRESS 0x80  </span><span class="c1">// Default 0x80, can be any valid, available I2C address</span>
+<span class="cp">#define I2C_ADDRESS 0x70  </span><span class="c1">// Default 0x80, can be any valid, available I2C address</span>
 <span class="cp">#define MODE TURNTABLE    </span><span class="c1">// Default TURNTABLE</span>
 <span class="c1">// #define MODE KNOB</span>
 <span class="c1">// #define DIAG           // Uncomment to enable continous output of encoder position</span>
 <span class="cp">#define FEEDBACK          </span><span class="c1">// Comment out to disable feedback from CommandStation</span>
+<span class="cp">#define POSITION          </span><span class="c1">// Comment out to disable receiving position updates from CommandStation</span>
 <span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>
 <span class="c1">//  END: General configuration options.</span>
 <span class="c1">/////////////////////////////////////////////////////////////////////////////////////</span>

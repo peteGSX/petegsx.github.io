@@ -21,7 +21,9 @@ There are currently two different modes for the encoder, with either option bein
 1. As a generic control knob with a standard, SPI connected monochrome OLED display to select a position between -127 and 127.
 2. As a turntable controller utilising an SPI connected GC9A01 round colour LCD display to select predefined positions.
 
-Further to this, the EX-CommandStation device driver has the capability of sending feedback to the Arduino when a turntable move has been completed. See :ref:`rotary-encoder/ex-rail-integration:receiving feedback from the ex-commandstation` for details.
+The EX-CommandStation device driver has the capability of sending feedback to the Arduino when a turntable move has been completed. See :ref:`rotary-encoder/ex-rail-integration:receiving feedback from the ex-commandstation` for details.
+
+In addition, it is also possible to have the EX-CommmandStation notify when a turntable move has been initiated via an EXRAIL automation rather than directly by this rotary encoder software. See :ref:`rotary-encoder/ex-rail-integration:receiving a new position from the ex-commandstation` for details.
 
 .. note:: 
 
@@ -56,6 +58,8 @@ Hardware requirements
 =====================
 
 This requires an AVR based Arduino (tested on a Nano), a rotary encoder (tested with a KY-040), and an SPI connected OLED or GC9A01 round LCD display.
+
+An ESP32 can also be used, but note that this has only been tested using a Wroom Dev Kit with GC9A01 round LCD.
 
 See the relevant :doc:`/rotary-encoder/control-knob` or :doc:`/rotary-encoder/turntable-controller` page for hardware and connection details.
 
@@ -92,17 +96,21 @@ General configuration options
   * - FEEDBACK
     - Uncommented/enabled
     - Comment out to disable receiving feedback from the EX-CommandStation device driver
+  * - POSITION
+    - Uncommented/enabled
+    - Comment out to disable receiving position updates from the EX-CommandStation device driver
 
 .. code-block:: cpp
 
   /////////////////////////////////////////////////////////////////////////////////////
   //  START: General configuration options.
   /////////////////////////////////////////////////////////////////////////////////////
-  #define I2C_ADDRESS 0x80  // Default 0x80, can be any valid, available I2C address
+  #define I2C_ADDRESS 0x70  // Default 0x80, can be any valid, available I2C address
   #define MODE TURNTABLE    // Default TURNTABLE
   // #define MODE KNOB
   // #define DIAG           // Uncomment to enable continous output of encoder position
   #define FEEDBACK          // Comment out to disable feedback from CommandStation
+  #define POSITION          // Comment out to disable receiving position updates from CommandStation
   /////////////////////////////////////////////////////////////////////////////////////
   //  END: General configuration options.
   /////////////////////////////////////////////////////////////////////////////////////
