@@ -105,3 +105,11 @@ html_extra_path = [
 # blog_post_pattern = "blog/posts/*"
 # blog_feed_fulltext = True
 # fontawesome_included = True
+
+# HTML sidebars to include Google search
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_sidebars
+# https://github.com/sphinx-doc/sphinx/issues/36
+# html_sidebars = {
+#   '**': ['globaltoc.html', 'sourcelink.html', 'searchbox.html'],
+#   'using/windows': ['windowssidebar.html', 'searchbox.html'],
+# }
