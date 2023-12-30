@@ -4,12 +4,12 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Overview &mdash; Pete&#39;s Pages  documentation</title>
+  <title>Simple DCC-EX Throttle &mdash; Pete&#39;s Pages  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/peteGSX-theme.css" type="text/css" />
-    <link rel="canonical" href="https://petegsx-projects.github.io/rokuhan-turnout-control/overview.html" />
+    <link rel="canonical" href="https://petegsx-projects.github.io/simple-throttle/index.html" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Simple DCC-EX Throttle" href="../simple-throttle/index.html" />
-    <link rel="prev" title="Rokuhan DCC Turnout Controller" href="index.html" /> 
+    <link rel="next" title="HC-05/06 Bluetooth Programmer" href="../bluetooth-programmer/index.html" />
+    <link rel="prev" title="Overview" href="../rokuhan-turnout-control/overview.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -60,11 +60,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../turntable-controller/programming.html">Programming</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Rokuhan DCC Turnout Controller</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rokuhan-turnout-control/index.html">Rokuhan DCC Turnout Controller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rokuhan-turnout-control/overview.html">Overview</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../simple-throttle/index.html">Simple DCC-EX Throttle</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Simple DCC-EX Throttle</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../bluetooth-programmer/index.html">HC-05/06 Bluetooth Programmer</a></li>
@@ -86,87 +86,35 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Rokuhan DCC Turnout Controller</a></li>
-      <li class="breadcrumb-item active">Overview</li>
+      <li class="breadcrumb-item active">Simple DCC-EX Throttle</li>
   
     
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/peteGSX-Projects/petegsx-projects.github.io/blob/sphinx/docs/rokuhan-turnout-control/overview.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/peteGSX-Projects/petegsx-projects.github.io/blob/sphinx/docs/simple-throttle/index.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   
 
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
-        <a href="index.html" class="btn btn-neutral float-left" title="Rokuhan DCC Turnout Controller" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../simple-throttle/index.html" class="btn btn-neutral float-right" title="Simple DCC-EX Throttle" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../rokuhan-turnout-control/overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../bluetooth-programmer/index.html" class="btn btn-neutral float-right" title="HC-05/06 Bluetooth Programmer" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
   </div>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h1>
-<p><a class="reference external" href="https://github.com/peteGSX-Projects/rokuhan-dcc-point-control">This repository</a> contains the code for an Arduino based controller capable of switching either two or four Rokuhan brand electronic turnouts using DCC for digital control.</p>
-<p>This uses either two L293D motor controller ICs or an L298 based motor shield to control the turnouts.</p>
-<p>The code complies with the NMRA standard setting direction 1 for Closed, and 0 for Thrown.</p>
-<section id="instructions">
-<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading"></a></h2>
-<p>Rokuhan turnouts require a very brief pulse to switch the direction only, and continuous current will burn the motor out. This code has been written to cater for this.</p>
-<p>I have found an input voltage of 9V to be reliable, meaning the same power source can be used to power both the Arduino itself as well as providing the switching voltage to the turnouts.</p>
-<p>Note that with Rokuhan Shorty (45mm radius) type turnouts, I have had to increase the voltage to 10V for reliable switching.</p>
-<p>Digital Command Control (DCC) is used to trigger the turnout changes by inverting the direction, then setting the speed to max momentarily to trigger the change in direction.</p>
-</section>
-<section id="arduino-pins">
-<h2>Arduino pins<a class="headerlink" href="#arduino-pins" title="Permalink to this heading"></a></h2>
-<p>The code uses the pins below for the various functions:</p>
-<section id="dcc-pins">
-<h3>DCC pins<a class="headerlink" href="#dcc-pins" title="Permalink to this heading"></a></h3>
-<ul class="simple">
-<li><p>D2 - Interrupt pin used for DCC decoding</p></li>
-<li><p>D3 - Used for the DCC ACK signal</p></li>
-</ul>
-</section>
-<section id="turnout-1-pins-connect-to-first-l293d">
-<h3>Turnout 1 pins - connect to first L293D<a class="headerlink" href="#turnout-1-pins-connect-to-first-l293d" title="Permalink to this heading"></a></h3>
-<ul class="simple">
-<li><p>A4 - L293D input 1 - HIGH for through, LOW for branch</p></li>
-<li><p>A5 - L293D input 2 - LOW for through, HIGH for branch</p></li>
-<li><p>D5 - L293D enable 1 - set to max speed PWM 255 for 25ms to switch</p></li>
-</ul>
-</section>
-<section id="point-2-pins-connect-to-first-l293d">
-<h3>Point 2 pins - connect to first L293D<a class="headerlink" href="#point-2-pins-connect-to-first-l293d" title="Permalink to this heading"></a></h3>
-<ul class="simple">
-<li><p>D4 - L293D input 3 - HIGH for through, LOW for branch</p></li>
-<li><p>D7 - L293D input 4 - LOW for through, HIGH for branch</p></li>
-<li><p>D6 - L293D enable 2 - set to max speed PWM 255 for 25ms to switch</p></li>
-</ul>
-</section>
-<section id="point-3-pins-connect-to-second-l293d">
-<h3>Point 3 pins - connect to second L293D<a class="headerlink" href="#point-3-pins-connect-to-second-l293d" title="Permalink to this heading"></a></h3>
-<ul class="simple">
-<li><p>D8 - L293D input 1 - HIGH for through, LOW for branch</p></li>
-<li><p>D11 - L293D input 2 - LOW for through, HIGH for branch</p></li>
-<li><p>D9 - L293D enable 1 - set to max speed PWM 255 for 25ms to switch</p></li>
-</ul>
-</section>
-<section id="point-4-pins-connect-to-second-l293d">
-<h3>Point 4 pins - connect to second L293D<a class="headerlink" href="#point-4-pins-connect-to-second-l293d" title="Permalink to this heading"></a></h3>
-<ul class="simple">
-<li><p>D12 - L293D input 3 - HIGH for through, LOW for branch</p></li>
-<li><p>D13 - L293D input 4 - LOW for through, HIGH for branch</p></li>
-<li><p>D10 - L293D enable 2 - set to max speed PWM 255 for 25ms to switch</p></li>
-</ul>
-</section>
-</section>
+  <section id="simple-dcc-ex-throttle">
+<h1>Simple DCC-EX Throttle<a class="headerlink" href="#simple-dcc-ex-throttle" title="Permalink to this heading"></a></h1>
+<p>To be documented.</p>
+<p>This software is located in my <a class="reference external" href="https://github.com/peteGSX-Projects/simple-dcc-ex-throttle">simple-dcc-ex-throttle</a> GitHub repository.</p>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Rokuhan DCC Turnout Controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../simple-throttle/index.html" class="btn btn-neutral float-right" title="Simple DCC-EX Throttle" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../rokuhan-turnout-control/overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../bluetooth-programmer/index.html" class="btn btn-neutral float-right" title="HC-05/06 Bluetooth Programmer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

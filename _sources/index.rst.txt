@@ -15,8 +15,10 @@ This is the documentation repository for my various projects.
 
       rotary-encoder/overview
       serial-throttle/index
+      modulated-ir-sensor/index
       turntable-controller/index
       rokuhan-turnout-control/index
+      simple-throttle/index
 
   .. grid-item-card:: Other items
     

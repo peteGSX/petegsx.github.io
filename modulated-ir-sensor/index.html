@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modulated IR Sensor &mdash; Pete&#39;s Pages  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/peteGSX-theme.css" type="text/css" />
+    <link rel="canonical" href="https://petegsx-projects.github.io/modulated-ir-sensor/index.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Programmable DCC Turntable Controller" href="../turntable-controller/index.html" />
+    <link rel="prev" title="Mimic panel serial throttle" href="../serial-throttle/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Pete's Pages
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rotary-encoder/overview.html">DCC-EX Rotary Encoder</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rotary-encoder/control-knob.html">Control Knob Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rotary-encoder/turntable-controller.html">Turntable Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rotary-encoder/ex-rail-integration.html">Device Driver and EX-RAIL Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../serial-throttle/index.html">Mimic panel serial throttle</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Modulated IR Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../turntable-controller/index.html">Programmable DCC Turntable Controller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/hardware.html">Hardware components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/software.html">Software and Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/programming.html">Programming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rokuhan-turnout-control/index.html">Rokuhan DCC Turnout Controller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rokuhan-turnout-control/overview.html">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../simple-throttle/index.html">Simple DCC-EX Throttle</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../bluetooth-programmer/index.html">HC-05/06 Bluetooth Programmer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manage-github-labels/index.html">Managing GitHub labels with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">How to contact me</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Pete's Pages</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Modulated IR Sensor</li>
+  
+    
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/peteGSX-Projects/petegsx-projects.github.io/blob/sphinx/docs/modulated-ir-sensor/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  
+
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../serial-throttle/index.html" class="btn btn-neutral float-left" title="Mimic panel serial throttle" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../turntable-controller/index.html" class="btn btn-neutral float-right" title="Programmable DCC Turntable Controller" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="modulated-ir-sensor">
+<h1>Modulated IR Sensor<a class="headerlink" href="#modulated-ir-sensor" title="Permalink to this heading"></a></h1>
+<aside class="sidebar">
+<nav class="contents local" id="on-this-page">
+<p class="topic-title">On this page</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#theory-of-operation" id="id5">Theory of operation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#as-is-hardware-operation" id="id6">As-is hardware operation</a></p></li>
+<li><p><a class="reference internal" href="#software-operation" id="id7">Software operation</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#sensor-hardware-modification" id="id8">Sensor hardware modification</a></p></li>
+<li><p><a class="reference internal" href="#sensor-configuration" id="id9">Sensor configuration</a></p></li>
+<li><p><a class="reference internal" href="#user-configuration" id="id10">User configuration</a></p>
+<ul>
+<li><p><a class="reference internal" href="#general-options" id="id11">General options</a></p></li>
+<li><p><a class="reference internal" href="#sensor-options" id="id12">Sensor options</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#ex-commandstation-integration" id="id13">EX-CommandStation integration</a></p></li>
+<li><p><a class="reference internal" href="#interactive-commands" id="id14">Interactive commands</a></p></li>
+</ul>
+</nav>
+</aside>
+<p>This software is designed to work with the very inexpensive four way infrared sensors as found in prolific quantities on Amazon, AliExpress, and eBay, and allow these to be integrated with <a class="reference external" href="https://dcc-ex.com">DCC-EX</a> <a class="reference external" href="https://dcc-ex.com/ex-commandstation/index.html">EX-CommandStation</a> via the <a class="reference external" href="https://dcc-ex.com/ex-ioexpander/index.html">EX-IOExpander</a> device driver.</p>
+<a class="reference internal image-reference" href="../_images/aliexpress-sensors.jpg"><img alt="Four way IR Sensor" src="../_images/aliexpress-sensors.jpg" style="width: 320.0px; height: 320.0px;" /></a>
+<p>These sensors are dirt cheap, but given they are very simply designed become somewhat unreliable and unpredictable in various types of (un)natural lighting. This software was written to work with components I had on hand to provide what is essentially a software-only solution to making them more reliable.</p>
+<p>This software is available in my <a class="reference external" href="https://github.com/peteGSX-Projects/ModulatedIRSensor">ModulatedIRSensor</a> GitHub repository.</p>
+<p>While both the Arduino Mega and STM32F103C8 Bluepill will work with this software and the sensors and have been tested, there should be nothing microcontroller specific aside from the defined pin names.</p>
+<section id="theory-of-operation">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Theory of operation</a><a class="headerlink" href="#theory-of-operation" title="Permalink to this heading"></a></h2>
+<section id="as-is-hardware-operation">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">As-is hardware operation</a><a class="headerlink" href="#as-is-hardware-operation" title="Permalink to this heading"></a></h3>
+<p>With the out-of-the-box sensors, these are configured in reflection mode, and an object must be close enough to reflect the IR beam from the trasmitter back to the receiver in order to activate it. The output pin should be HIGH when there is no reflected IR beam from the trasmitter, and only transition to LOW when an object causes a reflection to activate it.</p>
+<p>It is also possible to desolder the IR LED and have it facing the receiver (remember you’ll still need a current limiting resistor), changing the setup to be in beam break mode. In this mode, the output pin should be LOW as it will always be receiving the IR beam, and therefore will always be activated. When an object passes between the IR LED and receiver and blocks the beam, it should set the output pin HIGH as it is deactivated.</p>
+<p>Note that with this software, the larger PCB is no longer required, and only the individual sensor PCBs are required.</p>
+</section>
+<section id="software-operation">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Software operation</a><a class="headerlink" href="#software-operation" title="Permalink to this heading"></a></h3>
+<p>The idea of making these sensors more reliable is a fairly simple concept of a square wave being transmitted via the IR LED and checking the receiver to ensure it is responding appropriately, with the receiver state being captured in a rolling window to ensure the state is consistent with the transmitter for a continuous 10 cycles. The transmitter is alternated between HIGH and LOW states every 10,000 microseconds by default (this value is customisable).</p>
+<p>In the case of the default reflection mode, when there is no object close enough to reflect the beam, the output pin should continuously be HIGH (sensor continuously deactivated).</p>
+<p>When an object is close enough to reflect the beam, the output pin should alternate between HIGH (deactivated) when the IR LED is off, and LOW (activated) when the IR LED is on.</p>
+<p>This activity is captured in a rolling window of 10 samples and only when all 10 samples are consistent between the transmitter and receiver does the software consider the sensor activated.</p>
+<p>Conversely, in beam break mode, the output pin should alternate between HIGH when the IR LED is off and low when the IR LED is on when there is no object between the transmitter and receiver.</p>
+<p>When an object interrupts the beam, the output pin should always be HIGH, no matter whether the IR LED is on or off.</p>
+<p>In beam break mode, the sensor is considered activated when the receiver is consistenly high over the 10 samples.</p>
+</section>
+</section>
+<section id="sensor-hardware-modification">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Sensor hardware modification</a><a class="headerlink" href="#sensor-hardware-modification" title="Permalink to this heading"></a></h2>
+<p>In order to control the state of the IR LED, the anode must be desoldered from the PCB, and connected to the appropriate pin of the microcontroller via a 150ohm current limiting resistor.</p>
+<a class="reference internal image-reference" href="../_images/sensor-before-after.jpg"><img alt="Before and after mod" src="../_images/sensor-before-after.jpg" style="width: 270.0px; height: 360.0px;" /></a>
+<p>Note that with the Arduino Mega being 5v vs. the Bluepill’s 3.3V, the range of sensing is a lot higher with the standard 150 ohm current limiting resistor, and you may wish to consider a higher value if the sensors are triggered by objects further away than desired.</p>
+<p>Once the sensor is modified, the IR LED’s anode is connected to the defined transmit pin on the Bluepill or Mega, and the PCB’s OUT pin is connected to the defined receive pin.</p>
+<p>VCC and GND are connected to 5V/3.3V and ground pins respectively.</p>
+</section>
+<section id="sensor-configuration">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Sensor configuration</a><a class="headerlink" href="#sensor-configuration" title="Permalink to this heading"></a></h2>
+<p>The <cite>IRSensor</cite> class is used to define each sensor object, which consists of a transmit and receive pin, along with various parameters that define the behaviour of the sensor:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">IRSensor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">txPin</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rxPin</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">startState</span><span class="o">=</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">beamBreak</span><span class="o">=</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">activeHigh</span><span class="o">=</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">transmitDelay</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">responseDelay</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>txPin - The pin the anode of the IR LED is connected to</p></li>
+<li><p>rxPin - The pin the <cite>OUT</cite> pin of the sensor PCB is connected to</p></li>
+<li><p>startState - The state that the IR LED starts in (default true)</p></li>
+<li><p>beamBreak - Set true to enable beam break mode, otherwise the default reflection mode is in use (default false)</p></li>
+<li><p>activeHigh - If for some reason the sensor in use is active high rather than active low, set this true (default false)</p></li>
+<li><p>transmitDelay - The time in microseconds between inverting the IR LED state (default 10000)</p></li>
+<li><p>responseDelay - The time in microseconds between changing the IR LED state and checking the receiver (default 20)</p></li>
+</ul>
+<p>Some notes on these parameters:</p>
+<ul class="simple">
+<li><p>It is recommended to alternate <cite>startState</cite> for each sensor to effectively halve the load of driving the IR LEDs from the microcontroller, and this has the added benefit whereby if one sensor is too close to another with the opposite <cite>startState</cite>, it will not incorrectly trigger</p></li>
+<li><p>Testing indicated a <cite>transmitDelay</cite> of less than 10,000 uS caused issues, assumedly due to the time it takes the receiver to respond to state changes</p></li>
+<li><p>Testing also indicated the receivers can be slower to respond when running at 5V vs. 3.3V, hence on the Mega the <cite>responseDelay</cite> was increased to 100 uS</p></li>
+</ul>
+<p>Default pin definitions are provided for both the Arduino Mega (31 sensors) and STM32F103C8 Bluepill (14 sensors) as follows (note that Sensor ID is incremented automatically):</p>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">Arduino Mega default sensor configuration (31)</span><a class="headerlink" href="#id3" title="Permalink to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Sensor ID</p></th>
+<th class="head"><p>Tx Pin</p></th>
+<th class="head"><p>Rx Pin</p></th>
+<th class="head"><p>Start State</p></th>
+<th class="head"><p>Beam Break</p></th>
+<th class="head"><p>Active High</p></th>
+<th class="head"><p>Tx Delay</p></th>
+<th class="head"><p>Rx Delay</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>4</p></td>
+<td><p>5</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>6</p></td>
+<td><p>7</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>8</p></td>
+<td><p>9</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>10</p></td>
+<td><p>11</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>12</p></td>
+<td><p>13</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>14</p></td>
+<td><p>15</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>16</p></td>
+<td><p>17</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>18</p></td>
+<td><p>19</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>22</p></td>
+<td><p>23</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>24</p></td>
+<td><p>25</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>26</p></td>
+<td><p>27</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>28</p></td>
+<td><p>29</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>30</p></td>
+<td><p>31</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>32</p></td>
+<td><p>33</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>15</p></td>
+<td><p>34</p></td>
+<td><p>35</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p>36</p></td>
+<td><p>37</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>17</p></td>
+<td><p>38</p></td>
+<td><p>39</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>18</p></td>
+<td><p>40</p></td>
+<td><p>41</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>19</p></td>
+<td><p>42</p></td>
+<td><p>43</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>20</p></td>
+<td><p>44</p></td>
+<td><p>45</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>21</p></td>
+<td><p>46</p></td>
+<td><p>47</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>22</p></td>
+<td><p>48</p></td>
+<td><p>49</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>23</p></td>
+<td><p>A0</p></td>
+<td><p>A1</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>24</p></td>
+<td><p>A2</p></td>
+<td><p>A3</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>25</p></td>
+<td><p>A4</p></td>
+<td><p>A5</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>26</p></td>
+<td><p>A6</p></td>
+<td><p>A7</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>27</p></td>
+<td><p>A8</p></td>
+<td><p>A9</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>28</p></td>
+<td><p>A10</p></td>
+<td><p>A11</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>29</p></td>
+<td><p>A12</p></td>
+<td><p>A13</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>30</p></td>
+<td><p>A14</p></td>
+<td><p>A15</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>10000</p></td>
+<td><p>100</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">STM32F103C8 Bluepill default sensor configuration (14)</span><a class="headerlink" href="#id4" title="Permalink to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Sensor ID</p></th>
+<th class="head"><p>Tx Pin</p></th>
+<th class="head"><p>Rx Pin</p></th>
+<th class="head"><p>Start State</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>PC13</p></td>
+<td><p>PC14</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>PC15</p></td>
+<td><p>PA0</p></td>
+<td><p>false</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>PA1</p></td>
+<td><p>PA2</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>PA3</p></td>
+<td><p>PA4</p></td>
+<td><p>false</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>PA5</p></td>
+<td><p>PA6</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>PA7</p></td>
+<td><p>PB0</p></td>
+<td><p>false</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>PB1</p></td>
+<td><p>PB10</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>PB11</p></td>
+<td><p>PB9</p></td>
+<td><p>false</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>PB8</p></td>
+<td><p>PB5</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>PB4</p></td>
+<td><p>PB3</p></td>
+<td><p>false</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>PA15</p></td>
+<td><p>PA10</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>PA9</p></td>
+<td><p>PA8</p></td>
+<td><p>false</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>PB15</p></td>
+<td><p>PB14</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>PB13</p></td>
+<td><p>PB12</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="user-configuration">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">User configuration</a><a class="headerlink" href="#user-configuration" title="Permalink to this heading"></a></h2>
+<section id="general-options">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">General options</a><a class="headerlink" href="#general-options" title="Permalink to this heading"></a></h3>
+<p>There are only two options to configure:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>I2C_ADDRESS</cite> - define the I2C address to use, default is 0x65</p></li>
+<li><p><cite>DIAG_CONFIG_DELAY</cite> - define the default diagnostic output delay in seconds, default is 5</p></li>
+</ul>
+</div></blockquote>
+<p>To define a user configuration, copy the file “DefaultConfig.h” to “MyConfig.h” (note this is case sensitive), and update these values as required. Do not edit any other lines, although you can get rid of the copyright/license text if desired. The resultant file should look like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef MYCONFIG_H</span>
+<span class="cp">#define MYCONFIG_H</span>
+
+<span class="cp">#define I2C_ADDRESS 0x65</span>
+<span class="cp">#define DIAG_CONFIG_DELAY 5</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</section>
+<section id="sensor-options">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Sensor options</a><a class="headerlink" href="#sensor-options" title="Permalink to this heading"></a></h3>
+<p>It is possible to enable user configuration of sensors on both the Bluepill and Mega by creating both a “MySensors.h” header file, and “MySensors.cpp” implementation file.</p>
+<p>To enable a user configuration, you must create both of these files (noting the names are case sensitive) with the contents as show below, which contain an example using the first two default Bluepill sensor setups with all options explicitly defined.</p>
+<p>“MySensors.h”</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef MYSENSORS_H</span>
+<span class="cp">#define MYSENSORS_H</span>
+
+<span class="c1">// This is the number of user sensors to define</span>
+<span class="cp">#define SENSOR_COUNT 2</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+<p>“MySensors.cpp”</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Arduino.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;DeviceFunctions.h&quot;</span>
+
+<span class="c1">// Leave this line as is</span>
+<span class="n">IRSensor</span><span class="o">*</span><span class="w"> </span><span class="n">sensors</span><span class="p">[</span><span class="n">SENSOR_COUNT</span><span class="p">]</span><span class="o">=</span><span class="p">{</span>
+<span class="c1">// Define each sensor in this format:</span>
+<span class="c1">// new IRSensor(txPin,rxPin,startState,beamBreak,activeHigh,transmitDelay,responseDelay),</span>
+<span class="c1">// There must be the same number of lines defined here to match SENSOR_COUNT in MySensors.h</span>
+<span class="w">  </span><span class="k">new</span><span class="w"> </span><span class="n">IRSensor</span><span class="p">(</span><span class="n">PC13</span><span class="p">,</span><span class="n">PC14</span><span class="p">,</span><span class="nb">true</span><span class="p">,</span><span class="nb">false</span><span class="p">,</span><span class="nb">false</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span>
+<span class="w">  </span><span class="k">new</span><span class="w"> </span><span class="n">IRSensor</span><span class="p">(</span><span class="n">PC15</span><span class="p">,</span><span class="n">PA0</span><span class="p">,</span><span class="nb">false</span><span class="p">,</span><span class="nb">false</span><span class="p">,</span><span class="nb">false</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ex-commandstation-integration">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">EX-CommandStation integration</a><a class="headerlink" href="#ex-commandstation-integration" title="Permalink to this heading"></a></h2>
+<p>If desired, this software can integrate with <a class="reference external" href="https://dcc-ex.com/ex-commandstation/index.html">EX-CommandStation</a> via the <a class="reference external" href="https://dcc-ex.com/ex-ioexpander/index.html">EX-IOExpander</a> device driver when connected to the I2C bus.</p>
+<p>I highly recommend familiarising yourself with the EX-IOExpander documentation linked above as I will not cover any of that here, and will focus only on the specific configuration required for this software.</p>
+<p>To enable this integration, you simply need to add the appropriate <cite>HAL(EXIOExpander,vpin,sensors,I2C address)</cite> line to “myAutomation.h”, whereby:</p>
+<ul class="simple">
+<li><p>vpin - The first Vpin at which your sensors will start being numbered</p></li>
+<li><p>sensors - The number of sensors defined either in “MySensors.h” or the default Bluepill (14) or Mega (31) options</p></li>
+<li><p>I2C address - The I2C address defined in “MyConfig.h” or the default 0x65</p></li>
+</ul>
+<p>Example “myAutomation.h” for the example above using “MySensors.h” and “MySensors.cpp” at the default I2C address:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">HAL</span><span class="p">(</span><span class="n">EXIOExpander</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mh">0x65</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="interactive-commands">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Interactive commands</a><a class="headerlink" href="#interactive-commands" title="Permalink to this heading"></a></h2>
+<p>A subset of the EX-IOExpander commands have been implemented in this software:</p>
+<ul class="simple">
+<li><p><cite>&lt;D&gt;</cite> - Enable/disable diagnostic output, which displays at the intervals defined by the <cite>DIAG_CONFIG_DELAY</cite> setting</p></li>
+<li><p><cite>&lt;D x&gt;</cite> - Change the display interval, where <cite>x</cite> is the number of seconds in whole numbers</p></li>
+<li><p><cite>&lt;V&gt;</cite> - Display the mapping of Vpins to physical sensor configuation</p></li>
+<li><p><cite>&lt;Z&gt;</cite> - Reboot</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../serial-throttle/index.html" class="btn btn-neutral float-left" title="Mimic panel serial throttle" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../turntable-controller/index.html" class="btn btn-neutral float-right" title="Programmable DCC Turntable Controller" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Peter Cole.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HBTV6STT77"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-HBTV6STT77', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>
