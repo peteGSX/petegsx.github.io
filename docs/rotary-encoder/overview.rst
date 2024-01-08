@@ -6,6 +6,8 @@ DCC-EX Rotary Encoder
 
   This code is very much in Alpha testing, functionality may change at any time, and much testing is needed. For bugs or feedback, refer to :doc:`/contact`.
 
+  I have made the decision to focus this code on using the GC9A01 round LCD only going forwards, so the code is about to undergo a major rewrite, and any references to using a generic OLED or operating in generic control knob mode will be removed. I have tagged the last commit with this functionality as v0.0.7-Devel.
+
 .. sidebar::
 
   .. contents:: On this page
