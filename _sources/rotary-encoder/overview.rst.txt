@@ -46,7 +46,7 @@ To utilise the rotary encoder, you must be running version 5.0.0 (or later) of E
 
 `Get it here <https://dcc-ex.com>`_.
 
-The latest version of the rotary encoder software is available in my `DCC-EX Rotary Encoder <https://github.com/peteGSX-Projects/dcc-ex-rotary-encoder>`_ repository.
+The latest version of the rotary encoder software is available in my `DCC-EX Rotary Encoder <https://github.com/peteGSX-Projects/DCCEXRotaryEncoder>`_ repository.
 
 Refer to :doc:`/rotary-encoder/ex-rail-integration` and the `DCC-EX EX-Turntable documentation <https://dcc-ex.com/ex-turntable/test-and-tune.html#controlling-ex-turntable-with-a-rotary-encoder>`_ for further information on how this interacts with an EX-CommandStation.
 
