@@ -64,6 +64,23 @@ Once the sensor is modified, the IR LED's anode is connected to the defined tran
 
 VCC and GND are connected to 5V/3.3V and ground pins respectively.
 
+Using generic 3mm IR LEDs and IR receivers
+==========================================
+
+As an alternative to purchasing and modifying these AliExpress type sensor boards, it is also possible to purchase generic bare 3mm IR LED/receiver pairs from places like eBay and use these instead.
+
+These will still require a current limiting resistor for the IR LED, and a pullup resistor for the IR receiver, and you will need to design a way to mount them appropriately so they maintain appropriate alignment in reflection or beam break modes.
+
+.. image:: /_static/images/modulated-ir-sensor/modulated-ir-sensor-on-mega.png
+  :alt: 3mm IR LED/Receiver on Mega
+  :scale: 30%
+
+My experimentation revealed a 240ohm current limiting resistor for the IR LED and 10Kohm pullup resistor for the IR receiver yielded good, reliable detection at about a 20mm range.
+
+Note when connecting the LEDs, that the IR LED is connecting in the normal, forward direction of anode (typically the longer leg) to the Arduino GPIO pin, and cathode (typically the shorter leg) to ground.
+
+The IR receiver, however, is connected in reverse, with the anode (typically the longer leg) connected to ground, and the cathode (typically the shorter leg) connected to the Arduino GPIO pin along with the pullup resistor.
+
 Sensor configuration
 ====================
 
@@ -71,14 +88,14 @@ The `IRSensor` class is used to define each sensor object, which consists of a t
 
 .. code-block:: cpp
 
-  IRSensor(int txPin, int rxPin, bool startState=true, bool beamBreak=false, bool activeHigh=false, unsigned long transmitDelay=10000, unsigned long responseDelay=20);
+  IRSensor(int txPin, int rxPin, bool startState=true, bool beamBreak=false, bool activeHigh=false, unsigned long transmitDelay=20000, unsigned long responseDelay=20);
 
 - txPin - The pin the anode of the IR LED is connected to
 - rxPin - The pin the `OUT` pin of the sensor PCB is connected to
 - startState - The state that the IR LED starts in (default true)
 - beamBreak - Set true to enable beam break mode, otherwise the default reflection mode is in use (default false)
 - activeHigh - If for some reason the sensor in use is active high rather than active low, set this true (default false)
-- transmitDelay - The time in microseconds between inverting the IR LED state (default 10000)
+- transmitDelay - The time in microseconds between inverting the IR LED state (default 20000)
 - responseDelay - The time in microseconds between changing the IR LED state and checking the receiver (default 20)
 
 Some notes on these parameters:
@@ -94,37 +111,37 @@ Default pin definitions are provided for both the Arduino Mega (31 sensors) and 
   :header-rows: 1
 
   Sensor ID,Tx Pin,Rx Pin,Start State,Beam Break,Active High,Tx Delay,Rx Delay
-  0,2,3,true,false,false,10000,100
-  1,4,5,false,false,false,10000,100
-  2,6,7,true,false,false,10000,100
-  3,8,9,false,false,false,10000,100
-  4,10,11,true,false,false,10000,100
-  5,12,13,false,false,false,10000,100
-  6,14,15,true,false,false,10000,100
-  7,16,17,false,false,false,10000,100
-  8,18,19,true,false,false,10000,100
-  9,22,23,false,false,false,10000,100
-  10,24,25,true,false,false,10000,100
-  11,26,27,false,false,false,10000,100
-  12,28,29,true,false,false,10000,100
-  13,30,31,false,false,false,10000,100
-  14,32,33,true,false,false,10000,100
-  15,34,35,false,false,false,10000,100
-  16,36,37,true,false,false,10000,100
-  17,38,39,false,false,false,10000,100
-  18,40,41,true,false,false,10000,100
-  19,42,43,false,false,false,10000,100
-  20,44,45,true,false,false,10000,100
-  21,46,47,false,false,false,10000,100
-  22,48,49,true,false,false,10000,100
-  23,A0,A1,false,false,false,10000,100
-  24,A2,A3,true,false,false,10000,100
-  25,A4,A5,false,false,false,10000,100
-  26,A6,A7,true,false,false,10000,100
-  27,A8,A9,false,false,false,10000,100
-  28,A10,A11,true,false,false,10000,100
-  29,A12,A13,false,false,false,10000,100
-  30,A14,A15,true,false,false,10000,100
+  0,2,3,true,false,false,20000,100
+  1,4,5,false,false,false,20000,100
+  2,6,7,true,false,false,20000,100
+  3,8,9,false,false,false,20000,100
+  4,10,11,true,false,false,20000,100
+  5,12,13,false,false,false,20000,100
+  6,14,15,true,false,false,20000,100
+  7,16,17,false,false,false,20000,100
+  8,18,19,true,false,false,20000,100
+  9,22,23,false,false,false,20000,100
+  10,24,25,true,false,false,20000,100
+  11,26,27,false,false,false,20000,100
+  12,28,29,true,false,false,20000,100
+  13,30,31,false,false,false,20000,100
+  14,32,33,true,false,false,20000,100
+  15,34,35,false,false,false,20000,100
+  16,36,37,true,false,false,20000,100
+  17,38,39,false,false,false,20000,100
+  18,40,41,true,false,false,20000,100
+  19,42,43,false,false,false,20000,100
+  20,44,45,true,false,false,20000,100
+  21,46,47,false,false,false,20000,100
+  22,48,49,true,false,false,20000,100
+  23,A0,A1,false,false,false,20000,100
+  24,A2,A3,true,false,false,20000,100
+  25,A4,A5,false,false,false,20000,100
+  26,A6,A7,true,false,false,20000,100
+  27,A8,A9,false,false,false,20000,100
+  28,A10,A11,true,false,false,20000,100
+  29,A12,A13,false,false,false,20000,100
+  30,A14,A15,true,false,false,20000,100
 
 .. csv-table:: STM32F103C8 Bluepill default sensor configuration (14)
   :widths: auto
@@ -200,9 +217,18 @@ To enable a user configuration, you must create both of these files (noting the 
   // Define each sensor in this format:
   // new IRSensor(txPin,rxPin,startState,beamBreak,activeHigh,transmitDelay,responseDelay),
   // There must be the same number of lines defined here to match SENSOR_COUNT in MySensors.h
-    new IRSensor(PC13,PC14,true,false,false,10000,20),
-    new IRSensor(PC15,PA0,false,false,false,10000,20),
+    new IRSensor(PC13,PC14,true,false,false,20000,20),
+    new IRSensor(PC15,PA0,false,false,false,20000,20),
   };
+
+Adjusting range
+===============
+
+If the range of the sensors using the default values outlined here don't suit your needs, then the current limiting resistor for the IR LED can be changed (lower value resistor, longer range), and adjusting the `responseDelay` value tends to also impact the range.
+
+Be very careful with the current limiting resistor though, as the Arduino device GPIO pins can only source a limited amount of current, so reducing this value too much will likely lead to damaging the GPIO pins of the device when exceeding their current limits.
+
+Adjusting the `responseDelay` value is the preferred starting point as a result, and decreasing this will typically reduce the range, and increasing it may increase the range, although the default of 100ms on the Mega is likely the maximum range on that platform.
 
 EX-CommandStation integration
 =============================
