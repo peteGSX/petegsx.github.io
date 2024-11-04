@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DCC-EX Turntable Controller &mdash; Pete&#39;s Pages  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/peteGSX-theme.css" type="text/css" />
+    <link rel="canonical" href="https://petegsx-projects.github.io/dcc-ex-turntable-controller/index.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DCC-EX Rotary Encoder (archived)" href="../rotary-encoder/overview.html" />
+    <link rel="prev" title="Welcome to Pete’s Pages!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Pete's Pages
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DCC-EX Turntable Controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rotary-encoder/overview.html">DCC-EX Rotary Encoder (archived)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rotary-encoder/control-knob.html">Control Knob Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rotary-encoder/turntable-controller.html">Turntable Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rotary-encoder/ex-rail-integration.html">Device Driver and EX-RAIL Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../serial-throttle/index.html">Mimic panel serial throttle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modulated-ir-sensor/index.html">Modulated IR Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../turntable-controller/index.html">Programmable DCC Turntable Controller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/hardware.html">Hardware components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/software.html">Software and Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../turntable-controller/programming.html">Programming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rokuhan-turnout-control/index.html">Rokuhan DCC Turnout Controller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rokuhan-turnout-control/overview.html">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../simple-throttle/index.html">Simple DCC-EX Throttle</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../bluetooth-programmer/index.html">HC-05/06 Bluetooth Programmer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manage-github-labels/index.html">Managing GitHub labels with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">How to contact me</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Pete's Pages</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">DCC-EX Turntable Controller</li>
+  
+    
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/peteGSX-Projects/petegsx-projects.github.io/blob/sphinx/docs/dcc-ex-turntable-controller/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  
+
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Pete’s Pages!" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../rotary-encoder/overview.html" class="btn btn-neutral float-right" title="DCC-EX Rotary Encoder (archived)" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dcc-ex-turntable-controller">
+<h1>DCC-EX Turntable Controller<a class="headerlink" href="#dcc-ex-turntable-controller" title="Permalink to this heading"></a></h1>
+<p>This is a controller for DCC-EX turntables, operating as a native DCC-EX protocol client to utilise a turntable object and allow a user to operate it.</p>
+<p>Turntable operations are displayed on a round LCD, with a rotary encoder utilised for user input.</p>
+<p>It is capable of operating any type of turntable configured using the new DCC-EX turntable object, including both EX-Turntable and DCC turntables.</p>
+<p>Information on the new turntable object is available on the <a class="reference external" href="https://dcc-ex.com/ex-commandstation/accessories/turntables/index.html">DCC-EX website</a>.</p>
+<p>A future version may implement support for a WiFi client connection to the DCC-EX CommandStation rather than needing a physical serial connection.</p>
+<section id="how-it-works-and-dcc-ex-turntable-configuration">
+<h2>How it works (and DCC-EX turntable configuration)<a class="headerlink" href="#how-it-works-and-dcc-ex-turntable-configuration" title="Permalink to this heading"></a></h2>
+<p>When creating a turntable object in DCC-EX EX-CommandStation, you can specify an angle for each position, which is what this DCC-EX Turntable Controller software uses to configure the turntable display.</p>
+<p>The angle of the home position is taken from what would be 12 o’clock on a traditional clock face (the top centre of the circle), with each position’s angle taken from the home position in a clockwise direction.</p>
+<p>If you do not specify an angle when creating a turntable object, this software will be unable to correctly render each position on screen.</p>
+<section id="operation">
+<h3>Operation<a class="headerlink" href="#operation" title="Permalink to this heading"></a></h3>
+<p>When the software starts, it will retrieve the first configured turntable object from the EX-CommandStation, and display the various positions on screen, with the turntable bridge represented at the current position of the turntable object.</p>
+<p>To operate the turntable, simply rotate the rotary encoder to the desired position, and a single click of the encoder’s button will send the selection to the CommandStation.</p>
+<p>If the turntable is configured as an EX-Turntable, the display will flash the bridge and position name while the turntable is moving. As there is no feedback from DCC turntables, this will not happen with those.</p>
+<p>To select the home position (again, only valid for EX-Turntable), either select it using the rotary encoder and click the button, or just double click it.</p>
+<p>Holding down the rotary encoder’s button will reset the DCC-EX Turntable Controller.</p>
+</section>
+</section>
+<section id="software">
+<h2>Software<a class="headerlink" href="#software" title="Permalink to this heading"></a></h2>
+<p>The software for the turntable controller is available in my <a class="reference external" href="https://github.com/peteGSX-Projects/DCCEXTurntableController">DCC-EX Turntable Controller</a> GitHub repository.</p>
+<section id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h3>
+<p>The repository is setup to enable PlatformIO to be used with VSCode and will automatically install the required libraries:</p>
+<ul class="simple">
+<li><p>DCC-EX/DCCEXProtocol</p></li>
+<li><p>bodmer/TFT_eSPI</p></li>
+<li><p>avandalen/Switch</p></li>
+</ul>
+<p>The platformio.ini file is written to configure the TFT_eSPI library correctly according to the <a class="reference internal" href="#pins-and-connections"><span class="std std-ref">Pins and connections</span></a> section below, meaning manual configuration of the TFT_eSPI library shouldn’t be required.</p>
+<p>If you prefer, you can also use the Arduino IDE, which means you will need to:</p>
+<ul class="simple">
+<li><p>Install the above libraries</p></li>
+<li><p>Configure the TFT_eSPI manually according to the [library’s documentation](<a class="reference external" href="https://github.com/Bodmer/TFT_eSPI">https://github.com/Bodmer/TFT_eSPI</a>)</p></li>
+</ul>
+<p>There is plenty of information and tutorials available to help with VSCode, PlatformIO, the Arduino IDE, and libraries, so I will not cover that here.</p>
+</section>
+<section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading"></a></h3>
+<p>To get up and running, just uploading the software to the Blackpill and connecting the display, rotary encoder, and serial connection should simply work “out of the box”.</p>
+<p>If you wish to customise the colours and font in use, you can copy the included “myConfig.example.h” to “myConfig.h” and edit it to suit. Instructions are in the file.</p>
+</section>
+</section>
+<section id="hardware-requirements">
+<h2>Hardware requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this heading"></a></h2>
+<p>To assemble the DCC-EX Turntable Controller, you will need:</p>
+<ul class="simple">
+<li><p>An STM32F411CEU6 Blackpill microcontroller</p></li>
+<li><p>A rotary encoder such as the KY-040</p></li>
+<li><p>A GC9A01 based round LCD</p></li>
+</ul>
+<p>Further to this, you will need a serial connection to a DCC-EX CommandStation.</p>
+<section id="pins-and-connections">
+<h3>Pins and connections<a class="headerlink" href="#pins-and-connections" title="Permalink to this heading"></a></h3>
+<p>The below pins are used on the Blackpill to connect to the CommandStation’s serial port, rotary encoder, and GC9A01 LCD.</p>
+<p>Remember to cross Rx/Tx so that the Blackpill Rx connects to the CommandStation’s Tx, and vice versa. Also be sure to connect a common ground, and take into account if the CommandStation uses 3.3V or 5V logic, as the Blackpill is a 3.3V uC.</p>
+<ul class="simple">
+<li><p>Serial Rx - PA10</p></li>
+<li><p>Serial Tx - PA9</p></li>
+<li><p>Rotary encoder button - PB15</p></li>
+<li><p>Rotary encoder DT - PB14</p></li>
+<li><p>Rotary encoder CLK - PB13</p></li>
+<li><p>GC9A01 DIN - PA7</p></li>
+<li><p>GC9A01 CLK - PA5</p></li>
+<li><p>GC9A01 CS - PA4</p></li>
+<li><p>GC9A01 DC - PA3</p></li>
+<li><p>GC9A01 RST - PA2</p></li>
+<li><p>GC9A01 BL - PA1</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Pete’s Pages!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../rotary-encoder/overview.html" class="btn btn-neutral float-right" title="DCC-EX Rotary Encoder (archived)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Peter Cole.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HBTV6STT77"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-HBTV6STT77', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

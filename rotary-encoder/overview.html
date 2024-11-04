@@ -4,10 +4,10 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DCC-EX Rotary Encoder &mdash; Pete&#39;s Pages  documentation</title>
+  <title>DCC-EX Rotary Encoder (archived) &mdash; Pete&#39;s Pages  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/peteGSX-theme.css" type="text/css" />
     <link rel="canonical" href="https://petegsx-projects.github.io/rotary-encoder/overview.html" />
   <!--[if lt IE 9]>
@@ -22,7 +22,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Control Knob Mode" href="control-knob.html" />
-    <link rel="prev" title="Welcome to Pete’s Pages!" href="../index.html" /> 
+    <link rel="prev" title="DCC-EX Turntable Controller" href="../dcc-ex-turntable-controller/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,7 +45,8 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">DCC-EX Rotary Encoder</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../dcc-ex-turntable-controller/index.html">DCC-EX Turntable Controller</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DCC-EX Rotary Encoder (archived)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="control-knob.html">Control Knob Mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="turntable-controller.html">Turntable Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ex-rail-integration.html">Device Driver and EX-RAIL Integration</a></li>
@@ -86,7 +87,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">DCC-EX Rotary Encoder</li>
+      <li class="breadcrumb-item active">DCC-EX Rotary Encoder (archived)</li>
   
     
       <li class="wy-breadcrumbs-aside">
@@ -95,7 +96,7 @@
   
 
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
-        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Pete’s Pages!" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../dcc-ex-turntable-controller/index.html" class="btn btn-neutral float-left" title="DCC-EX Turntable Controller" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="control-knob.html" class="btn btn-neutral float-right" title="Control Knob Mode" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
   </div>
   <hr/>
@@ -103,27 +104,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="dcc-ex-rotary-encoder">
-<h1>DCC-EX Rotary Encoder<a class="headerlink" href="#dcc-ex-rotary-encoder" title="Permalink to this heading"></a></h1>
+  <section id="dcc-ex-rotary-encoder-archived">
+<h1>DCC-EX Rotary Encoder (archived)<a class="headerlink" href="#dcc-ex-rotary-encoder-archived" title="Permalink to this heading"></a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This code is very much in Alpha testing, functionality may change at any time, and much testing is needed. For bugs or feedback, refer to <a class="reference internal" href="../contact.html"><span class="doc">How to contact me</span></a>.</p>
-<p>I have made the decision to focus this code on using the GC9A01 round LCD only going forwards, so the code is about to undergo a major rewrite, and any references to using a generic OLED or operating in generic control knob mode will be removed. I have tagged the last commit with this functionality as v0.0.7-Devel.</p>
+<p>This repository has now been marked as a public archive as the project has been superceded by the new <a class="reference internal" href="../dcc-ex-turntable-controller/index.html"><span class="doc">DCC-EX Turntable Controller</span></a> project instead.</p>
+<p>If you’re looking to control a DCC-EX turntable with this software, I highly recommend looking at the DCC-EX Turntable Controller instead, as this project will receive no further development.</p>
 </div>
 <aside class="sidebar">
 <nav class="contents local" id="on-this-page">
 <p class="topic-title">On this page</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#software-requirements" id="id2">Software requirements</a></p></li>
-<li><p><a class="reference internal" href="#hardware-requirements" id="id3">Hardware requirements</a></p></li>
-<li><p><a class="reference internal" href="#installation-and-configuration" id="id4">Installation and configuration</a></p>
+<li><p><a class="reference internal" href="#software-requirements" id="id1">Software requirements</a></p></li>
+<li><p><a class="reference internal" href="#hardware-requirements" id="id2">Hardware requirements</a></p></li>
+<li><p><a class="reference internal" href="#installation-and-configuration" id="id3">Installation and configuration</a></p>
 <ul>
-<li><p><a class="reference internal" href="#general-configuration-options" id="id5">General configuration options</a></p></li>
-<li><p><a class="reference internal" href="#rotary-encoder-options" id="id6">Rotary encoder options</a></p></li>
-<li><p><a class="reference internal" href="#display-options" id="id7">Display options</a></p></li>
+<li><p><a class="reference internal" href="#general-configuration-options" id="id4">General configuration options</a></p></li>
+<li><p><a class="reference internal" href="#rotary-encoder-options" id="id5">Rotary encoder options</a></p></li>
+<li><p><a class="reference internal" href="#display-options" id="id6">Display options</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#usage" id="id8">Usage</a></p></li>
+<li><p><a class="reference internal" href="#usage" id="id7">Usage</a></p></li>
 </ul>
 </nav>
 </aside>
@@ -143,7 +144,7 @@
 <div class="toctree-wrapper compound">
 </div>
 <section id="software-requirements">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Software requirements</a><a class="headerlink" href="#software-requirements" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Software requirements</a><a class="headerlink" href="#software-requirements" title="Permalink to this heading"></a></h2>
 <p>To utilise the rotary encoder, you must be running version 5.0.0 (or later) of EX-CommandStation.</p>
 <p><a class="reference external" href="https://dcc-ex.com">Get it here</a>.</p>
 <p>The latest version of the rotary encoder software is available in my <a class="reference external" href="https://github.com/peteGSX-Projects/DCCEXRotaryEncoder">DCC-EX Rotary Encoder</a> repository.</p>
@@ -155,7 +156,7 @@
 </div>
 </section>
 <section id="hardware-requirements">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Hardware requirements</a><a class="headerlink" href="#hardware-requirements" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Hardware requirements</a><a class="headerlink" href="#hardware-requirements" title="Permalink to this heading"></a></h2>
 <p>This requires an AVR based Arduino (tested on a Nano), a rotary encoder (tested with a KY-040), and an SPI connected OLED or GC9A01 round LCD display.</p>
 <p>See the relevant <a class="reference internal" href="control-knob.html"><span class="doc">Control Knob Mode</span></a> or <a class="reference internal" href="turntable-controller.html"><span class="doc">Turntable Controller</span></a> page for hardware and connection details.</p>
 <p>An ESP32 can also be used, but note that this has only been tested using a Wroom Dev Kit with GC9A01 round LCD.</p>
@@ -171,11 +172,11 @@
 </div>
 </section>
 <section id="installation-and-configuration">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Installation and configuration</a><a class="headerlink" href="#installation-and-configuration" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Installation and configuration</a><a class="headerlink" href="#installation-and-configuration" title="Permalink to this heading"></a></h2>
 <p>The provided “config.example.h” file in addition to the Fritzing diagrams included on the relevant pages should help identify the correct pins to connect the encoder and display to.</p>
 <p>Various configuration options can be edited in the file “config.h”. By default, this file does not exist, and an example file “config.example.h” with the various options has been provided. It is recommended to copy the example file to your own “config.h”, as the example file will be overwritten by any future changes to the software.</p>
 <section id="general-configuration-options">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">General configuration options</a><a class="headerlink" href="#general-configuration-options" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">General configuration options</a><a class="headerlink" href="#general-configuration-options" title="Permalink to this heading"></a></h3>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Option</p></th>
@@ -222,7 +223,7 @@
 </div>
 </section>
 <section id="rotary-encoder-options">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Rotary encoder options</a><a class="headerlink" href="#rotary-encoder-options" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Rotary encoder options</a><a class="headerlink" href="#rotary-encoder-options" title="Permalink to this heading"></a></h3>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Option</p></th>
@@ -303,12 +304,12 @@
 </div>
 </section>
 <section id="display-options">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink">Display options</a><a class="headerlink" href="#display-options" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Display options</a><a class="headerlink" href="#display-options" title="Permalink to this heading"></a></h3>
 <p>For the OLED configuration options avaiable in control knob mode, refer to <a class="reference internal" href="control-knob.html#knob-mode-configuration-options"><span class="std std-ref">Knob mode configuration options</span></a>, and for the GC9A01 round LCD configuration options available in turntable mode, refer to <a class="reference internal" href="turntable-controller.html#turntable-mode-configuration-options"><span class="std std-ref">Turntable mode configuration options</span></a>.</p>
 </section>
 </section>
 <section id="usage">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">Usage</a><a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Usage</a><a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
 <p>Once the software has been configured and uploaded to the rotary encoder Arduino, and your EX-CommandStation has been configured to support it with the updated software uploaded, you can simply rotate the encoder to the appropriate position desired, and a push of the button will send that position to the EX-CommandStation.</p>
 <p>In the generic control knob mode, it will send a position between -127 and 127. The OLED will display the last selected position in addition to the position reflected by the current knob position.</p>
 <p>In turntable controller mode, the knob rotates a representative turntable on the GC9A01 round LCD, and will send the predefined position number when the representative turntable is aligned with a position, and the encoder button is pushed.</p>
@@ -320,7 +321,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Pete’s Pages!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../dcc-ex-turntable-controller/index.html" class="btn btn-neutral float-left" title="DCC-EX Turntable Controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="control-knob.html" class="btn btn-neutral float-right" title="Control Knob Mode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
