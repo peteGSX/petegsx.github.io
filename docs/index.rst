@@ -13,6 +13,7 @@ This is the documentation repository for my various projects.
     .. toctree:: 
       :maxdepth: 1
 
+      dcc-ex-turntable-controller/index
       rotary-encoder/overview
       serial-throttle/index
       modulated-ir-sensor/index
