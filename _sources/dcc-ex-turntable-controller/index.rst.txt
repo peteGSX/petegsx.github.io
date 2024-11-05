@@ -39,6 +39,8 @@ Software
 
 The software for the turntable controller is available in my `DCC-EX Turntable Controller <https://github.com/peteGSX-Projects/DCCEXTurntableController>`_ GitHub repository.
 
+There is some documentation generated for the code itself in `GitHub pages <https://petegsx-projects.github.io/DCCEXTurntableController/>`_.
+
 Installation
 ------------
 
