@@ -115,7 +115,41 @@
 <h2>How it works (and DCC-EX turntable configuration)<a class="headerlink" href="#how-it-works-and-dcc-ex-turntable-configuration" title="Permalink to this heading"></a></h2>
 <p>When creating a turntable object in DCC-EX EX-CommandStation, you can specify an angle for each position, which is what this DCC-EX Turntable Controller software uses to configure the turntable display.</p>
 <p>The angle of the home position is taken from what would be 12 o’clock on a traditional clock face (the top centre of the circle), with each position’s angle taken from the home position in a clockwise direction.</p>
-<p>If you do not specify an angle when creating a turntable object, this software will be unable to correctly render each position on screen.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you do not specify an angle for each position when creating a turntable object, this software will be unable to correctly render each position on screen.</p>
+</div>
+<section id="setting-up-a-turntable-object">
+<h3>Setting up a turntable object<a class="headerlink" href="#setting-up-a-turntable-object" title="Permalink to this heading"></a></h3>
+<p>Turntable objects can be defined interactively via the <cite>&lt;I …&gt;</cite> commands, or in EXRAIL via the <cite>DCC_TURNTABLE()</cite>, <cite>EXTT_TURNTABLE()</cite>, and <cite>TT_ADDPOSITION()</cite> commands. This documentation will focus only on EXRAIL and, in particular, an EX-Turntable object definition as an example.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To allow for angles with a single decimal place, the DCC-EX turntable object’s valid angles are from 0 - 3600, so this software divides the angle by 10 to obtain the correct angle in degrees.</p>
+</div>
+<p>This is the example EX-Turntable definition in the DCC-EX documentation, updated with angles to draw the home and other positions on screen in the correct locations.</p>
+<p>Home is at the bottom of the display (180 degrees from the top of the screen).</p>
+<p>The roundhouse tracks are separated by 10 degrees:</p>
+<ul class="simple">
+<li><p>Stall 1 is 80 degrees from home</p></li>
+<li><p>Stall 2 is 90 degrees from home</p></li>
+<li><p>Stall 3 is 100 degrees from home</p></li>
+<li><p>Connection to the rest of the layout is 270 degrees from home</p></li>
+<li><p>To reverse into stall 1, a position is created at 260 degrees from home</p></li>
+<li><p>To reverse into stall 3, a position is created at 280 degrees from home</p></li>
+</ul>
+<p>This would be configured in EXRAIL via myAutomation.h as such:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">HAL</span><span class="p">(</span><span class="n">EXTurntable</span><span class="p">,</span><span class="mi">600</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mh">0x60</span><span class="p">)</span>
+<span class="n">EXTT_TURNTABLE</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">600</span><span class="p">,</span><span class="mi">1800</span><span class="p">,</span><span class="s">&quot;My EX-Turntable&quot;</span><span class="p">)</span>
+<span class="n">TT_ADDPOSITION</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">114</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="s">&quot;Stall 1&quot;</span><span class="p">)</span>
+<span class="n">TT_ADDPOSITION</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">227</span><span class="p">,</span><span class="mi">900</span><span class="p">,</span><span class="s">&quot;Stall 2&quot;</span><span class="p">)</span>
+<span class="n">TT_ADDPOSITION</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">341</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="s">&quot;Stall 3&quot;</span><span class="p">)</span>
+<span class="n">TT_ADDPOSITION</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2159</span><span class="p">,</span><span class="mi">2600</span><span class="p">,</span><span class="s">&quot;Rev stall 1&quot;</span><span class="p">)</span>
+<span class="n">TT_ADDPOSITION</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2273</span><span class="p">,</span><span class="mi">2700</span><span class="p">,</span><span class="s">&quot;Layout&quot;</span><span class="p">)</span>
+<span class="n">TT_ADDPOSITION</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2386</span><span class="p">,</span><span class="mi">2800</span><span class="p">,</span><span class="s">&quot;Rev stall 3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As you can see, setting the turntable object up in this manner means you only need to do it once, and this turntable controller software needs no further configuration, meaning any updates to your turntable object will automatically be reflected on the display without any further configuration effort.</p>
+</section>
 <section id="operation">
 <h3>Operation<a class="headerlink" href="#operation" title="Permalink to this heading"></a></h3>
 <p>When the software starts, it will retrieve the first configured turntable object from the EX-CommandStation, and display the various positions on screen, with the turntable bridge represented at the current position of the turntable object.</p>
