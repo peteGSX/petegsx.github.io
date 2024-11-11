@@ -26,7 +26,7 @@ The angle of the home position is taken from what would be 12 o'clock on a tradi
 Setting up a turntable object
 -----------------------------
 
-Turntable objects can be defined interactively via the `<I ...>` commands, or in EXRAIL via the `DCC_TURNTABLE()`, `EXTT_TURNTABLE()`, and `TT_ADDPOSITION()` commands. This documentation will focus only on EXRAIL and, in particular, an EX-Turntable object definition as an example.
+Turntable objects can be defined interactively via the ``<I ...>`` commands, or in EXRAIL via the ``DCC_TURNTABLE()``, ``EXTT_TURNTABLE()``, and ``TT_ADDPOSITION()`` commands. This documentation will focus only on EXRAIL and, in particular, an EX-Turntable object definition as an example.
 
 .. note:: 
 
