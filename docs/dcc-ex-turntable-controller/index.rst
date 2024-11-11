@@ -19,7 +19,46 @@ When creating a turntable object in DCC-EX EX-CommandStation, you can specify an
 
 The angle of the home position is taken from what would be 12 o'clock on a traditional clock face (the top centre of the circle), with each position's angle taken from the home position in a clockwise direction.
 
-If you do not specify an angle when creating a turntable object, this software will be unable to correctly render each position on screen.
+.. warning:: 
+
+  If you do not specify an angle for each position when creating a turntable object, this software will be unable to correctly render each position on screen.
+
+Setting up a turntable object
+-----------------------------
+
+Turntable objects can be defined interactively via the `<I ...>` commands, or in EXRAIL via the `DCC_TURNTABLE()`, `EXTT_TURNTABLE()`, and `TT_ADDPOSITION()` commands. This documentation will focus only on EXRAIL and, in particular, an EX-Turntable object definition as an example.
+
+.. note:: 
+
+  To allow for angles with a single decimal place, the DCC-EX turntable object's valid angles are from 0 - 3600, so this software divides the angle by 10 to obtain the correct angle in degrees.
+
+This is the example EX-Turntable definition in the DCC-EX documentation, updated with angles to draw the home and other positions on screen in the correct locations.
+
+Home is at the bottom of the display (180 degrees from the top of the screen).
+
+The roundhouse tracks are separated by 10 degrees:
+
+- Stall 1 is 80 degrees from home
+- Stall 2 is 90 degrees from home
+- Stall 3 is 100 degrees from home
+- Connection to the rest of the layout is 270 degrees from home
+- To reverse into stall 1, a position is created at 260 degrees from home
+- To reverse into stall 3, a position is created at 280 degrees from home
+
+This would be configured in EXRAIL via myAutomation.h as such:
+
+.. code-block:: c++
+
+  HAL(EXTurntable,600,1,0x60)
+  EXTT_TURNTABLE(1,600,1800,"My EX-Turntable")
+  TT_ADDPOSITION(600,1,114,800,"Stall 1")
+  TT_ADDPOSITION(600,2,227,900,"Stall 2")
+  TT_ADDPOSITION(600,3,341,1000,"Stall 3")
+  TT_ADDPOSITION(600,4,2159,2600,"Rev stall 1")
+  TT_ADDPOSITION(600,5,2273,2700,"Layout")
+  TT_ADDPOSITION(600,6,2386,2800,"Rev stall 3")
+
+As you can see, setting the turntable object up in this manner means you only need to do it once, and this turntable controller software needs no further configuration, meaning any updates to your turntable object will automatically be reflected on the display without any further configuration effort.
 
 Operation
 ---------
