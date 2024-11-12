@@ -51,12 +51,12 @@ This would be configured in EXRAIL via myAutomation.h as such:
 
   HAL(EXTurntable,600,1,0x60)
   EXTT_TURNTABLE(1,600,1800,"My EX-Turntable")
-  TT_ADDPOSITION(600,1,114,800,"Stall 1")
-  TT_ADDPOSITION(600,2,227,900,"Stall 2")
-  TT_ADDPOSITION(600,3,341,1000,"Stall 3")
-  TT_ADDPOSITION(600,4,2159,2600,"Rev stall 1")
-  TT_ADDPOSITION(600,5,2273,2700,"Layout")
-  TT_ADDPOSITION(600,6,2386,2800,"Rev stall 3")
+  TT_ADDPOSITION(1,1,114,800,"Stall 1")
+  TT_ADDPOSITION(1,2,227,900,"Stall 2")
+  TT_ADDPOSITION(1,3,341,1000,"Stall 3")
+  TT_ADDPOSITION(1,4,2159,2600,"Rev stall 1")
+  TT_ADDPOSITION(1,5,2273,2700,"Layout")
+  TT_ADDPOSITION(1,6,2386,2800,"Rev stall 3")
 
 As you can see, setting the turntable object up in this manner means you only need to do it once, and this turntable controller software needs no further configuration, meaning any updates to your turntable object will automatically be reflected on the display without any further configuration effort.
 
