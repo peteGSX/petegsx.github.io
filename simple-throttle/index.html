@@ -106,8 +106,203 @@
              
   <section id="dcc-ex-simple-throttle">
 <h1>DCC-EX Simple Throttle<a class="headerlink" href="#dcc-ex-simple-throttle" title="Permalink to this heading"></a></h1>
-<p>To be documented.</p>
-<p>This software is located in my <a class="reference external" href="https://github.com/peteGSX-Projects/DCCEXSimpleThrottle">simple-dcc-ex-throttle</a> GitHub repository.</p>
+<aside class="sidebar">
+<nav class="contents local" id="on-this-page">
+<p class="topic-title">On this page</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#hardware" id="id1">Hardware</a></p>
+<ul>
+<li><p><a class="reference internal" href="#component-connections" id="id2">Component connections</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#software" id="id3">Software</a></p>
+<ul>
+<li><p><a class="reference internal" href="#installation" id="id4">Installation</a></p></li>
+<li><p><a class="reference internal" href="#configuration" id="id5">Configuration</a></p></li>
+<li><p><a class="reference internal" href="#configuring-wifi-and-ex-commandstation-details" id="id6">Configuring WiFi and EX-CommandStation details</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#operation" id="id7">Operation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#select-server-menu" id="id8">“Select server” menu</a></p></li>
+<li><p><a class="reference internal" href="#select-loco-menu" id="id9">“Select loco” menu</a></p></li>
+<li><p><a class="reference internal" href="#select-action-menu" id="id10">“Select action” menu</a></p></li>
+<li><p><a class="reference internal" href="#operate-loco-screen" id="id11">Operate loco screen</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+</aside>
+<p>To accompany my mimic panel’s serial throttle (see <a class="reference internal" href="../serial-throttle/index.html"><span class="doc">Mimic panel serial throttle</span></a>), I decided a very simple WiFi enabled, palm-sized throttle I could walk around the layout with would be a very handy addition.</p>
+<p>Hence the creation of this DCC-EX Simple Throttle.</p>
+<p>Note that there is an option to run this on an STM32F103C8 Bluepill via a serial connection instead.</p>
+<section id="hardware">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Hardware</a><a class="headerlink" href="#hardware" title="Permalink to this heading"></a></h2>
+<p>The hardware required is pretty simple, consisting of a Wemos D1 Mini or Lolin32 Lite (which incorporates a LiPO battery connector), a LiPO battery, rotary encoder (such as the KY-040), and an SH1106 compatible OLED (either SPI or I2C).</p>
+<p>I opted for a 1.3” OLED for ease of readability, as it’s still small enough to fit in the palm of my hand when assembled with the rest of the hardware.</p>
+<p>I have designed and 3D printed a case to suit the specific components I used as well (I have yet to upload STL to Thingiverse).</p>
+<section id="component-connections">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Component connections</a><a class="headerlink" href="#component-connections" title="Permalink to this heading"></a></h3>
+<p>This table outlines the pins in use to connect to the various components.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Device Connection</p></th>
+<th class="head"><p>Wemos/Lolin32 Pin</p></th>
+<th class="head"><p>Bluepilll Pin</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Rotary encoder DT</p></td>
+<td><p>12</p></td>
+<td><p>PC14</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rotary encoder CLK</p></td>
+<td><p>14</p></td>
+<td><p>PC15</p></td>
+</tr>
+<tr class="row-even"><td><p>Rotary encoder button</p></td>
+<td><p>13</p></td>
+<td><p>PA0</p></td>
+</tr>
+<tr class="row-odd"><td><p>OLED SDA (I2C)</p></td>
+<td><p>23</p></td>
+<td><p>PB7</p></td>
+</tr>
+<tr class="row-even"><td><p>OLED SCL (I2C)</p></td>
+<td><p>22</p></td>
+<td><p>PB6</p></td>
+</tr>
+<tr class="row-odd"><td><p>OLED MOSI (SPI)</p></td>
+<td><p>23</p></td>
+<td><p>PA7</p></td>
+</tr>
+<tr class="row-even"><td><p>OLED MISO (SPI)</p></td>
+<td><p>19</p></td>
+<td><p>PA6</p></td>
+</tr>
+<tr class="row-odd"><td><p>OLED CLK (SPI)</p></td>
+<td><p>18</p></td>
+<td><p>PA5</p></td>
+</tr>
+<tr class="row-even"><td><p>OLED CS (SPI)</p></td>
+<td><p>5</p></td>
+<td><p>PA4</p></td>
+</tr>
+<tr class="row-odd"><td><p>OLED DC (SPI)</p></td>
+<td><p>2</p></td>
+<td><p>PA3</p></td>
+</tr>
+<tr class="row-even"><td><p>Serial Tx</p></td>
+<td><p>N/A</p></td>
+<td><p>PA10</p></td>
+</tr>
+<tr class="row-odd"><td><p>Serial Rx</p></td>
+<td><p>N/A</p></td>
+<td><p>PA9</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="software">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Software</a><a class="headerlink" href="#software" title="Permalink to this heading"></a></h2>
+<p>The software is located in my <a class="reference external" href="https://github.com/peteGSX-Projects/DCCEXSimpleThrottle">DCCEXSimpleThrottle</a> GitHub repository.</p>
+<p>This uses the DCCEXProtocol Arduino library to interact with an EX-CommandStation using the native DCC-EX protocol rather than the WiThrottle protocol, ensuring future-proof feature compatibility with DCC-EX software updates.</p>
+<section id="installation">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Installation</a><a class="headerlink" href="#installation" title="Permalink to this heading"></a></h3>
+<p>The software is configured to use VSCode with PlatformIO and will therefore ensure the correct libraries are installed when compiling and loading the software onto your device.</p>
+<p>If using the Arduino IDE, you will need to ensure platform support for STMicroelectronics STM32 and/or Espressif is installed.</p>
+<p>Further, you will need to ensure these libraries are installed:</p>
+<ul class="simple">
+<li><p>DCC-EX/DCCEXProtocol</p></li>
+<li><p>olikraus/U8g2</p></li>
+</ul>
+<p>There is plenty of information available on the Internet at large around how to accomplish installing these items, so I won’t cover that here.</p>
+</section>
+<section id="configuration">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Configuration</a><a class="headerlink" href="#configuration" title="Permalink to this heading"></a></h3>
+<p>Once the hardware components are connected according to the defaults in <a class="reference internal" href="#component-connections"><span class="std std-ref">Component connections</span></a>, for the Bluepill platform, no further configuration should be required.</p>
+<p>When using the Wemos D1 Mini/Lolin32 Lite, you will need to configure the WiFi credentials and EX-CommandStation IP address and port details for each EX-CommandStation you wish to connect to. Defining multiple sets of details is supported, meaning you can take this to your club or friend’s place without having to reconfigure it every time.</p>
+<p>If for some reason you need to use different pin connections, these can also be adjusted to suit.</p>
+<p>All user configuration changes can be made by copying the provided “myConfig.example.h” file to “myConfig.h” (note this file name is case sensitive, and Windows users beware an inadvertent “.txt” extension being added).</p>
+<p>Instructions are included in the file for updating the various details, but the WiFi/EX-CommandStation options are outlined here for clarity as well.</p>
+</section>
+<section id="configuring-wifi-and-ex-commandstation-details">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Configuring WiFi and EX-CommandStation details</a><a class="headerlink" href="#configuring-wifi-and-ex-commandstation-details" title="Permalink to this heading"></a></h3>
+<p>Set <code class="docutils literal notranslate"><span class="pre">COMMANDSTATION_COUNT</span></code> to the exact number of EX-CommandStations you will set up connection details for.</p>
+<p>For each of the parameters, you must provide the exact same number of elements that you defined for <code class="docutils literal notranslate"><span class="pre">COMMANDSTATION_COUNT</span></code> as shown in the example configuration provided. Further to this, every element aside from the port must be surrounded by quotes <code class="docutils literal notranslate"><span class="pre">&quot;&lt;element&gt;&quot;</span></code>, and each list of elements must be surrounded by curly brackets <code class="docutils literal notranslate"><span class="pre">{&lt;list&gt;}</span></code>.</p>
+<p>When configuring the parameters:</p>
+<ul class="simple">
+<li><p>COMMANDSTATION_NAMES is a list of descriptive names to help you select the appropriate one from the menu</p></li>
+<li><p>COMMANDSTATION_IPS is a list of the IP addresses for the CommandStations, one for each configured CommandStation (even if the same IP is used for multiple, each one must be specified)</p></li>
+<li><p>COMMANDSTATION_PORTS is a list of the ports associated with the CommandStations (quite likely these will all be the default 2560)</p></li>
+<li><p>COMMANDSTATION_SSIDS is a list of the WiFi SSIDs required to connect to the CommandStations</p></li>
+<li><p>COMMANDSTATION_PASSWORDS is a list of WiFi passwords associated with the SSIDs to connect to the CommandStations</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">Define WiFi connection parameters here</span>
+<span class="cm">These are irrelevant if using Bluepill and a serial connection</span>
+<span class="cm">*/</span>
+<span class="cp">#define COMMANDSTATION_COUNT 2 </span><span class="c1">// The number of EX-CommandStations to define</span>
+
+<span class="cm">/*</span>
+<span class="cm">Define connection options for each EX-CommandStation entry</span>
+
+<span class="cm">Each line must have the exact same number of items as set in COMMANDSTATION_COUNT above</span>
+<span class="cm">Each element must be surrounded by quotes &quot;&quot; and separated by a commad</span>
+<span class="cm">Each list of elements must be surrounded by curly brackets {}</span>
+
+<span class="cm">#define COMMANDSTATION_NAMES {&quot;Example 1&quot;, &quot;Example 2&quot;}</span>
+<span class="cm">#define COMMANDSTATION_IPS {&quot;192.168.4.1&quot;, &quot;192.168.0.1&quot;}</span>
+<span class="cm">#define COMMANDSTATION_PORTS {2560, 2560}</span>
+<span class="cm">#define COMMANDSTATION_SSIDS {&quot;SSID1&quot;, &quot;SSID2&quot;}</span>
+<span class="cm">#define COMMANDSTATION_PASSWORDS {&quot;Password1&quot;, &quot;Password2&quot;}</span>
+<span class="cm">*/</span>
+<span class="cp">#define COMMANDSTATION_NAMES { &quot;CommandStation 1&quot;, &quot;CommandStation 2&quot; }</span>
+<span class="cp">#define COMMANDSTATION_IPS { &quot;192.168.4.1&quot;, &quot;192.168.0.1&quot; }</span>
+<span class="cp">#define COMMANDSTATION_PORTS { 2560, 2560 }</span>
+<span class="cp">#define COMMANDSTATION_SSIDS { &quot;SSID1&quot;, &quot;SSID2&quot; }</span>
+<span class="cp">#define COMMANDSTATION_PASSWORDS { &quot;Password1&quot;, &quot;Password2&quot; }</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="operation">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Operation</a><a class="headerlink" href="#operation" title="Permalink to this heading"></a></h2>
+<p>When navigating menus, scroll up and down with the rotary encoder, and click the rotary encoder’s button to select the highlighted item.</p>
+<p>During operation, there are four contexts on screen to switch through:</p>
+<ul class="simple">
+<li><p>“Select server” menu</p></li>
+<li><p>“Select loco” menu</p></li>
+<li><p>“Select action” menu</p></li>
+<li><p>Operate loco screen</p></li>
+</ul>
+<section id="select-server-menu">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">“Select server” menu</a><a class="headerlink" href="#select-server-menu" title="Permalink to this heading"></a></h3>
+<p>When starting, you will first see the “Select server” menu (except on Bluepill with a serial connection). Select one of the EX-CommandStation entries configured in the <a class="reference internal" href="#configuring-wifi-and-ex-commandstation-details"><span class="std std-ref">Configuring WiFi and EX-CommandStation details</span></a> section to connect to it.</p>
+<p>Once connected, the <a class="reference internal" href="#select-loco-menu"><span class="std std-ref">“Select loco” menu</span></a> will be displayed.</p>
+</section>
+<section id="select-loco-menu">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">“Select loco” menu</a><a class="headerlink" href="#select-loco-menu" title="Permalink to this heading"></a></h3>
+<p>Providing a roster of locomotives has been configured in the connected EX-CommandStation, selecting one from the menu will allow you to control it.</p>
+<p>Once selected, the <a class="reference internal" href="#operate-loco-screen"><span class="std std-ref">Operate loco screen</span></a> will be displayed.</p>
+<p>Alternatively, while on this screen, double clicking the rotary encoder button will take you to the <a class="reference internal" href="#select-action-menu"><span class="std std-ref">“Select action” menu</span></a>.</p>
+<p><strong>Not implemented yet</strong> If you wish to control a locomotive on the programming track instead of selecting a roster entry, holding the rotary encoder button down for more than half a second will cause the EX-CommandStation to attempt to read the DCC address. Providing the read was successful, the <a class="reference internal" href="#operate-loco-screen"><span class="std std-ref">Operate loco screen</span></a> will be displayed.</p>
+</section>
+<section id="select-action-menu">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">“Select action” menu</a><a class="headerlink" href="#select-action-menu" title="Permalink to this heading"></a></h3>
+<p>This menu allows you to toggle the track power on and off, and forget the currently selected loco.</p>
+<p>If a loco has been selected for operation, you will be returned to the <a class="reference internal" href="#operate-loco-screen"><span class="std std-ref">Operate loco screen</span></a> after selecting an item, otherwise you will return to the <a class="reference internal" href="#select-loco-menu"><span class="std std-ref">“Select loco” menu</span></a>.</p>
+</section>
+<section id="operate-loco-screen">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Operate loco screen</a><a class="headerlink" href="#operate-loco-screen" title="Permalink to this heading"></a></h3>
+<p>While on this screen, rotating the rotary encoder will increase or decrease the locomotive speed.</p>
+<p>If speed is greater than zero, a single click will stop the selected locomotive, and holding the rotary encoder button for longer than half a second will trigger an emergency stop.</p>
+<p>If speed is zero, a single click of the rotary encoder button will change direction.</p>
+<p>Also when speed is zero, double clicking the rotary encoder will display the <a class="reference internal" href="#select-loco-menu"><span class="std std-ref">“Select loco” menu</span></a>. Selecting a different loco will release or forget the currently selected loco.</p>
+<p><strong>To do</strong> enable a way to toggle lights on and off.</p>
+</section>
+</section>
 </section>
 
 
