@@ -153,12 +153,11 @@ Operation
 
 When navigating menus, scroll up and down with the rotary encoder, and click the rotary encoder's button to select the highlighted item.
 
-During operation, there are four contexts on screen to switch through:
+During operation, there are three contexts on screen to switch through:
 
 - "Select server" menu
 - "Select loco" menu
-- "Select action" menu
-- Operate loco screen
+- Throttle screen
 
 "Select server" menu
 --------------------
@@ -172,27 +171,25 @@ Once connected, the :ref:`simple-throttle/index:"select loco" menu` will be disp
 
 Providing a roster of locomotives has been configured in the connected EX-CommandStation, selecting one from the menu will allow you to control it.
 
-Once selected, the :ref:`simple-throttle/index:operate loco screen` will be displayed.
+Once selected, the :ref:`simple-throttle/index:throttle screen` will be displayed.
 
-Alternatively, while on this screen, double clicking the rotary encoder button will take you to the :ref:`simple-throttle/index:"select action" menu`.
+**Not implemented yet** If you wish to control a locomotive on the programming track instead of selecting a roster entry, holding the rotary encoder button down for more than half a second will cause the EX-CommandStation to attempt to read the DCC address. Providing the read was successful, the :ref:`simple-throttle/index:throttle screen` will be displayed.
 
-**Not implemented yet** If you wish to control a locomotive on the programming track instead of selecting a roster entry, holding the rotary encoder button down for more than half a second will cause the EX-CommandStation to attempt to read the DCC address. Providing the read was successful, the :ref:`simple-throttle/index:operate loco screen` will be displayed.
+.. "Select action" menu
+.. --------------------
 
-"Select action" menu
---------------------
+.. This menu allows you to toggle the track power on and off, and forget the currently selected loco.
 
-This menu allows you to toggle the track power on and off, and forget the currently selected loco.
+.. If a loco has been selected for operation, you will be returned to the :ref:`simple-throttle/index:operate loco screen` after selecting an item, otherwise you will return to the :ref:`simple-throttle/index:"select loco" menu`.
 
-If a loco has been selected for operation, you will be returned to the :ref:`simple-throttle/index:operate loco screen` after selecting an item, otherwise you will return to the :ref:`simple-throttle/index:"select loco" menu`.
-
-Operate loco screen
+Throttle screen
 -------------------
 
 While on this screen, rotating the rotary encoder will increase or decrease the locomotive speed.
 
 If speed is greater than zero, a single click will stop the selected locomotive, and holding the rotary encoder button for longer than half a second will trigger an emergency stop.
 
-If speed is zero, a single click of the rotary encoder button will change direction.
+If speed is zero, a single click of the rotary encoder button will change direction, and holding the rotary encoder button for longer than half a second will toggle track power on or off depending on the current state.
 
 Also when speed is zero, double clicking the rotary encoder will display the :ref:`simple-throttle/index:"select loco" menu`. Selecting a different loco will release or forget the currently selected loco.
 
