@@ -110,7 +110,7 @@
 <p>Turntable operations are displayed on a round LCD, with a rotary encoder utilised for user input.</p>
 <p>It is capable of operating any type of turntable configured using the new DCC-EX turntable object, including both EX-Turntable and DCC turntables.</p>
 <p>Information on the new turntable object is available on the <a class="reference external" href="https://dcc-ex.com/ex-commandstation/accessories/turntables/index.html">DCC-EX website</a>.</p>
-<p>A future version may implement support for a WiFi client connection to the DCC-EX CommandStation rather than needing a physical serial connection.</p>
+<p>This can be connected to an EX-CommandStation via either a serial connection, or WiFi if using an ESP32 WROOM based microcontroller.</p>
 <section id="how-it-works-and-dcc-ex-turntable-configuration">
 <h2>How it works (and DCC-EX turntable configuration)<a class="headerlink" href="#how-it-works-and-dcc-ex-turntable-configuration" title="Permalink to this heading"></a></h2>
 <p>When creating a turntable object in DCC-EX EX-CommandStation, you can specify an angle for each position, which is what this DCC-EX Turntable Controller software uses to configure the turntable display.</p>
@@ -175,42 +175,94 @@
 <p>If you prefer, you can also use the Arduino IDE, which means you will need to:</p>
 <ul class="simple">
 <li><p>Install the above libraries</p></li>
-<li><p>Configure the TFT_eSPI manually according to the [library’s documentation](<a class="reference external" href="https://github.com/Bodmer/TFT_eSPI">https://github.com/Bodmer/TFT_eSPI</a>)</p></li>
+<li><p>Configure the TFT_eSPI manually according to the <a class="reference external" href="https://github.com/Bodmer/TFT_eSPI">library’s documentation</a></p></li>
 </ul>
 <p>There is plenty of information and tutorials available to help with VSCode, PlatformIO, the Arduino IDE, and libraries, so I will not cover that here.</p>
 </section>
 <section id="configuration">
 <h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading"></a></h3>
-<p>To get up and running, just uploading the software to the Blackpill and connecting the display, rotary encoder, and serial connection should simply work “out of the box”.</p>
+<p>To get up and running, just uploading the software to the Blackpill or ESP32 and connecting the display, rotary encoder, and serial connection should simply work “out of the box”.</p>
 <p>If you wish to customise the colours and font in use, you can copy the included “myConfig.example.h” to “myConfig.h” and edit it to suit. Instructions are in the file.</p>
+<p>If you wish to use WiFi on the ESP32, you will need to configure the following parameters as outlined in “myConfig.h”:</p>
+<ul class="simple">
+<li><p>WIFI_SSID</p></li>
+<li><p>WIFI_PASSWORD</p></li>
+<li><p>COMMANDSTATION_IP</p></li>
+<li><p>COMMANDSTATION_PORT</p></li>
+</ul>
+<p>You will also need to set the <code class="docutils literal notranslate"><span class="pre">CLIENT_TYPE</span></code> to <code class="docutils literal notranslate"><span class="pre">WIFI_CLIENT</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define CLIENT_TYPE WIFI_CLIENT</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="hardware-requirements">
 <h2>Hardware requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this heading"></a></h2>
 <p>To assemble the DCC-EX Turntable Controller, you will need:</p>
 <ul class="simple">
-<li><p>An STM32F411CEU6 Blackpill microcontroller</p></li>
+<li><p>An STM32F411CEU6 Blackpill microcontroller or Espressif ESP32 WROOM based microcontroller</p></li>
 <li><p>A rotary encoder such as the KY-040</p></li>
 <li><p>A GC9A01 based round LCD</p></li>
 </ul>
-<p>Further to this, you will need a serial connection to a DCC-EX CommandStation.</p>
+<p>Further to this, you will need a serial connection to a DCC-EX CommandStation unless using WiFi.</p>
 <section id="pins-and-connections">
 <h3>Pins and connections<a class="headerlink" href="#pins-and-connections" title="Permalink to this heading"></a></h3>
-<p>The below pins are used on the Blackpill to connect to the CommandStation’s serial port, rotary encoder, and GC9A01 LCD.</p>
+<p>The below pins are used on to connect to the CommandStation’s serial port, rotary encoder, and GC9A01 LCD.</p>
 <p>Remember to cross Rx/Tx so that the Blackpill Rx connects to the CommandStation’s Tx, and vice versa. Also be sure to connect a common ground, and take into account if the CommandStation uses 3.3V or 5V logic, as the Blackpill is a 3.3V uC.</p>
-<ul class="simple">
-<li><p>Serial Rx - PA10</p></li>
-<li><p>Serial Tx - PA9</p></li>
-<li><p>Rotary encoder button - PB15</p></li>
-<li><p>Rotary encoder DT - PB14</p></li>
-<li><p>Rotary encoder CLK - PB13</p></li>
-<li><p>GC9A01 DIN - PA7</p></li>
-<li><p>GC9A01 CLK - PA5</p></li>
-<li><p>GC9A01 CS - PA4</p></li>
-<li><p>GC9A01 DC - PA3</p></li>
-<li><p>GC9A01 RST - PA2</p></li>
-<li><p>GC9A01 BL - PA1</p></li>
-</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Device Connection</p></th>
+<th class="head"><p>ESP32 Dev Kit Pin</p></th>
+<th class="head"><p>Blackpill Pin</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Rotary encoder DT</p></td>
+<td><p>26</p></td>
+<td><p>PB14</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rotary encoder CLK</p></td>
+<td><p>27</p></td>
+<td><p>PB13</p></td>
+</tr>
+<tr class="row-even"><td><p>Rotary encoder button</p></td>
+<td><p>25</p></td>
+<td><p>PB15</p></td>
+</tr>
+<tr class="row-odd"><td><p>GC9A01 DIN</p></td>
+<td><p>23</p></td>
+<td><p>PA6</p></td>
+</tr>
+<tr class="row-even"><td><p>GC9A01 CLK</p></td>
+<td><p>18</p></td>
+<td><p>PA5</p></td>
+</tr>
+<tr class="row-odd"><td><p>GC9A01 CS</p></td>
+<td><p>15</p></td>
+<td><p>PA4</p></td>
+</tr>
+<tr class="row-even"><td><p>GC9A01 DC</p></td>
+<td><p>2</p></td>
+<td><p>PA3</p></td>
+</tr>
+<tr class="row-odd"><td><p>GC9A01 RST</p></td>
+<td><p>4</p></td>
+<td><p>PA2</p></td>
+</tr>
+<tr class="row-even"><td><p>GC9A01 BL</p></td>
+<td><p>21</p></td>
+<td><p>PA1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Serial Tx</p></td>
+<td><p>17</p></td>
+<td><p>PA9</p></td>
+</tr>
+<tr class="row-even"><td><p>Serial Rx</p></td>
+<td><p>16</p></td>
+<td><p>PA10</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 </section>

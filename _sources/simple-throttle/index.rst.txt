@@ -34,7 +34,7 @@ This table outlines the pins in use to connect to the various components.
 
   * - Device Connection
     - Wemos/Lolin32 Pin
-    - Bluepilll Pin
+    - Bluepill Pin
   * - Rotary encoder DT
     - 12
     - PC14
