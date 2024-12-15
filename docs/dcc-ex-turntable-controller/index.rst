@@ -10,7 +10,7 @@ It is capable of operating any type of turntable configured using the new DCC-EX
 
 Information on the new turntable object is available on the `DCC-EX website <https://dcc-ex.com/ex-commandstation/accessories/turntables/index.html>`_.
 
-A future version may implement support for a WiFi client connection to the DCC-EX CommandStation rather than needing a physical serial connection.
+This can be connected to an EX-CommandStation via either a serial connection, or WiFi if using an ESP32 WROOM based microcontroller.
 
 How it works (and DCC-EX turntable configuration)
 =================================================
@@ -94,43 +94,85 @@ The platformio.ini file is written to configure the TFT_eSPI library correctly a
 If you prefer, you can also use the Arduino IDE, which means you will need to:
 
 - Install the above libraries
-- Configure the TFT_eSPI manually according to the [library's documentation](https://github.com/Bodmer/TFT_eSPI)
+- Configure the TFT_eSPI manually according to the `library's documentation <https://github.com/Bodmer/TFT_eSPI>`_
 
 There is plenty of information and tutorials available to help with VSCode, PlatformIO, the Arduino IDE, and libraries, so I will not cover that here.
 
 Configuration
 -------------
 
-To get up and running, just uploading the software to the Blackpill and connecting the display, rotary encoder, and serial connection should simply work "out of the box".
+To get up and running, just uploading the software to the Blackpill or ESP32 and connecting the display, rotary encoder, and serial connection should simply work "out of the box".
 
 If you wish to customise the colours and font in use, you can copy the included "myConfig.example.h" to "myConfig.h" and edit it to suit. Instructions are in the file.
+
+If you wish to use WiFi on the ESP32, you will need to configure the following parameters as outlined in "myConfig.h":
+
+- WIFI_SSID
+- WIFI_PASSWORD
+- COMMANDSTATION_IP
+- COMMANDSTATION_PORT
+
+You will also need to set the ``CLIENT_TYPE`` to ``WIFI_CLIENT``:
+
+.. code-block:: 
+
+  #define CLIENT_TYPE WIFI_CLIENT
 
 Hardware requirements
 =====================
 
 To assemble the DCC-EX Turntable Controller, you will need:
 
-- An STM32F411CEU6 Blackpill microcontroller
+- An STM32F411CEU6 Blackpill microcontroller or Espressif ESP32 WROOM based microcontroller
 - A rotary encoder such as the KY-040
 - A GC9A01 based round LCD
 
-Further to this, you will need a serial connection to a DCC-EX CommandStation.
+Further to this, you will need a serial connection to a DCC-EX CommandStation unless using WiFi.
 
 Pins and connections
 --------------------
 
-The below pins are used on the Blackpill to connect to the CommandStation's serial port, rotary encoder, and GC9A01 LCD.
+The below pins are used on to connect to the CommandStation's serial port, rotary encoder, and GC9A01 LCD.
 
 Remember to cross Rx/Tx so that the Blackpill Rx connects to the CommandStation's Tx, and vice versa. Also be sure to connect a common ground, and take into account if the CommandStation uses 3.3V or 5V logic, as the Blackpill is a 3.3V uC.
 
-- Serial Rx - PA10
-- Serial Tx - PA9
-- Rotary encoder button - PB15
-- Rotary encoder DT - PB14
-- Rotary encoder CLK - PB13
-- GC9A01 DIN - PA7
-- GC9A01 CLK - PA5
-- GC9A01 CS - PA4
-- GC9A01 DC - PA3
-- GC9A01 RST - PA2
-- GC9A01 BL - PA1
+.. list-table:: 
+  :widths: auto
+  :header-rows: 1
+
+  * - Device Connection
+    - ESP32 Dev Kit Pin
+    - Blackpill Pin
+  * - Rotary encoder DT
+    - 26
+    - PB14
+  * - Rotary encoder CLK
+    - 27
+    - PB13
+  * - Rotary encoder button
+    - 25
+    - PB15
+  * - GC9A01 DIN
+    - 23
+    - PA6
+  * - GC9A01 CLK
+    - 18
+    - PA5
+  * - GC9A01 CS
+    - 15
+    - PA4
+  * - GC9A01 DC
+    - 2
+    - PA3
+  * - GC9A01 RST
+    - 4
+    - PA2
+  * - GC9A01 BL
+    - 21
+    - PA1
+  * - Serial Tx
+    - 17
+    - PA9
+  * - Serial Rx
+    - 16
+    - PA10
