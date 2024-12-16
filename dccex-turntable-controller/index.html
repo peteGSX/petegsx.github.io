@@ -9,7 +9,7 @@
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/peteGSX-theme.css" type="text/css" />
-    <link rel="canonical" href="https://petegsx-projects.github.io/dcc-ex-turntable-controller/index.html" />
+    <link rel="canonical" href="https://petegsx-projects.github.io/dccex-turntable-controller/index.html" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -21,7 +21,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="DCC-EX Rotary Encoder (archived)" href="../rotary-encoder/overview.html" />
+    <link rel="next" title="Modulated IR Sensor" href="../modulated-ir-sensor/index.html" />
     <link rel="prev" title="Welcome to Pete’s Pages!" href="../index.html" /> 
 </head>
 
@@ -46,14 +46,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">DCC-EX Turntable Controller</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rotary-encoder/overview.html">DCC-EX Rotary Encoder (archived)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../rotary-encoder/control-knob.html">Control Knob Mode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rotary-encoder/turntable-controller.html">Turntable Controller</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rotary-encoder/ex-rail-integration.html">Device Driver and EX-RAIL Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modulated-ir-sensor/index.html">Modulated IR Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simple-throttle/index.html">DCC-EX Simple Throttle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tri-throttle/index.html">DCCEX Tri-Throttle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rokuhan-turnout-control/index.html">Rokuhan DCC Turnout Controller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rokuhan-turnout-control/overview.html">Overview</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../serial-throttle/index.html">Mimic panel serial throttle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modulated-ir-sensor/index.html">Modulated IR Sensor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../turntable-controller/index.html">Programmable DCC Turntable Controller</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../turntable-controller/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../turntable-controller/hardware.html">Hardware components</a></li>
@@ -61,11 +60,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../turntable-controller/programming.html">Programming</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../rokuhan-turnout-control/index.html">Rokuhan DCC Turnout Controller</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../rokuhan-turnout-control/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rotary-encoder/overview.html">DCC-EX Rotary Encoder (archived)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rotary-encoder/control-knob.html">Control Knob Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rotary-encoder/turntable-controller.html">Turntable Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rotary-encoder/ex-rail-integration.html">Device Driver and EX-RAIL Integration</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../simple-throttle/index.html">DCC-EX Simple Throttle</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../bluetooth-programmer/index.html">HC-05/06 Bluetooth Programmer</a></li>
@@ -91,13 +91,13 @@
   
     
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/peteGSX-Projects/petegsx-projects.github.io/blob/sphinx/docs/dcc-ex-turntable-controller/index.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/peteGSX-Projects/petegsx-projects.github.io/blob/sphinx/docs/dccex-turntable-controller/index.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   
 
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
         <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Pete’s Pages!" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../rotary-encoder/overview.html" class="btn btn-neutral float-right" title="DCC-EX Rotary Encoder (archived)" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../modulated-ir-sensor/index.html" class="btn btn-neutral float-right" title="Modulated IR Sensor" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
   </div>
   <hr/>
 </div>
@@ -171,7 +171,7 @@
 <li><p>bodmer/TFT_eSPI</p></li>
 <li><p>avandalen/Switch</p></li>
 </ul>
-<p>The platformio.ini file is written to configure the TFT_eSPI library correctly according to the <a class="reference internal" href="#pins-and-connections"><span class="std std-ref">Pins and connections</span></a> section below, meaning manual configuration of the TFT_eSPI library shouldn’t be required.</p>
+<p>The platformio.ini file is written to configure the TFT_eSPI library correctly according to the <span class="xref std std-ref">dcc-ex-turntable-controller/index:pins and connections</span> section below, meaning manual configuration of the TFT_eSPI library shouldn’t be required.</p>
 <p>If you prefer, you can also use the Arduino IDE, which means you will need to:</p>
 <ul class="simple">
 <li><p>Install the above libraries</p></li>
@@ -272,7 +272,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Pete’s Pages!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../rotary-encoder/overview.html" class="btn btn-neutral float-right" title="DCC-EX Rotary Encoder (archived)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../modulated-ir-sensor/index.html" class="btn btn-neutral float-right" title="Modulated IR Sensor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -13,13 +13,13 @@ This is the documentation repository for my various projects.
     .. toctree:: 
       :maxdepth: 1
 
-      dcc-ex-turntable-controller/index
-      rotary-encoder/overview
-      serial-throttle/index
+      dccex-turntable-controller/index
       modulated-ir-sensor/index
-      turntable-controller/index
-      rokuhan-turnout-control/index
       simple-throttle/index
+      tri-throttle/index
+      rokuhan-turnout-control/index      
+      turntable-controller/index
+      rotary-encoder/overview
 
   .. grid-item-card:: Other items
     
